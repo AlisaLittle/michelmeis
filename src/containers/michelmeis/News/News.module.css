@@ -1,0 +1,38 @@
+.image {
+  width: 40vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 1;
+  transition: 1s ease;
+  object-fit: cover;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease;
+  -o-transition: 1s ease;
+}
+.container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(16, 18, 17);
+  color: snow;
+  z-index: 4;
+}
+.header {
+  position: absolute;
+  opacity: 1;
+  top: 0px;
+  right: 0px;
+  left: auto;
+  color: transparent;
+  text-align: start;
+  font-family: "Helvetica";
+  font-size: 5rem;
+  font-weight: 900;
+  z-index: 5;
+  -webkit-text-stroke: 1px snow;
+}

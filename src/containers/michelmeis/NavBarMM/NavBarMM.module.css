@@ -1,0 +1,109 @@
+.side {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(16, 18, 17);
+}
+.tet {
+}
+.image {
+  width: 70vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  transition: 1s ease;
+  object-fit: cover;
+}
+.transition {
+  width: 100vw;
+}
+.active {
+  opacity: 1;
+}
+.main {
+  color: snow;
+  text-align: start;
+  font-family: "Helvetica";
+  font-size: 5rem;
+  font-weight: 900;
+  z-index: 5;
+}
+.first {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  text-decoration: none;
+}
+.second {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  position: absolute !important;
+  /*   top: 65vh; */
+}
+nav div {
+  margin: 0px 7vw;
+}
+.link {
+  text-decoration: none;
+}
+.navPoint {
+  color: transparent;
+  -webkit-text-stroke: 1px snow;
+  text-align: start;
+  font-family: "Helvetica";
+  font-size: 3rem;
+  font-weight: 800;
+}
+.navPoint:hover {
+  color: snow;
+}
+.container {
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 70vh;
+}
+.header {
+  position: absolute;
+  top: 80%;
+  /*transform: translate(-50%, -50%);
+  */
+  right: 0px;
+  opacity: 0;
+  transition: top 1s ease;
+  -webkit-transition: top 1s ease;
+  -moz-transition: top 1s ease;
+  -ms-transition: top 1s ease;
+  -o-transition: top 1s ease;
+}
+.headerSidebar {
+  position: absolute;
+  opacity: 1;
+  top: 0px;
+  right: 0px;
+  left: auto;
+  color: transparent;
+  -webkit-text-stroke: 1px snow;
+}
+.photoSidebar {
+  width: 40vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  opacity: 1;
+  transition: width 1s ease;
+  object-fit: cover;
+  -webkit-transition: width 1s ease;
+  -moz-transition: width 1s ease;
+  -ms-transition: width 1s ease;
+  -o-transition: width 1s ease;
+}
