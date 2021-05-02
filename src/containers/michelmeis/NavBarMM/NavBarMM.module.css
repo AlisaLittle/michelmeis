@@ -1,10 +1,14 @@
-.side {
-  position: absolute;
+.container {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(16, 18, 17);
+  background-color: var(--black);
 }
-.tet {
+.quartet {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(237, 237, 237);
 }
 .image {
   width: 70vw;
@@ -12,57 +16,141 @@
   position: absolute;
   right: 0;
   opacity: 0;
-  transition: 1s ease;
+  transition: 2s ease;
   object-fit: cover;
+  z-index: 4;
+  -webkit-transition: 2s ease;
+  -moz-transition: 2s ease;
+  -ms-transition: 2s ease;
+  -o-transition: 2s ease;
+}
+.imageQuartet {
+  width: 70vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: 2s ease;
+  object-fit: cover;
+  z-index: 4;
+  -webkit-transition: 2s ease;
+  -moz-transition: 2s ease;
+  -ms-transition: 2s ease;
+  -o-transition: 2s ease;
 }
 .transition {
-  width: 100vw;
+  width: 100vw !important;
+  transition: 1s ease;
 }
 .active {
   opacity: 1;
+  transition: 1s ease;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease;
+  -o-transition: 1s ease;
 }
+.photoSidebar {
+  width: 30vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  /*   opacity: 1; */
+}
+
 .main {
-  color: snow;
   text-align: start;
   font-family: "Helvetica";
-  font-size: 5rem;
+  font-size: 6vw;
   font-weight: 900;
   z-index: 5;
 }
-.first {
+.mainWidth {
+  max-width: 25vw;
+}
+.boxTop {
   position: absolute;
+  cursor: pointer;
   top: 0px;
   left: 0px;
   z-index: 5;
   text-decoration: none;
 }
-.second {
+.boxBottom {
   position: absolute;
   bottom: 0px;
   right: 0px;
+  z-index: 5;
+}
+.first {
+  color: var(--white);
+}
+.second {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white);
+}
+.second:hover {
+  color: var(--white);
+  cursor: pointer;
+}
+.firstDark {
+  color: rosybrown;
+}
+.secondDark {
+  color: transparent;
+  -webkit-text-stroke: 1px rosybrown;
+}
+.secondDark:hover {
+  color: rosybrown;
+  cursor: pointer;
 }
 .nav {
   display: flex;
-  flex-direction: row;
-  position: absolute !important;
-  /*   top: 65vh; */
+  flex-direction: column;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 6;
 }
-nav div {
-  margin: 0px 7vw;
+.navQuartet {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 6;
 }
+
 .link {
   text-decoration: none;
 }
 .navPoint {
   color: transparent;
-  -webkit-text-stroke: 1px snow;
+  -webkit-text-stroke: 1px var(--white);
   text-align: start;
   font-family: "Helvetica";
-  font-size: 3rem;
+  font-size: 4vw;
   font-weight: 800;
+  cursor: pointer;
 }
 .navPoint:hover {
   color: snow;
+}
+.navPointActive {
+  color: snow;
+}
+.navPointQuartet {
+  color: transparent;
+  -webkit-text-stroke: 1px rosybrown;
+  text-align: end;
+  font-family: "Helvetica";
+  font-size: 4vw;
+  font-weight: 800;
+  cursor: pointer;
+}
+.navPointQuartet:hover {
+  color: rosybrown;
 }
 .container {
   overflow: hidden;
@@ -92,18 +180,59 @@ nav div {
   right: 0px;
   left: auto;
   color: transparent;
-  -webkit-text-stroke: 1px snow;
+  -webkit-text-stroke: 1px var(--white);
 }
-.photoSidebar {
-  width: 40vw;
+
+.news {
+  object-position: 70% 50%;
+}
+.about {
+  object-position: 80% 50%;
+}
+.video {
+  object-position: 10% 50%;
+}
+.projects {
+  object-position: 70% 50%;
+}
+.contact {
+  object-position: 10% 50%;
+}
+.cat {
+  object-position: 100% 10%;
+}
+.screen {
+  width: 100vw;
   height: 100vh;
-  position: absolute;
-  left: 0;
-  opacity: 1;
-  transition: width 1s ease;
-  object-fit: cover;
-  -webkit-transition: width 1s ease;
-  -moz-transition: width 1s ease;
-  -ms-transition: width 1s ease;
-  -o-transition: width 1s ease;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.rowToRight {
+  width: 200vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  transition: ease-in-out 0.7s;
+  transform: translateX(-100vw);
+  -webkit-transform: translateX(-100vw);
+  -moz-transform: translateX(-100vw);
+  -ms-transform: translateX(-100vw);
+  -o-transform: translateX(-100vw);
+}
+.rowToLeft {
+  width: 200vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  transition: ease-in-out 0.7s;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+.alisa {
+  width: 200vw;
+  display: flex;
 }

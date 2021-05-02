@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "../../../pictures/Home.jpg";
 import styles from "./NavBarMM.module.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useLocation } from "react-router-dom";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import { Parallax } from "react-scroll-parallax";
 import HorizontalScroll from "react-scroll-horizontal";
@@ -11,159 +11,389 @@ import Projects from "../../../pictures/Meis/Projects.jpg";
 import Video from "../../../pictures/Meis/Video.jpg";
 import Live from "../../../pictures/Meis/Live.jpg";
 import Contact from "../../../pictures/Meis/Contact.jpg";
+import HomeQuartet from "../../../pictures/Quartet/Home.jpg";
+import AboutQuartet from "../../../pictures/Quartet/About.jpg";
+import ContactQuartet from "../../../pictures/Quartet/Contact.jpg";
+import LiveQuartet from "../../../pictures/Quartet/Live.jpg";
+import MusicQuartet from "../../../pictures/Quartet/Music.jpg";
+import NewsQuartet from "../../../pictures/Quartet/News.jpg";
+import VideoQuartet from "../../../pictures/Quartet/Video.jpg";
 
 function Landingpage() {
   const [picture, setPicture] = useState("Home");
-  const [navBar, setNavBar] = useState(true);
-  const [transition, setTransition] = useState("");
+  const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
+  const [transition, setTransition] = useState(false);
+  const [secondTransition, setSecondTransition] = useState(false);
+  const [photoSidebar, setPhotoSiedebar] = useState(false);
   const [redirect, setRedirect] = useState(null);
   const [header, setHeader] = useState(null);
-  const [photoSidebar, setPhotoSiedebar] = useState(null);
+  const [toQuartet, setToQuartet] = useState(false);
+  const [toMichelMeis, setToMichelMeis] = useState(false);
+  const [delayHandler, setDelayHandler] = useState(null);
 
-  const handleClick = (route) => {
-    console.log(route);
-    setTransition(route);
-    setNavBar(false);
-    setTimeout(() => setRedirect(route), 2000);
-    setTimeout(() => setHeader(route), 600);
-    setTimeout(() => setPhotoSiedebar(route), 1000);
+  const path = useLocation().pathname;
+  /*   useEffect(() => {
+    if (path == "/4tet") {
+      setPhotoSiedebar(false);
+      setToQuartet(true);
+    }
+  }, []); */
+
+  const routes = [
+    { name: "News", picture: News },
+    { name: "About", picture: About },
+    { name: "Projects", picture: Projects },
+    { name: "Video", picture: Video },
+    { name: "Live", picture: Live },
+    { name: "Contact", picture: Contact },
+  ];
+  const routesQuartet = [
+    { name: "News", picture: News },
+    { name: "About", picture: About },
+    { name: "Music", picture: Projects },
+    { name: "Video", picture: Video },
+    { name: "Live", picture: Live },
+    { name: "Contact", picture: Contact },
+  ];
+
+  const handleClick = (name) => {
+    if (!photoSidebar) {
+      setTransition(true);
+      setSecondTransition(true);
+      setTimeout(() => {
+        setHeader(name);
+      }, 600);
+      setTimeout(() => {
+        setPhotoSiedebar(true);
+        setTransition(false);
+      }, 1000);
+      setTimeout(() => {
+        setSecondTransition(false);
+        setRedirect(name);
+      }, 2000);
+    } else {
+      setHeader(name);
+      setRedirect(name);
+    }
+  };
+  const handleClickQuartet = (name) => {
+    if (!photoSidebar) {
+      setTransition(true);
+      setSecondTransition(true);
+      setTimeout(() => {
+        setHeader(name);
+      }, 600);
+      setTimeout(() => {
+        setPhotoSiedebar(true);
+        setTransition(false);
+      }, 1000);
+      setTimeout(() => {
+        setSecondTransition(false);
+        setRedirect(name);
+      }, 2000);
+    } else {
+      setHeader(name);
+      setRedirect(name);
+    }
+  };
+
+  const handleHover = (name) => {
+    if (!transition || !secondTransition) {
+      setDelayHandler(
+        setTimeout(() => {
+          setPicture(name);
+        }, 200)
+      );
+    } else {
+      return null;
+    }
+  };
+  const handleHoverQuartet = (name) => {
+    setDelayHandler(
+      setTimeout(() => {
+        setPictureQuartet(name);
+      }, 200)
+    );
+  };
+  const handleMouseLeave = () => {
+    clearTimeout(delayHandler);
   };
   const handleHome = () => {
-    setNavBar(true);
-    setPicture("Home");
-    setTransition("Home");
-    setRedirect("/");
     setHeader(null);
-    setPhotoSiedebar(null);
+    setPicture("Home");
+    setTransition(true);
+    setRedirect("/");
+    setTimeout(() => {
+      setTransition(false);
+      setPhotoSiedebar(false);
+    }, 1000);
   };
+  console.log(
+    "picture:",
+    picture,
+    "transition:",
+    transition,
+    "photoSidebar:",
+    photoSidebar
+  );
+  const goToQuartet = () => {
+    setPhotoSiedebar(false);
+    setToQuartet(true);
+    setTimeout(() => setRedirect("/4tet"), 1000);
+  };
+  const goToMichelMeis = () => {
+    setToQuartet(false);
+    setToMichelMeis(true);
+    setPhotoSiedebar(false);
+    setPicture("Home");
+    setTimeout(() => setRedirect("/"), 1000);
+    setTimeout(() => setToMichelMeis(false), 1000);
+  };
+
   return (
-    <div className={styles.container}>
-      {redirect ? <Redirect to={`${redirect}`} /> : null}
-      {header ? (
-        <div
-          className={`${styles.header} ${styles.main} ${
-            photoSidebar ? styles.headerSidebar : null
-          }`}
-        >
-          {header}
-        </div>
-      ) : null}
-      <div className="row">
-        <div className={styles.side} />
-        <div
-          className={styles.first}
-          onClick={handleHome}
-          /* onMouseOver={() => setPicture("Home")} */
-        >
-          <div className={styles.main}>MICHEL</div>
-          <div className={styles.main}>MEIS</div>
-        </div>
-        {!photoSidebar ? (
-          <div className={`${styles.second} ${styles.main}`}>4TET</div>
-        ) : null}
-        <img
-          className={`${styles.image} ${
-            picture === "Home" ? styles.active : ""
-          }`}
-          src={Home}
-        />
-        {/*  Stacked images
-         */}{" "}
-        <img
-          className={`${styles.image} ${
-            picture === "News" ? styles.active : ""
-          } ${transition === "News" ? styles.transition : ""} ${
-            photoSidebar ? styles.photoSidebar : null
-          }`}
-          src={News}
-        />
-        <img
-          className={`${styles.image} ${
-            picture === "About" ? styles.active : ""
-          }`}
-          src={About}
-        />{" "}
-        <img
-          className={`${styles.image} ${
-            picture === "Projects" ? styles.active : ""
-          }`}
-          src={Projects}
-        />{" "}
-        <img
-          className={`${styles.image} ${
-            picture === "Video" ? styles.active : ""
-          }`}
-          src={Video}
-        />
-        <img
-          className={`${styles.image} ${
-            picture === "Live" ? styles.active : ""
-          }`}
-          src={Live}
-        />{" "}
-        <img
-          className={`${styles.image} ${
-            picture === "Contact" ? styles.active : ""
-          }`}
-          src={Contact}
-        />
-        {navBar ? (
-          <HorizontalScroll className={styles.nav}>
-            <nav>
-              <div className={styles.row}>
-                {/* <Link to="/news" className={styles.link}> */}
-                <div
-                  className={styles.navPoint}
-                  onMouseOver={() => setPicture("News")}
-                  onClick={() => handleClick("News")}
-                >
-                  NEWS
-                </div>
-                {/*  </Link> */}
-                <Link to="/about" className={styles.link}>
-                  <div
-                    className={styles.navPoint}
-                    onMouseOver={() => setPicture("About")}
-                  >
-                    ABOUT
-                  </div>
-                </Link>
-                <Link to="/projects" className={styles.link}>
-                  <div
-                    className={styles.navPoint}
-                    onMouseOver={() => setPicture("Projects")}
-                  >
-                    PROJECTS
-                  </div>
-                </Link>
-                <Link to="/video" className={styles.link}>
-                  <div
-                    className={styles.navPoint}
-                    onMouseOver={() => setPicture("Video")}
-                  >
-                    VIDEO
-                  </div>
-                </Link>
-                <Link to="/live" className={styles.link}>
-                  <div
-                    className={styles.navPoint}
-                    onMouseOver={() => setPicture("Live")}
-                  >
-                    LIVE
-                  </div>
-                </Link>
-                <Link to="/contact" className={styles.link}>
-                  <div
-                    className={styles.navPoint}
-                    onMouseOver={() => setPicture("Contact")}
-                  >
-                    CONTACT
-                  </div>
-                </Link>
+    <div className={styles.screen}>
+      <div
+        className={`${styles.alisa} ${
+          toQuartet || path === "/4tet" ? styles.rowToRight : null
+        } ${toMichelMeis ? styles.rowToLeft : null}`}
+      >
+        <div className={styles.container}>
+          {redirect ? <Redirect to={`${redirect}`} /> : null}
+          {header ? (
+            <div
+              className={`${styles.header} ${styles.main} ${
+                photoSidebar ? styles.headerSidebar : null
+              }`}
+            >
+              {header.toUpperCase()}
+            </div>
+          ) : null}
+          <div className="row">
+            <div className={styles.boxTop}>
+              <div
+                className={`${styles.first} ${styles.main} ${styles.mainWidth} `}
+                onClick={handleHome}
+                onMouseOver={() => handleHover("Home")}
+                onMouseLeave={() => handleMouseLeave()}
+              >
+                MICHEL MEIS
               </div>
+            </div>
+            {path === "/" ? (
+              <div className={styles.boxBottom}>
+                <div
+                  className={`${styles.second} ${styles.main}`}
+                  onClick={() => {
+                    goToQuartet();
+                  }}
+                >
+                  4TET
+                </div>
+              </div>
+            ) : null}
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/" ? styles.home : null
+              } ${picture === "Home" ? styles.active : ""}`}
+              src={Home}
+            />
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/News" ? styles.news : null
+              } ${picture === "News" || path === "/News" ? styles.active : ""}`}
+              src={News}
+            />
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/About" ? styles.about : null
+              } ${
+                picture === "About" || path === "/About" ? styles.active : ""
+              }`}
+              src={About}
+            />
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/Projects" ? styles.projects : null
+              } ${picture === "Projects" ? styles.active : ""}`}
+              src={Projects}
+            />
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/Video" ? styles.video : null
+              } ${
+                picture === "Video" || path === "/Video" ? styles.active : ""
+              }`}
+              src={Video}
+            />
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/Live" ? styles.live : null
+              } ${picture === "Live" || path === "/Live" ? styles.active : ""}`}
+              src={Live}
+            />{" "}
+            <img
+              className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/Contact" ? styles.contact : null
+              } ${
+                picture === "Contact" || path === "/Contact"
+                  ? styles.active
+                  : ""
+              }`}
+              src={Contact}
+            />
+            <nav className={styles.nav}>
+              {routes.map((route) => {
+                return (
+                  <div
+                    className={`${styles.navPoint} ${
+                      path === "/" + route.name ? styles.navPointActive : null
+                    }`}
+                    onMouseOver={() => handleHover(route.name)}
+                    onMouseLeave={() => handleMouseLeave()}
+                    onClick={() => handleClick(route.name)}
+                  >
+                    {route.name.toUpperCase()}
+                  </div>
+                );
+              })}
             </nav>
-          </HorizontalScroll>
-        ) : null}
+          </div>
+        </div>
+        <div className={styles.quartet}>
+          <div className={styles.boxTop} onClick={goToMichelMeis}>
+            <div
+              className={`${styles.secondDark} ${styles.main}  ${styles.mainWidth}`}
+            >
+              MICHEL MEIS
+            </div>
+          </div>
+          <div className={styles.boxBottom}>
+            <div className={`${styles.firstDark} ${styles.main}`}>4TET</div>
+          </div>
+          {/*     <img
+            src={HomeQuartet}
+            className={`${styles.imageQuartet} ${styles.cat}`}
+          /> */}
+          <nav className={styles.navQuartet}>
+            {routesQuartet.map((route) => {
+              return (
+                <div
+                  className={`${styles.navPointQuartet} ${
+                    path === "/4tet/" + route.name
+                      ? styles.navPointActive
+                      : null
+                  }`}
+                  onMouseOver={() => handleHoverQuartet(route.name + "Quartet")}
+                  onClick={() => handleClickQuartet("/4tet/" + route.name)}
+                >
+                  {route.name.toUpperCase()}
+                </div>
+              );
+            })}
+          </nav>
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/" ? styles.homeQuartet : null
+            } ${pictureQuartet === "HomeQuartet" ? styles.active : ""}`}
+            src={HomeQuartet}
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/News" ? styles.newsQuartet : null
+            } ${
+              pictureQuartet === "NewsQuartet" || path === "/4tet/News"
+                ? styles.active
+                : ""
+            }`}
+            src={NewsQuartet}
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/About"
+                ? styles.aboutQuartet
+                : null
+            } ${
+              pictureQuartet === "AboutQuartet" || path === "/4tet/About"
+                ? styles.active
+                : ""
+            }`}
+            src={AboutQuartet}
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/Contact"
+                ? styles.contactQuartet
+                : null
+            } ${
+              pictureQuartet === "ContactQuartet" || path === "/4tet/Contact"
+                ? styles.active
+                : ""
+            }`}
+            src={ContactQuartet}
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/Live" ? styles.liveQuartet : null
+            } ${
+              pictureQuartet === "LiveQuartet" || path === "/4tet/Live"
+                ? styles.active
+                : ""
+            }`}
+            src={LiveQuartet}
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/Music"
+                ? styles.musicQuartet
+                : null
+            } ${
+              pictureQuartet === "MusicQuartet" || path === "/4tet/Music"
+                ? styles.active
+                : ""
+            }`}
+            src={MusicQuartet}
+          />{" "}
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebar ? styles.photoSidebar : null} ${
+              photoSidebar || path === "/4tet/Video"
+                ? styles.videoQuartet
+                : null
+            } ${
+              pictureQuartet === "VideoQuartet" || path === "/4tet/Video"
+                ? styles.active
+                : ""
+            }`}
+            src={VideoQuartet}
+          />
+        </div>
       </div>
     </div>
   );

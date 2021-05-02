@@ -3,7 +3,8 @@
   font-family: "Helvetica";
 }
 :root {
-  --bg: #1e90ff;
+  --black: rgb(16, 18, 17);
+  --white: snow;
 }
 .row {
   display: flex;
