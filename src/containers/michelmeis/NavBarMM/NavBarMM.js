@@ -80,10 +80,10 @@ function NavBar() {
       /*       setRedirect(name);
        */ setTimeout(() => {
         setTransition(false);
+        setRedirect(name);
       }, 900);
       setTimeout(() => {
         setSecondTransition(false);
-        setRedirect(name);
       }, 2000);
     }
   };
@@ -332,7 +332,7 @@ function NavBar() {
               {routes.map((route, i) => {
                 return (
                   <div
-                    key={i}
+                    key={"routes" + i}
                     className={`${styles.navPoint} ${
                       path === "/" + route.name ? styles.navPointActive : null
                     }`}
@@ -373,7 +373,7 @@ function NavBar() {
             {routesQuartet.map((route, i) => {
               return (
                 <div
-                  key={i}
+                  key={"routesQuartet" + i}
                   className={`${styles.navPointQuartet} ${
                     path === "/4tet/" + route.name
                       ? styles.navPointActive

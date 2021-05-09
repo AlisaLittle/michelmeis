@@ -3,8 +3,11 @@
   font-family: "Helvetica";
 }
 :root {
-  --black: rgb(16, 18, 17);
+  /*   --black: rgb(16, 18, 17); */
   --white: snow;
+  /*   --black: rgb(34, 36, 35); */
+  --black: rgb(56, 48, 48);
+  --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35));
 }
 .row {
   display: flex;
@@ -25,17 +28,17 @@
   width: 70vw;
 }
 .contentContainer {
+  display: flex;
+  align-items: center;
   width: 60vw;
   padding: 0 5vw;
   height: 75vh;
   margin: auto;
-  background-color: rgb(16, 18, 17);
   color: snow;
   z-index: 0;
   text-align: start;
   font-size: 1.5em;
   font-family: "Poppins";
-
   line-height: 1.6;
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -55,12 +58,6 @@
 *::-webkit-scrollbar {
   width: 0.5em;
 }
-
-*::-webkit-scrollbar-track {
-  /*   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
- */
-}
-
 *::-webkit-scrollbar-thumb {
   background-color: snow;
   outline: 1px solid snow;
