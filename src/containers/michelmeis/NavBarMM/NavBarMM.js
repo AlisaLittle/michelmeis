@@ -19,14 +19,17 @@ import MusicQuartet from "../../../pictures/Quartet/Music.jpg";
 import NewsQuartet from "../../../pictures/Quartet/News.jpg";
 import VideoQuartet from "../../../pictures/Quartet/Video.jpg";
 
-function Landingpage() {
+function NavBar() {
   const [picture, setPicture] = useState("Home");
   const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
   const [transition, setTransition] = useState(false);
   const [secondTransition, setSecondTransition] = useState(false);
   const [photoSidebar, setPhotoSidebar] = useState(false);
+  const [photoSidebarQuartet, setPhotoSidebarQuartet] = useState(false);
   const [redirect, setRedirect] = useState(null);
   const [header, setHeader] = useState(null);
+  const [headerQuartet, setHeaderQuartet] = useState(null);
+
   const [toQuartet, setToQuartet] = useState(false);
   const [toMichelMeis, setToMichelMeis] = useState(false);
   const [delayHandler, setDelayHandler] = useState(null);
@@ -57,8 +60,9 @@ function Landingpage() {
   ];
 
   const handleClick = (name) => {
+    setTransition(true);
+
     if (!photoSidebar) {
-      setTransition(true);
       setSecondTransition(true);
       setTimeout(() => {
         setHeader(name);
@@ -73,18 +77,27 @@ function Landingpage() {
       }, 2000);
     } else {
       setHeader(name);
-      setRedirect(name);
+      /*       setRedirect(name);
+       */ setTimeout(() => {
+        setTransition(false);
+      }, 900);
+      setTimeout(() => {
+        setSecondTransition(false);
+        setRedirect(name);
+      }, 2000);
     }
   };
   const handleClickQuartet = (name) => {
-    if (!photoSidebar) {
-      setTransition(true);
+    goToQuartet();
+    setTransition(true);
+    if (!photoSidebarQuartet) {
+      console.log("1", name);
       setSecondTransition(true);
       setTimeout(() => {
-        setHeader(name);
+        setHeaderQuartet(name);
       }, 600);
       setTimeout(() => {
-        setPhotoSidebar(true);
+        setPhotoSidebarQuartet(true);
         setTransition(false);
       }, 1000);
       setTimeout(() => {
@@ -92,17 +105,21 @@ function Landingpage() {
         setRedirect(name);
       }, 2000);
     } else {
+      console.log("2", name);
       setHeader(name);
       setRedirect(name);
+      setTimeout(() => {
+        setTransition(false);
+      }, 900);
     }
   };
 
   const handleHover = (name) => {
-    if (!transition || !secondTransition) {
+    if (!transition && !secondTransition) {
       setDelayHandler(
         setTimeout(() => {
           setPicture(name);
-        }, 200)
+        }, 300)
       );
     } else {
       return null;
@@ -112,12 +129,13 @@ function Landingpage() {
     setDelayHandler(
       setTimeout(() => {
         setPictureQuartet(name);
-      }, 200)
+      }, 300)
     );
   };
   const handleMouseLeave = () => {
     clearTimeout(delayHandler);
   };
+
   const handleHome = () => {
     setHeader(null);
     setPicture("Home");
@@ -128,6 +146,16 @@ function Landingpage() {
       setPhotoSidebar(false);
     }, 1000);
   };
+  const handleHomeQuartet = () => {
+    setHeaderQuartet(null);
+    setPictureQuartet("Home");
+    setTransition(true);
+    setRedirect("/4tet");
+    setTimeout(() => {
+      setTransition(false);
+      setPhotoSidebarQuartet(false);
+    }, 1000);
+  };
   console.log(
     "picture:",
     picture,
@@ -136,10 +164,14 @@ function Landingpage() {
     "photoSidebar:",
     photoSidebar
   );
+  const quartetRoute = path.substring(0, 5);
+
   const goToQuartet = () => {
     setPhotoSidebar(false);
     setToQuartet(true);
-    setTimeout(() => setRedirect("/4tet"), 1000);
+    if (quartetRoute !== "/4tet") {
+      setTimeout(() => setRedirect("/4tet"), 1000);
+    }
   };
   const goToMichelMeis = () => {
     setToQuartet(false);
@@ -150,7 +182,7 @@ function Landingpage() {
     setTimeout(() => setToMichelMeis(false), 1000);
   };
 
-  if (path !== "/" && doItOnce) {
+  if (path !== "/" && quartetRoute !== "/4tet" && doItOnce) {
     const name = path.substring(1);
     console.log("michel", name);
     setPhotoSidebar(true);
@@ -158,10 +190,19 @@ function Landingpage() {
     setDoItOnce(false);
     setHeader(name);
   }
+  if (quartetRoute === "/4tet" && path !== "/4tet" && doItOnce) {
+    const name = path.substring(6);
+    console.log("YEEEEEEEESSS", name);
+    setPhotoSidebarQuartet(true);
+    setDoItOnce(false);
+    goToQuartet();
+    setPictureQuartet(name);
+  }
+
   return (
     <div className={styles.screen}>
       <div
-        className={`${styles.alisa} ${
+        className={`${styles.doubleWidth} ${
           toQuartet || path === "/4tet" ? styles.rowToRight : null
         } ${toMichelMeis ? styles.rowToLeft : null}`}
       >
@@ -288,9 +329,10 @@ function Landingpage() {
               src={Contact}
             />
             <nav className={styles.nav}>
-              {routes.map((route) => {
+              {routes.map((route, i) => {
                 return (
                   <div
+                    key={i}
                     className={`${styles.navPoint} ${
                       path === "/" + route.name ? styles.navPointActive : null
                     }`}
@@ -307,29 +349,38 @@ function Landingpage() {
         </div>
         <div className={styles.quartet}>
           <div className={styles.boxTop} onClick={goToMichelMeis}>
-            <div
-              className={`${styles.secondDark} ${styles.main}  ${styles.mainWidth}`}
-            >
-              MICHEL MEIS
-            </div>
+            {/*             <---------------------------------------- QUARTET --------------------------------->
+             */}{" "}
+            {path === "/4tet" && (
+              <div
+                className={`${styles.secondDark} ${styles.main}  ${styles.mainWidth}`}
+              >
+                MICHEL MEIS
+              </div>
+            )}
           </div>
           <div className={styles.boxBottom}>
-            <div className={`${styles.firstDark} ${styles.main}`}>4TET</div>
+            <div
+              className={`${styles.firstDark} ${styles.main}`}
+              onClick={handleHomeQuartet}
+              onMouseOver={() => handleHoverQuartet("Home")}
+              onMouseLeave={() => handleMouseLeave()}
+            >
+              4TET
+            </div>
           </div>
-          {/*     <img
-            src={HomeQuartet}
-            className={`${styles.imageQuartet} ${styles.cat}`}
-          /> */}
           <nav className={styles.navQuartet}>
-            {routesQuartet.map((route) => {
+            {routesQuartet.map((route, i) => {
               return (
                 <div
+                  key={i}
                   className={`${styles.navPointQuartet} ${
                     path === "/4tet/" + route.name
                       ? styles.navPointActive
                       : null
                   }`}
                   onMouseOver={() => handleHoverQuartet(route.name + "Quartet")}
+                  onMouseLeave={() => handleMouseLeave()}
                   onClick={() => handleClickQuartet("/4tet/" + route.name)}
                 >
                   {route.name.toUpperCase()}
@@ -337,21 +388,41 @@ function Landingpage() {
               );
             })}
           </nav>
+          {/*        className={`${styles.image}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/About" ? styles.about : null
+              } ${
+                picture === "About" ||
+                (path === "/About" && picture === "About")
+                  ? styles.active
+                  : ""
+              }`} */}
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/" ? styles.homeQuartet : null
-            } ${pictureQuartet === "HomeQuartet" ? styles.active : ""}`}
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet"
+                ? styles.homeQuartet
+                : null
+            } ${
+              pictureQuartet === "HomeQuartet" ||
+              (path === "/4tet" && pictureQuartet === "Home")
+                ? styles.active
+                : ""
+            }`}
             src={HomeQuartet}
           />
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/News" ? styles.newsQuartet : null
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/News"
+                ? styles.newsQuartet
+                : null
             } ${
-              pictureQuartet === "NewsQuartet" || path === "/4tet/News"
+              pictureQuartet === "NewsQuartet" ||
+              (path === "/4tet/News" && pictureQuartet === "News")
                 ? styles.active
                 : ""
             }`}
@@ -360,12 +431,13 @@ function Landingpage() {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/About"
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/About"
                 ? styles.aboutQuartet
                 : null
             } ${
-              pictureQuartet === "AboutQuartet" || path === "/4tet/About"
+              pictureQuartet === "AboutQuartet" ||
+              (path === "/4tet/About" && pictureQuartet === "About")
                 ? styles.active
                 : ""
             }`}
@@ -374,12 +446,13 @@ function Landingpage() {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/Contact"
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/Contact"
                 ? styles.contactQuartet
                 : null
             } ${
-              pictureQuartet === "ContactQuartet" || path === "/4tet/Contact"
+              pictureQuartet === "ContactQuartet" ||
+              (path === "/4tet/Contact" && pictureQuartet === "Contact")
                 ? styles.active
                 : ""
             }`}
@@ -388,10 +461,13 @@ function Landingpage() {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/Live" ? styles.liveQuartet : null
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/Live"
+                ? styles.liveQuartet
+                : null
             } ${
-              pictureQuartet === "LiveQuartet" || path === "/4tet/Live"
+              pictureQuartet === "LiveQuartet" ||
+              (path === "/4tet/Live" && pictureQuartet === "Live")
                 ? styles.active
                 : ""
             }`}
@@ -400,12 +476,13 @@ function Landingpage() {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/Music"
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/Music"
                 ? styles.musicQuartet
                 : null
             } ${
-              pictureQuartet === "MusicQuartet" || path === "/4tet/Music"
+              pictureQuartet === "MusicQuartet" ||
+              (path === "/4tet/Music" && pictureQuartet === "Music")
                 ? styles.active
                 : ""
             }`}
@@ -414,12 +491,13 @@ function Landingpage() {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebar ? styles.photoSidebar : null} ${
-              photoSidebar || path === "/4tet/Video"
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              photoSidebarQuartet || path === "/4tet/Video"
                 ? styles.videoQuartet
                 : null
             } ${
-              pictureQuartet === "VideoQuartet" || path === "/4tet/Video"
+              pictureQuartet === "VideoQuartet" ||
+              (path === "/4tet/Video" && pictureQuartet === "Video")
                 ? styles.active
                 : ""
             }`}
@@ -431,4 +509,4 @@ function Landingpage() {
   );
 }
 
-export default Landingpage;
+export default NavBar;

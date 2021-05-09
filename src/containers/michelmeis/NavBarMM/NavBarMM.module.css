@@ -58,7 +58,14 @@
   object-fit: cover;
   /*   opacity: 1; */
 }
-
+.photoSidebarQuartet {
+  width: 30vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  left: auto;
+  object-fit: cover;
+}
 .main {
   text-align: start;
   font-family: "Helvetica";
@@ -96,6 +103,7 @@
 }
 .firstDark {
   color: rosybrown;
+  cursor: pointer;
 }
 .secondDark {
   color: transparent;
@@ -232,7 +240,7 @@
   -ms-transform: translateX(0);
   -o-transform: translateX(0);
 }
-.alisa {
+.doubleWidth {
   width: 200vw;
   display: flex;
 }

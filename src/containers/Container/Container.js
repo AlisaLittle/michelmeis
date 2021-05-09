@@ -2,6 +2,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import React from "react";
 import Home from "../michelmeis/NavBarMM/NavBarMM.js";
 import News from "../michelmeis/News/News.js";
+import About from "../michelmeis/About/About.js";
 import NavBarMM from "../michelmeis/NavBarMM/NavBarMM.js";
 
 function Container() {
@@ -11,6 +12,7 @@ function Container() {
       <Switch>
         {/*  <Route path="/" exact component={Home} /> */}
         <Route path="/news" exact component={News} />
+        <Route path="/about" exact component={About} />
       </Switch>
     </div>
   );
