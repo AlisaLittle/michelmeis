@@ -13,11 +13,27 @@
   -webkit-text-stroke: 1px snow;
 }
 .image {
-  height: 20vh;
-  width: 20vw;
-  object-fit: contain;
+  width: 30vw;
+  object-fit: cover;
 }
 .imageContainer {
-  height: 20vh;
-  width: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid transparent;
+  outline: 2.5px solid snow;
+  float: right;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.videoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vw;
+}
+.container {
+  margin-bottom: 3vh;
+  padding-bottom: 30px;
+  height: fit-content;
 }

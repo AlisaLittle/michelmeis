@@ -61,7 +61,6 @@ function NavBar() {
 
   const handleClick = (name) => {
     setTransition(true);
-
     if (!photoSidebar) {
       setSecondTransition(true);
       setTimeout(() => {
@@ -77,8 +76,7 @@ function NavBar() {
       }, 2000);
     } else {
       setHeader(name);
-      /*       setRedirect(name);
-       */ setTimeout(() => {
+      setTimeout(() => {
         setTransition(false);
         setRedirect(name);
       }, 900);
@@ -91,7 +89,6 @@ function NavBar() {
     goToQuartet();
     setTransition(true);
     if (!photoSidebarQuartet) {
-      console.log("1", name);
       setSecondTransition(true);
       setTimeout(() => {
         setHeaderQuartet(name);
@@ -105,32 +102,39 @@ function NavBar() {
         setRedirect(name);
       }, 2000);
     } else {
-      console.log("2", name);
-      setHeader(name);
-      setRedirect(name);
+      setHeaderQuartet(name);
       setTimeout(() => {
         setTransition(false);
+        setRedirect(name);
       }, 900);
+      setTimeout(() => {
+        setSecondTransition(false);
+      }, 2000);
     }
   };
 
   const handleHover = (name) => {
     if (!transition && !secondTransition) {
+      console.log("hiaiaaiaiiaaiiai");
       setDelayHandler(
         setTimeout(() => {
           setPicture(name);
-        }, 300)
+        }, 500)
       );
     } else {
       return null;
     }
   };
   const handleHoverQuartet = (name) => {
-    setDelayHandler(
-      setTimeout(() => {
-        setPictureQuartet(name);
-      }, 300)
-    );
+    if (!transition && !secondTransition) {
+      setDelayHandler(
+        setTimeout(() => {
+          setPictureQuartet(name);
+        }, 500)
+      );
+    } else {
+      return null;
+    }
   };
   const handleMouseLeave = () => {
     clearTimeout(delayHandler);
@@ -156,14 +160,7 @@ function NavBar() {
       setPhotoSidebarQuartet(false);
     }, 1000);
   };
-  console.log(
-    "picture:",
-    picture,
-    "transition:",
-    transition,
-    "photoSidebar:",
-    photoSidebar
-  );
+
   const quartetRoute = path.substring(0, 5);
 
   const goToQuartet = () => {

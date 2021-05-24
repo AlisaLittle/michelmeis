@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styles from "./About.module.css";
+import styles from "./Contact.module.css";
 import { client } from "../../../client";
 import marked from "marked";
+import ContactForm from "../../../components/ContactForm";
 
 function About() {
   useEffect(() => {
     client
-      .getEntries({ content_type: "about", order: "fields.index" })
+      .getEntries({ content_type: "contact" })
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items.reverse());
@@ -22,22 +23,26 @@ function About() {
       setDelay(true);
     }, 500);
   };
+
   return (
     <div className="container">
       <div className="contentContainer">
-        {items && delay ? (
-          <div className="fadeIn">
-            {items.map((entry, i) => (
-              <div
-                className="rowSpacing"
-                key={"about" + i}
-                dangerouslySetInnerHTML={{
-                  __html: marked(entry.fields.aboutText),
-                }}
-              />
-            ))}
-          </div>
-        ) : null}
+        <div className="fadeIn">
+          {items && delay ? (
+            <>
+              {items.map((entry, i) => (
+                <div
+                  className="rowSpacing"
+                  key={"about" + i}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(entry.fields.text.replace(/\n/g, `</br>`)),
+                  }}
+                />
+              ))}
+              <ContactForm />
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );

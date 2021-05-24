@@ -7,7 +7,7 @@
   --white: snow;
   /*   --black: rgb(34, 36, 35); */
   --black: rgb(56, 48, 48);
-  --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35));
+  /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
 .row {
   display: flex;
@@ -23,12 +23,13 @@
   top: 0px;
   right: 0px;
   height: 70vh;
-  padding-top: 20vh;
+  padding-top: 15vh;
   padding-bottom: 5vh;
   width: 70vw;
 }
 .contentContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 60vw;
   padding: 0 5vw;
@@ -46,6 +47,14 @@
 }
 .rowSpacing {
   margin-bottom: 3vh;
+}
+.fadeIn {
+  height: inherit;
+  animation: fadeIn 1s linear 0s;
+  -webkit-animation: fadeIn 1s linear 0s;
+}
+a {
+  color: snow;
 }
 @keyframes App-logo-spin {
   from {

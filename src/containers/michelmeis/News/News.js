@@ -7,7 +7,7 @@ import ReactPlayer from "react-player";
 function News() {
   useEffect(() => {
     client
-      .getEntries({ content_type: "news" /* order: "fields.index" */ })
+      .getEntries({ content_type: "news", order: "fields.index" })
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items.reverse());
@@ -27,16 +27,24 @@ function News() {
     <div className="container">
       <div className="contentContainer">
         {items && delay ? (
-          <div className={styles.fadeIn}>
+          <div className="fadeIn">
             {items.map((entry, i) => (
               <div key={"news" + i}>
-                <div
+                <h3
                   className="rowSpacing"
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
                 />
-                <div className="row">
+                {entry.fields.video ? (
+                  <div className={styles.videoContainer}>
+                    <ReactPlayer
+                      url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                    />
+                  </div>
+                ) : null}
+
+                <div className={styles.container}>
                   {entry.fields.image.fields ? (
                     <div className={styles.imageContainer}>
                       <img
@@ -46,26 +54,11 @@ function News() {
                     </div>
                   ) : null}
                   <div
-                    className="rowSpacing"
                     dangerouslySetInnerHTML={{
                       __html: marked(entry.fields.text),
                     }}
                   />
                 </div>
-
-                {entry.fields.video ? (
-                  <ReactPlayer
-                    url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
-                  />
-                ) : null}
-                {/*  
-                <div
-                  className="rowSpacing"
-                  key={i}
-                  dangerouslySetInnerHTML={{
-                    __html: marked(entry.fields.video.fields.file.url),
-                  }}
-                /> */}
               </div>
             ))}
           </div>
