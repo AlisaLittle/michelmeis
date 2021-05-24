@@ -115,7 +115,6 @@ function NavBar() {
 
   const handleHover = (name) => {
     if (!transition && !secondTransition) {
-      console.log("hiaiaaiaiiaaiiai");
       setDelayHandler(
         setTimeout(() => {
           setPicture(name);

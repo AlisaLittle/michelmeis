@@ -1,0 +1,40 @@
+.header {
+  position: absolute;
+  opacity: 1;
+  top: 0px;
+  right: 0px;
+  left: auto;
+  color: transparent;
+  text-align: start;
+  font-family: "Helvetica";
+  font-size: 6vw;
+  font-weight: 900;
+  z-index: 5;
+  -webkit-text-stroke: 1px snow;
+}
+.image {
+  width: 20vw;
+  max-width: 500px;
+  object-fit: cover;
+}
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid transparent;
+  outline: 2.5px solid snow;
+  float: right;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.videoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vw;
+}
+.container {
+  margin-bottom: 3vh;
+  padding-bottom: 30px;
+  height: fit-content;
+}
