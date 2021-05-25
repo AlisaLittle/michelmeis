@@ -5,6 +5,7 @@ import { Link, Redirect, useLocation } from "react-router-dom";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import { Parallax } from "react-scroll-parallax";
 import HorizontalScroll from "react-scroll-horizontal";
+import SocialMedia from "../../../components/SocialMedia/SocialMedia";
 import News from "../../../pictures/Meis/News.jpg";
 import About from "../../../pictures/Meis/About.jpg";
 import Projects from "../../../pictures/Meis/Projects.jpg";
@@ -163,7 +164,6 @@ function NavBar() {
   const quartetRoute = path.substring(0, 5);
 
   const goToQuartet = () => {
-    setPhotoSidebar(false);
     setToQuartet(true);
     if (quartetRoute !== "/4tet") {
       setTimeout(() => setRedirect("/4tet"), 1000);
@@ -224,18 +224,17 @@ function NavBar() {
                 MICHEL MEIS
               </div>
             </div>
-            {path === "/" ? (
-              <div className={styles.boxBottom}>
-                <div
-                  className={`${styles.second} ${styles.main}`}
-                  onClick={() => {
-                    goToQuartet();
-                  }}
-                >
-                  4TET
-                </div>
+            <div className={styles.boxBottom}>
+              <SocialMedia />
+              <div
+                className={`${styles.second} ${styles.main}`}
+                onClick={() => {
+                  goToQuartet();
+                }}
+              >
+                4TET
               </div>
-            ) : null}
+            </div>
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""

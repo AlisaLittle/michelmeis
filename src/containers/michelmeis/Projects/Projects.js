@@ -38,18 +38,31 @@ function Projects() {
                 />
                 <div className={styles.container}>
                   {entry.fields.image.fields ? (
-                    <div className={styles.imageContainer}>
-                      <img
-                        src={entry.fields.image.fields.file.url}
-                        className={styles.image}
-                      />
-                    </div>
+                    <img
+                      src={entry.fields.image.fields.file.url}
+                      className={styles.image}
+                    />
                   ) : null}
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: marked(entry.fields.text),
-                    }}
-                  />
+                  <div className={`column ${styles.marginLeft}`}>
+                    <div
+                      className={styles.genre}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(entry.fields.genre),
+                      }}
+                    />
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: marked(entry.fields.text),
+                      }}
+                    />
+                    <div className={`row ${styles.marginTop}`}>
+                      <button className={`${styles.button} ${styles.margin}`}>
+                        Infos
+                      </button>
+                      <button className={styles.button}>Videos</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

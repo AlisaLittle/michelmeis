@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Contact.module.css";
 import { client } from "../../../client";
 import marked from "marked";
-import ContactForm from "../../../components/ContactForm";
+import ContactForm from "../../../components/ContactForm/ContactForm";
 
 function About() {
   useEffect(() => {
