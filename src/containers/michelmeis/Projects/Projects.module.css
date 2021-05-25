@@ -13,7 +13,7 @@
   -webkit-text-stroke: 1px snow;
 }
 .image {
-  width: 30vw;
+  width: 25vw;
   max-width: 500px;
   object-fit: cover;
 }

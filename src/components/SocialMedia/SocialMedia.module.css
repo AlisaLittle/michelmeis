@@ -9,12 +9,8 @@
   flex-direction: row;
   width: fit-content;
   height: fit-content;
-  position: fixed;
-  bottom: 1%;
-  left: 50%;
-  margin-top: -9em; /*set to a negative number 1/2 of your height*/
-  margin-left: -15em; /*set to a negative number 1/2 of your width*/
 }
 .container > * {
-  margin: 0px 20px;
+  margin: 10px 0px;
+  margin-right: 20px;
 }

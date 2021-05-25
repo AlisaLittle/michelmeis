@@ -47,8 +47,8 @@ function NavBar() {
     { name: "News", picture: News },
     { name: "About", picture: About },
     { name: "Projects", picture: Projects },
-    { name: "Video", picture: Video },
-    { name: "Live", picture: Live },
+    /*     { name: "Video", picture: Video },
+     */ { name: "Live", picture: Live },
     { name: "Contact", picture: Contact },
   ];
   const routesQuartet = [
@@ -223,9 +223,9 @@ function NavBar() {
               >
                 MICHEL MEIS
               </div>
+              <SocialMedia />
             </div>
             <div className={styles.boxBottom}>
-              <SocialMedia />
               <div
                 className={`${styles.second} ${styles.main}`}
                 onClick={() => {

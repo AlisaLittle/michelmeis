@@ -4,8 +4,8 @@ import News from "../michelmeis/News/News.js";
 import About from "../michelmeis/About/About.js";
 import Contact from "../michelmeis/Contact/Contact";
 import Projects from "../michelmeis/Projects/Projects";
-import Video from "../michelmeis/Video/Video";
-import NavBarMM from "../michelmeis/NavBarMM/NavBarMM.js";
+/* import Video from "../michelmeis/Video/Video";
+ */ import NavBarMM from "../michelmeis/NavBarMM/NavBarMM.js";
 
 function Container() {
   return (
@@ -17,7 +17,8 @@ function Container() {
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/projects" exact component={Projects} />
-        <Route path="/video" exact component={Video} />
+        {/*         <Route path="/video" exact component={Video} />
+         */}{" "}
       </Switch>
     </div>
   );
