@@ -235,6 +235,13 @@ function NavBar() {
                 4TET
               </div>
             </div>
+            <div
+              className={`${styles.imageContainer}  ${
+                transition ? styles.transition : ""
+              } ${photoSidebar ? styles.photoSidebar : null} ${
+                photoSidebar || path === "/" ? styles.home : null
+              } ${styles.active}`}
+            />
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""

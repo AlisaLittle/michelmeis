@@ -30,7 +30,7 @@ function Projects() {
           <div className="fadeIn">
             {items.map((entry, i) => (
               <div key={"news" + i}>
-                <h3
+                <h2
                   className="rowSpacing"
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),

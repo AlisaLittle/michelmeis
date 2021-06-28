@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  flex-direction: "row";
+  width: 50vw;
+  justify-content: space-between;
+  padding-bottom: 1vh;
+  margin-bottom: 3vh;
+  border-bottom: 1px solid snow;
+}
+.column {
+  display: flex;
+  justify-content: flex-end;
+}

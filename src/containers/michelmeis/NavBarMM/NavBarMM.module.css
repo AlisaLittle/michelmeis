@@ -2,8 +2,10 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  /*   background-color: var(--black); */
-  background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
+  background-color: #130215;
+
+  /*     background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
+ */
 }
 .quartet {
   position: relative;
@@ -14,6 +16,21 @@
     rgb(255, 255, 255),
     rgb(237, 237, 237)
   );
+}
+.imageContainer {
+  width: 70vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  opacity: 1;
+  transition: 2s ease;
+  object-fit: cover;
+  background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
+  z-index: 3;
+  -webkit-transition: 2s ease;
+  -moz-transition: 2s ease;
+  -ms-transition: 2s ease;
+  -o-transition: 2s ease;
 }
 .image {
   width: 70vw;
@@ -260,4 +277,125 @@
 .doubleWidth {
   width: 200vw;
   display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .imageContainer {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: 2s ease;
+    object-fit: cover;
+    background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
+    z-index: 3;
+    -webkit-transition: 2s ease;
+    -moz-transition: 2s ease;
+    -ms-transition: 2s ease;
+    -o-transition: 2s ease;
+  }
+  .image {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: 2s ease;
+    object-fit: cover;
+    z-index: 4;
+    -webkit-transition: 2s ease;
+    -moz-transition: 2s ease;
+    -ms-transition: 2s ease;
+    -o-transition: 2s ease;
+  }
+  .transition {
+    width: 100vh !important;
+    transition: 1s ease;
+  }
+  .active {
+    opacity: 1;
+    transition: 1s ease;
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+  }
+  .photoSidebar {
+  }
+  .main {
+    text-align: start;
+    font-family: "Helvetica";
+    font-size: 7vw;
+    font-weight: 900;
+    z-index: 5;
+  }
+  .mainWidth {
+    /*     max-width: 25vw;
+ */
+  }
+  .boxTop {
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    text-decoration: none;
+  }
+  .boxBottom {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100vw;
+    height: fit-content;
+    justify-content: space-between;
+    top: 20vh;
+    z-index: 6;
+  }
+  .link {
+    text-decoration: none;
+  }
+  .navPoint {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--white);
+    text-align: start;
+    font-family: "Helvetica";
+    font-size: 4vw;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .container {
+    overflow: hidden;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 70vh;
+  }
+  .header {
+    position: absolute;
+    top: 80%;
+    /*transform: translate(-50%, -50%);
+    */
+    right: 0px;
+    opacity: 0;
+    transition: top 1s ease;
+    -webkit-transition: top 1s ease;
+    -moz-transition: top 1s ease;
+    -ms-transition: top 1s ease;
+    -o-transition: top 1s ease;
+  }
+  .headerSidebar {
+    position: absolute;
+    opacity: 1;
+    top: 0px;
+    right: 0px;
+    left: auto;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--white);
+  }
 }

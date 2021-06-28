@@ -3,6 +3,10 @@
   height: 50px;
   color: var(--white);
 }
+.icon:hover {
+  color: rgb(56, 48, 48);
+}
+
 .container {
   /*   position: absolute; */
   display: flex;

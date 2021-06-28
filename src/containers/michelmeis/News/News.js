@@ -30,6 +30,7 @@ function News() {
           <div className="fadeIn">
             {items.map((entry, i) => (
               <div key={"news" + i} className={styles.container}>
+               { console.log("Alisa", entry)}
                 <h3
                   className="rowSpacing"
                   dangerouslySetInnerHTML={{
@@ -37,14 +38,15 @@ function News() {
                   }}
                 />
                 {entry.fields.video ? (
-                  /*                   <div className={styles.videoContainer}>
-                   */ <ReactPlayer
+                                   <div className={styles.videoContainer}>
+                   <ReactPlayer
+                   className={styles.video}
                     url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
                   />
-                ) : /*                   </div>
-                 */ null}
+                  </div>
+                ) :  null}
 
-                {entry.fields.image.fields ? (
+                {entry.fields.image ? (
                   <img
                     src={entry.fields.image.fields.file.url}
                     className={styles.image}

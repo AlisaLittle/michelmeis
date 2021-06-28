@@ -2,12 +2,14 @@
   text-align: center;
   font-family: "Helvetica";
   font-size: 11px;
+  font-weight: 800;
 }
 :root {
   /*   --black: rgb(16, 18, 17); */
   --white: snow;
   /*   --black: rgb(34, 36, 35); */
   --black: rgb(56, 48, 48);
+  --lila: #17041b;
   /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
 .row {
@@ -34,7 +36,7 @@
   align-items: center;
   width: 60vw;
   padding: 0 5vw;
-  height: 75vh;
+  height: 73vh;
   margin: auto;
   color: snow;
   z-index: 0;
@@ -50,8 +52,6 @@
   margin-bottom: 3vh;
 }
 .fadeIn {
-  height: inherit;
-  width: inherit;
   animation: fadeIn 1s linear 0s;
   -webkit-animation: fadeIn 1s linear 0s;
 }
@@ -75,4 +75,74 @@ p {
 *::-webkit-scrollbar-thumb {
   background-color: snow;
   outline: 1px solid snow;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    text-align: center;
+    font-family: "Helvetica";
+    font-size: 11px;
+  }
+  :root {
+    /*   --black: rgb(16, 18, 17); */
+    --white: snow;
+    /*   --black: rgb(34, 36, 35); */
+    --black: rgb(56, 48, 48);
+    /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 70vh;
+    padding-top: 25vh;
+    padding-bottom: 5vh;
+    width: 100vw;
+    z-index: 5;
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+    height: 73vh;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    color: snow;
+    z-index: 5;
+    text-align: start;
+    font-size: 1.5em;
+    font-family: "Helvetica Neue";
+    line-height: 1.6;
+    font-weight: 200;
+    letter-spacing: 0.1em;
+    overflow: overlay;
+  }
+  .rowSpacing {
+    margin-bottom: 3vh;
+  }
+  .fadeIn {
+    animation: fadeIn 1s linear 0s;
+    -webkit-animation: fadeIn 1s linear 0s;
+  }
+  a {
+    color: snow;
+  }
+  p {
+    margin: 0px;
+  }
+  *::-webkit-scrollbar {
+  }
+  *::-webkit-scrollbar-thumb {
+  }
 }

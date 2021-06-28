@@ -13,19 +13,22 @@
   -webkit-text-stroke: 1px snow;
 }
 .image {
-  width: 30vw;
+  max-height: 250px;
   object-fit: cover;
 }
 
 .videoContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 5vw;
+  justify-content: start;
+  width: 100%;
+
 }
 .text {
   margin-bottom: 5vh;
 }
+
+
 /* .container {
   display: flex;
   flex-direction: column;
