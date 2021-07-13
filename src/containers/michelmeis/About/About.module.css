@@ -10,3 +10,17 @@
     opacity: 1;
   }
 }
+.text {
+  margin-bottom: 6vh;
+  width: 100%;
+}
+.text > * {
+  width: 50vw;
+}
+.text:nth-child(even) {
+}
+.text:nth-child(odd) {
+  display: flex;
+  text-align: end;
+  justify-content: flex-end;
+}

@@ -9,7 +9,7 @@ function About() {
       .getEntries({ content_type: "about", order: "fields.index" })
       .then((res) => {
         console.log("API", res.items);
-        setItems(res.items.reverse());
+        setItems(res.items);
         handleDelay();
       })
       .catch(console.error);
@@ -29,7 +29,7 @@ function About() {
           <div className="fadeIn">
             {items.map((entry, i) => (
               <div
-                className="rowSpacing"
+                className={styles.text}
                 key={"about" + i}
                 dangerouslySetInnerHTML={{
                   __html: marked(entry.fields.aboutText),

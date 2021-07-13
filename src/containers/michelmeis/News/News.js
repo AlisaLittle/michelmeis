@@ -25,26 +25,24 @@ function News() {
   };
   return (
     <div className="container">
-      <div className="contentContainer">
+      <div className={styles.contentContainer}>
         {items && delay ? (
-          <div className="fadeIn">
+          <div className={styles.container}>
             {items.map((entry, i) => (
-              <div key={"news" + i} className={styles.container}>
-               { console.log("Alisa", entry)}
-                <h3
-                  className="rowSpacing"
+              <div key={"news" + i} className={styles.section}>
+                <h2
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
                 />
                 {entry.fields.video ? (
-                                   <div className={styles.videoContainer}>
-                   <ReactPlayer
-                   className={styles.video}
-                    url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
-                  />
+                  <div className={styles.videoContainer}>
+                    <ReactPlayer
+                      className={styles.video}
+                      url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                    />
                   </div>
-                ) :  null}
+                ) : null}
 
                 {entry.fields.image ? (
                   <img

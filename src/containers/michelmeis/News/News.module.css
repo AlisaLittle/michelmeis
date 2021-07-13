@@ -15,23 +15,47 @@
 .image {
   max-height: 250px;
   object-fit: cover;
+  border: 1px solid snow;
+  margin-bottom: 3vh;
 }
 
 .videoContainer {
   display: flex;
+  padding-bottom: 3vh;
   align-items: center;
   justify-content: start;
   width: 100%;
-
 }
 .text {
   margin-bottom: 5vh;
 }
 
-
-/* .container {
+.section {
+  height: 73vh;
+  scroll-snap-align: start;
+}
+.container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  padding: 0px 5vw;
+  box-sizing: border-box;
+  height: 73vh;
+  width: 70vw;
+}
+.contentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-} */
+  align-items: center;
+  width: 70vw;
+  height: 73vh;
+  margin: auto;
+  color: snow;
+  z-index: 0;
+  text-align: start;
+  font-size: 1.5em;
+  font-family: "Helvetica Neue";
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+}

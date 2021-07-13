@@ -28,22 +28,31 @@ function Projects() {
       <div className="contentContainer">
         {items && delay ? (
           <div className="fadeIn">
-            {items.map((entry, i) => (
-              <div key={"news" + i}>
-                <h2
+            <div className={styles.container}>
+              {items.map((entry, i) => (
+                <div key={"news" + i}>
+                  {/*      <h2
                   className="rowSpacing"
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
-                />
-                <div className={styles.container}>
+                /> */}
                   {entry.fields.image.fields ? (
-                    <img
-                      src={entry.fields.image.fields.file.url}
-                      className={styles.image}
-                    />
+                    <div className={styles.relative}>
+                      <img
+                        src={entry.fields.image.fields.file.url}
+                        className={styles.image}
+                        alt="img"
+                      ></img>
+                      {/*       <div
+                        className={styles.title}
+                        dangerouslySetInnerHTML={{
+                          __html: marked(entry.fields.title),
+                        }}
+                      ></div> */}
+                    </div>
                   ) : null}
-                  <div className={`column ${styles.marginLeft}`}>
+                  {/*     <div className={`column ${styles.marginLeft}`}>
                     <div
                       className={styles.genre}
                       dangerouslySetInnerHTML={{
@@ -62,10 +71,10 @@ function Projects() {
                       </button>
                       <button className={styles.button}>Videos</button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ) : null}
       </div>

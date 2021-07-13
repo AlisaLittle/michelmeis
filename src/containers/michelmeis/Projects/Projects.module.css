@@ -13,18 +13,55 @@
   -webkit-text-stroke: 1px snow;
 }
 .image {
-  width: 25vw;
-  max-width: 500px;
+  width: 100%;
+  height: auto;
+
+  /*   position: absolute;
+  top: 0px; */
+  display: block;
   object-fit: cover;
+  aspect-ratio: 5/3;
+  border: 1px solid snow;
+}
+.image:hover {
+  cursor: pointer;
+  filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
 }
 
 .container {
-  display: flex;
+  /*   display: flex;
   flex-direction: row;
   margin-bottom: 3vh;
   padding-bottom: 5vh;
   height: fit-content;
-  width: fit-content;
+  width: fit-content; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr));
+  align-items: center;
+  /*   grid-template-columns: 1fr 1fr;
+  grid-gap: 5vh; */
+  grid-gap: 2vh;
+  width: inherit;
+  flex-wrap: wrap;
+}
+.relative {
+  position: relative;
+  /* height: fit-content; */
+}
+.image:after:hover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.title {
+  position: absolute;
+  top: 0px;
+  font-size: 50px;
+  font-weight: 500;
+  color: snow;
 }
 .genre {
   color: transparent;
