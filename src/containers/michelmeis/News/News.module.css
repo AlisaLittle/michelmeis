@@ -1,24 +1,16 @@
-.header {
-  position: absolute;
-  opacity: 1;
-  top: 0px;
-  right: 0px;
-  left: auto;
-  color: transparent;
-  text-align: start;
-  font-family: "Helvetica";
-  font-size: 6vw;
-  font-weight: 900;
-  z-index: 5;
-  -webkit-text-stroke: 1px snow;
+.imageContainer {
+  display: block;
+  min-width: 0;
+  min-height: 0;
 }
-.image {
-  max-height: 250px;
+.imageContainer img {
+  max-height: 100%;
   object-fit: cover;
   border: 1px solid snow;
-  margin-bottom: 3vh;
 }
-
+.title {
+  margin: unset;
+}
 .videoContainer {
   display: flex;
   padding-bottom: 3vh;
@@ -26,6 +18,7 @@
   justify-content: start;
   width: 100%;
 }
+
 .text {
   margin-bottom: 5vh;
 }
@@ -33,6 +26,11 @@
 .section {
   height: 73vh;
   scroll-snap-align: start;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 2vh;
+  grid-template-columns: 1fr;
+  overflow: hidden;
 }
 .container {
   scroll-snap-type: y mandatory;
@@ -52,7 +50,6 @@
   color: snow;
   z-index: 0;
   text-align: start;
-  font-size: 1.5em;
   font-family: "Helvetica Neue";
   line-height: 1.6;
   font-weight: 300;

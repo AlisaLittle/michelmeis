@@ -28,20 +28,26 @@ function About() {
     <div className="container">
       <div className="contentContainer">
         <div className="fadeIn">
-          {items && delay ? (
-            <>
-              {items.map((entry, i) => (
-                <div
-                  className="rowSpacing"
-                  key={"about" + i}
-                  dangerouslySetInnerHTML={{
-                    __html: marked(entry.fields.text.replace(/\n/g, `</br>`)),
-                  }}
-                />
-              ))}
-              <ContactForm />
-            </>
-          ) : null}
+          <div className={styles.align}>
+            <div>
+              {items && delay ? (
+                <>
+                  {items.map((entry, i) => (
+                    <div
+                      className="rowSpacing"
+                      key={"about" + i}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(
+                          entry.fields.text.replace(/\n/g, `</br>`)
+                        ),
+                      }}
+                    />
+                  ))}
+                  <ContactForm />
+                </>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
     </div>

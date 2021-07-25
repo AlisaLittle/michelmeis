@@ -27,15 +27,21 @@ function About() {
       <div className="contentContainer">
         {items && delay ? (
           <div className="fadeIn">
-            {items.map((entry, i) => (
-              <div
-                className={styles.text}
-                key={"about" + i}
-                dangerouslySetInnerHTML={{
-                  __html: marked(entry.fields.aboutText),
-                }}
-              />
-            ))}
+            <div className={styles.align}>
+              <div>
+                {items.map((entry, i) => (
+                  <div className={styles.row}>
+                    <div
+                      className={styles.text}
+                      key={"about" + i}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(entry.fields.aboutText),
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ) : null}
       </div>

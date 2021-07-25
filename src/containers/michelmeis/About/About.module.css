@@ -1,26 +1,23 @@
-.fadeIn {
-  animation: fadeIn 1s linear 0s;
-  -webkit-animation: fadeIn 1s linear 0s;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .text {
-  margin-bottom: 6vh;
   width: 100%;
 }
-.text > * {
-  width: 50vw;
-}
-.text:nth-child(even) {
-}
-.text:nth-child(odd) {
+.row {
   display: flex;
-  text-align: end;
-  justify-content: flex-end;
+  flex-direction: "row";
+  width: 50vw;
+  justify-content: space-between;
+  padding-bottom: 3vh;
+  margin-bottom: 3vh;
+  border-bottom: 1px solid snow;
+}
+
+.row:last-child {
+  border-bottom: none;
+  margin-bottom: 0px;
+}
+.align {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

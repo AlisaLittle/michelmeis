@@ -1,8 +1,8 @@
 .App {
   text-align: center;
-  font-family: "Helvetica";
-  font-size: 11px;
-  font-weight: 800;
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  font-size: 20px;
 }
 :root {
   /*   --black: rgb(16, 18, 17); */
@@ -42,7 +42,6 @@
   color: snow;
   z-index: 0;
   text-align: start;
-  font-size: 1.5em;
   font-family: "Helvetica Neue";
   line-height: 1.6;
   font-weight: 300;
@@ -124,7 +123,6 @@ p {
     color: snow;
     z-index: 5;
     text-align: start;
-    font-size: 1.5em;
     font-family: "Helvetica Neue";
     line-height: 1.6;
     font-weight: 200;

@@ -30,25 +30,30 @@ function News() {
           <div className={styles.container}>
             {items.map((entry, i) => (
               <div key={"news" + i} className={styles.section}>
-                <h2
+                <h1
+                  className={styles.title}
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
                 />
+
                 {entry.fields.video ? (
                   <div className={styles.videoContainer}>
                     <ReactPlayer
-                      className={styles.video}
+                      width="100%"
+                      height="100%"
                       url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
                     />
                   </div>
                 ) : null}
 
                 {entry.fields.image ? (
-                  <img
-                    src={entry.fields.image.fields.file.url}
-                    className={styles.image}
-                  />
+                  <div className={styles.imageContainer}>
+                    <img
+                      src={entry.fields.image.fields.file.url}
+                      className={styles.image}
+                    />
+                  </div>
                 ) : null}
                 <div
                   className={styles.text}
