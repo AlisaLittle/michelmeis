@@ -64,6 +64,7 @@ function NavBar() {
     setTransition(true);
     if (!photoSidebar) {
       setSecondTransition(true);
+      setRedirect(name);
       setTimeout(() => {
         setHeader(name);
       }, 600);
@@ -73,13 +74,12 @@ function NavBar() {
       }, 1000);
       setTimeout(() => {
         setSecondTransition(false);
-        setRedirect(name);
       }, 2000);
     } else {
       setHeader(name);
+      setRedirect(name);
       setTimeout(() => {
         setTransition(false);
-        setRedirect(name);
       }, 900);
       setTimeout(() => {
         setSecondTransition(false);
