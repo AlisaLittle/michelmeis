@@ -1,7 +1,7 @@
 .row {
   display: flex;
   flex-direction: "row";
-  width: 50vw;
+  width: 40vw;
   justify-content: space-between;
   padding-bottom: 1vh;
   margin-bottom: 3vh;
@@ -10,4 +10,11 @@
 .column {
   display: flex;
   justify-content: flex-end;
+  text-align: end;
+}
+
+@media only screen and (max-width: 600px) {
+  .row {
+    width: 90vw;
+  }
 }

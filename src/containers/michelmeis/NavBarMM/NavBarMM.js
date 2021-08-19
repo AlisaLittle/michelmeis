@@ -19,10 +19,12 @@ import LiveQuartet from "../../../pictures/Quartet/Live.jpg";
 import MusicQuartet from "../../../pictures/Quartet/Music.jpg";
 import NewsQuartet from "../../../pictures/Quartet/News.jpg";
 import VideoQuartet from "../../../pictures/Quartet/Video.jpg";
+import { BiRightArrow } from "react-icons/bi";
+import { GrPlay } from "react-icons/gr";
 
-function NavBar() {
-  const [picture, setPicture] = useState("Home");
-  const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
+function NavBar(props) {
+  /*   const [picture, setPicture] = useState("Home");
+   */ const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
   const [transition, setTransition] = useState(false);
   const [secondTransition, setSecondTransition] = useState(false);
   const [photoSidebar, setPhotoSidebar] = useState(false);
@@ -61,29 +63,37 @@ function NavBar() {
   ];
 
   const handleClick = (name) => {
-    setTransition(true);
-    if (!photoSidebar) {
-      setSecondTransition(true);
-      setRedirect(name);
-      setTimeout(() => {
-        setHeader(name);
-      }, 600);
-      setTimeout(() => {
-        setPhotoSidebar(true);
-        setTransition(false);
-      }, 1000);
-      setTimeout(() => {
-        setSecondTransition(false);
-      }, 2000);
+    if (name === "Projects") {
+      handleHome(name);
     } else {
-      setHeader(name);
-      setRedirect(name);
-      setTimeout(() => {
-        setTransition(false);
-      }, 900);
-      setTimeout(() => {
-        setSecondTransition(false);
-      }, 2000);
+      console.log("alisa", name);
+      setTransition(true);
+      if (!photoSidebar) {
+        console.log("alisa if");
+        setSecondTransition(true);
+        setRedirect(name);
+        setTimeout(() => {
+          setHeader(name);
+        }, 600);
+        setTimeout(() => {
+          setPhotoSidebar(true);
+          setTransition(false);
+        }, 100);
+        setTimeout(() => {
+          setSecondTransition(false);
+        }, 2000);
+      } else {
+        console.log("alisa else");
+        setHeader(name);
+        setRedirect(name);
+
+        setTimeout(() => {
+          setTransition(false);
+        }, 900);
+        setTimeout(() => {
+          setSecondTransition(false);
+        }, 2000);
+      }
     }
   };
   const handleClickQuartet = (name) => {
@@ -118,7 +128,7 @@ function NavBar() {
     if (!transition && !secondTransition) {
       setDelayHandler(
         setTimeout(() => {
-          setPicture(name);
+          props.setPicture(name);
         }, 500)
       );
     } else {
@@ -140,11 +150,15 @@ function NavBar() {
     clearTimeout(delayHandler);
   };
 
-  const handleHome = () => {
+  const handleHome = (title) => {
     setHeader(null);
-    setPicture("Home");
+    props.setPicture(title);
     setTransition(true);
-    setRedirect("/");
+    if (title === "Home") {
+      setRedirect("/");
+    } else {
+      setRedirect(title);
+    }
     setTimeout(() => {
       setTransition(false);
       setPhotoSidebar(false);
@@ -173,16 +187,21 @@ function NavBar() {
     setToQuartet(false);
     setToMichelMeis(true);
     setPhotoSidebar(false);
-    setPicture("Home");
+    props.setPicture("Home");
     setTimeout(() => setRedirect("/"), 1000);
     setTimeout(() => setToMichelMeis(false), 1000);
   };
 
-  if (path !== "/" && quartetRoute !== "/4tet" && doItOnce) {
+  if (
+    path !== "/" &&
+    path !== "/Projects" &&
+    quartetRoute !== "/4tet" &&
+    doItOnce
+  ) {
     const name = path.substring(1);
     console.log("michel", name);
     setPhotoSidebar(true);
-    setPicture(name);
+    props.setPicture(name);
     setDoItOnce(false);
     setHeader(name);
   }
@@ -210,22 +229,26 @@ function NavBar() {
                 photoSidebar ? styles.headerSidebar : null
               }`}
             >
-              {header.toUpperCase()}
+              {/*    {header.toUpperCase()} */}
             </div>
           ) : null}
           <div className="row">
             <div className={styles.boxTop}>
               <div
                 className={`${styles.first} ${styles.main} ${styles.mainWidth} `}
-                onClick={handleHome}
+                onClick={() => handleHome("Home")}
                 onMouseOver={() => handleHover("Home")}
                 onMouseLeave={() => handleMouseLeave()}
               >
-                MICHEL MEIS
+                MM
               </div>
               <SocialMedia />
             </div>
-            <div className={styles.boxBottom}>
+            <div
+              className={`${styles.boxBottom} ${
+                path !== "/4tet" ? styles.animationBoxBottom : null
+              }`}
+            >
               <div
                 className={`${styles.second} ${styles.main}`}
                 onClick={() => {
@@ -233,13 +256,17 @@ function NavBar() {
                 }}
               >
                 4TET
+                {/*   <BiRightArrow className={styles.icon} /> */}
+                <div className={styles.icon}>▷</div>
               </div>
             </div>
             <div
               className={`${styles.imageContainer}  ${
                 transition ? styles.transition : ""
               } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/" ? styles.home : null
+                photoSidebar || path === "/" || path === "/Projects"
+                  ? styles.home
+                  : null
               } ${styles.active}`}
             />
             <img
@@ -248,7 +275,8 @@ function NavBar() {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/" ? styles.home : null
               } ${
-                picture === "Home" || (path === "/Home" && picture === "Home")
+                props.picture === "Home" ||
+                (path === "/Home" && props.picture === "Home")
                   ? styles.active
                   : ""
               }`}
@@ -260,7 +288,8 @@ function NavBar() {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/News" ? styles.news : null
               } ${
-                picture === "News" || (path === "/News" && picture === "News")
+                props.picture === "News" ||
+                (path === "/News" && props.picture === "News")
                   ? styles.active
                   : ""
               }`}
@@ -272,8 +301,8 @@ function NavBar() {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/About" ? styles.about : null
               } ${
-                picture === "About" ||
-                (path === "/About" && picture === "About")
+                props.picture === "About" ||
+                (path === "/About" && props.picture === "About")
                   ? styles.active
                   : ""
               }`}
@@ -285,8 +314,8 @@ function NavBar() {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Projects" ? styles.projects : null
               } ${
-                picture === "Projects" ||
-                (path === "/Projects" && picture === "Projects")
+                props.picture === "Projects" ||
+                (path === "/Projects" && props.picture === "Projects")
                   ? styles.active
                   : ""
               }`}
@@ -295,23 +324,11 @@ function NavBar() {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/Video" ? styles.video : null
-              } ${
-                picture === "Video" ||
-                (path === "/Video" && picture === "Video")
-                  ? styles.active
-                  : ""
-              }`}
-              src={Video}
-            />
-            <img
-              className={`${styles.image}  ${
-                transition ? styles.transition : ""
-              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Live" ? styles.live : null
               } ${
-                picture === "Live" || (path === "/Live" && picture === "Live")
+                props.picture === "Live" ||
+                (path === "/Live" && props.picture === "Live")
                   ? styles.active
                   : ""
               }`}
@@ -320,11 +337,11 @@ function NavBar() {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar || path !== "/" ? styles.photoSidebar : null} ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Contact" ? styles.contact : null
               } ${
-                picture === "Contact" ||
-                (path === "/Contact" && picture === "Contact")
+                props.picture === "Contact" ||
+                (path === "/Contact" && props.picture === "Contact")
                   ? styles.active
                   : ""
               }`}

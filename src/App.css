@@ -1,8 +1,8 @@
 .App {
   text-align: center;
-  font-family: "Helvetica Neue";
+  font-family: "Roboto", sans-serif;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 1.2vw;
 }
 :root {
   /*   --black: rgb(16, 18, 17); */
@@ -28,14 +28,14 @@
   height: 70vh;
   padding-top: 12vh;
   padding-bottom: 5vh;
-  width: 70vw;
+  width: 50vw;
 }
 .contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60vw;
+  width: 45vw;
   /*   padding: 0 5vw;
  */
   height: 73vh;
@@ -43,10 +43,10 @@
   color: snow;
   z-index: 0;
   text-align: start;
-  font-family: "Helvetica Neue";
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 3px;
   line-height: 1.6;
   font-weight: 300;
-  letter-spacing: 0.1em;
   overflow: scroll;
 }
 .image-gallery {
@@ -101,10 +101,21 @@
   margin-bottom: 3vh;
 }
 .fadeIn {
-  width: 59vw;
+  width: 40vw;
   height: 100%;
-  animation: fadeIn 1s linear 0s;
-  -webkit-animation: fadeIn 1s linear 0s;
+  animation: fadeIn 2s linear 0s;
+  -webkit-animation: fadeIn 2s linear 0s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  70% {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 a {
   color: snow;
@@ -121,17 +132,34 @@ p {
   }
 }
 *::-webkit-scrollbar {
-  width: 0.5em;
+  /*   width: 0.5em;
+ */
+  display: none;
 }
 *::-webkit-scrollbar-thumb {
   background-color: snow;
   outline: 1px solid snow;
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--black);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--black);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--black);
+}
 @media only screen and (max-width: 600px) {
   .App {
     text-align: center;
-    font-family: "Helvetica";
+    font-family: "Roboto", sans-serif;
     font-size: 11px;
   }
   :root {
@@ -152,18 +180,20 @@ p {
 
   .container {
     position: absolute;
+    display: flex;
     top: 0px;
     right: 0px;
     height: 70vh;
-    padding-top: 25vh;
+    padding-top: 20vh;
     padding-bottom: 5vh;
     width: 100vw;
     z-index: 5;
   }
   .contentContainer {
-    display: flex;
+    display: unset;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100vw;
     padding: 0;
     height: 73vh;
@@ -172,7 +202,7 @@ p {
     color: snow;
     z-index: 5;
     text-align: start;
-    font-family: "Helvetica Neue";
+    font-family: "Roboto", sans-serif;
     line-height: 1.6;
     font-weight: 200;
     letter-spacing: 0.1em;
@@ -182,6 +212,7 @@ p {
     margin-bottom: 3vh;
   }
   .fadeIn {
+    width: 90vw;
     animation: fadeIn 1s linear 0s;
     -webkit-animation: fadeIn 1s linear 0s;
   }

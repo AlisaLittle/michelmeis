@@ -6,7 +6,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import marked from "marked";
 import ReactPlayer from "react-player";
 
-function Projects() {
+function Projects(props) {
   useEffect(() => {
     client
       .getEntries({ content_type: "projects", order: "fields.index" })
@@ -27,7 +27,7 @@ function Projects() {
   const [items, setItems] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
   const [delay, setDelay] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [picture, setPicture] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleDelay = () => {
@@ -35,9 +35,9 @@ function Projects() {
       setDelay(true);
     }, 500);
   };
-  const handleClick = (e, i) => {
-    setIndex(i);
-    console.log("index", index);
+  const handleClick = (title) => {
+    console.log(title);
+    setPicture(title);
   };
   /*   const filterFunction = items.map((item) => ({
     original: item.fields.image.fields.file.url,
@@ -45,87 +45,110 @@ function Projects() {
   console.log(filterFunction); */
 
   return (
-    <div className="container">
-      <div className="contentContainer">
-        {items && delay ? (
-          <div className="fadeIn">
-            <div className={styles.galleryContainer}>
-              <div className={styles.gallery}>
-                <div className={styles.info}>
-                  <h2
-                    className="rowSpacing"
-                    dangerouslySetInnerHTML={{
-                      __html: marked(items[index].fields.title),
-                    }}
-                  />
-                </div>
-                <ImageGallery
-                  items={filteredItems}
-                  originalClass={styles.image}
-                  showNav={false}
-                  showPlayButton={false}
-                  showFullscreenButton={false}
-                  slideDuration={null}
-                  slideInterval={2000000000000000000000}
-                  thumbnailPosition="bottom"
-                  disableThumbnailScroll={true}
-                  onThumbnailClick={(e, i) => handleClick(e, i)}
-                />
-              </div>
-            </div>
+    <div className={`${picture ? styles.background : null}`}>
+      {items ? (
+        <>
+          {/*             <div className={styles.titleContainer}>
+           */}
+          <div className={styles.titleContainer}>
             {items.map((entry, i) => (
-              <div key={"news" + i}>
-                {/*      <h2
-                  className="rowSpacing"
+              <>
+                <div
+                  className={styles.title}
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
-                /> */}
-                {/*                 
-                   
-                  {/*           {entry.fields.image.fields ? (
-                    <div className={styles.relative}>
-                      <img
-                        src={entry.fields.image.fields.file.url}
-                        className={styles.image}
-                        alt="img"
-                      ></img>
-                    </div>
-                  ) : null} */}
-                {/*    
-                  
-                  <div
-                        className={styles.title}
-                        dangerouslySetInnerHTML={{
-                          __html: marked(entry.fields.title),
-                        }}
-                      ></div>
-                  <div className={`column ${styles.marginLeft}`}>
-                    <div
-                      className={styles.genre}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(entry.fields.genre),
-                      }}
-                    />
-
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: marked(entry.fields.text),
-                      }}
-                    />
+                  onClick={() => handleClick(entry.fields.title)}
+                ></div>
+                <div
+                  className={`${styles.buttonContainer}  ${
+                    picture === entry.fields.title ? styles.active : null
+                  } ${
+                    picture === entry.fields.title
+                      ? styles.buttonContainerTransition
+                      : null
+                  }`}
+                >
+                  {picture === entry.fields.title ? (
                     <div className={`row ${styles.marginTop}`}>
                       <button className={`${styles.button} ${styles.margin}`}>
                         Infos
                       </button>
                       <button className={styles.button}>Videos</button>
                     </div>
-                  </div> */}
-              </div>
+                  ) : null}
+                </div>
+              </>
             ))}
           </div>
-        ) : null}
-      </div>
+          {items.map((entry, i) => (
+            <>
+              {entry.fields.image.fields ? (
+                <div className={styles.darker}>
+                  <img
+                    src={entry.fields.image.fields.file.url}
+                    className={`${styles.image} ${
+                      picture === entry.fields.title ? styles.active : null
+                    }`}
+                    alt="img"
+                  ></img>
+                </div>
+              ) : null}
+            </>
+          ))}
+        </>
+      ) : null}
     </div>
   );
 }
-export default Projects;
+
+export default React.memo(Projects);
+{
+  /*        {items.map((entry, i) => (
+              <div key={"news" + i}>
+                <h2
+                  className="rowSpacing"
+                  dangerouslySetInnerHTML={{
+                    __html: marked(entry.fields.title),
+                  }}
+                />
+
+                {entry.fields.image.fields ? (
+                  <div className={styles.relative}>
+                    <img
+                      src={entry.fields.image.fields.file.url}
+                      className={styles.image}
+                      alt="img"
+                    ></img>
+                  </div>
+                ) : null}
+
+                <div
+                  className={styles.title}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(entry.fields.title),
+                  }}
+                ></div>
+                <div className={`column ${styles.marginLeft}`}>
+                  <div
+                    className={styles.genre}
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.genre),
+                    }}
+                  />
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.text),
+                    }}
+                  />
+                  <div className={`row ${styles.marginTop}`}>
+                    <button className={`${styles.button} ${styles.margin}`}>
+                      Infos
+                    </button>
+                    <button className={styles.button}>Videos</button>
+                  </div>
+                </div>
+              </div>
+            ))} */
+}

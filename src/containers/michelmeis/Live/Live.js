@@ -27,38 +27,40 @@ function Live() {
   return (
     <div className="container">
       <div className="contentContainer">
-        {items
-          ? items.map((item, i) => (
-              <div key={"live" + i} className={styles.row}>
-                <div className="column">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: marked(DateFormatter(item.fields.date)),
-                    }}
-                  />
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: marked(item.fields.band),
-                    }}
-                  />
+        <div>
+          {items
+            ? items.map((item, i) => (
+                <div key={"live" + i} className={styles.row}>
+                  <div className="column">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: marked(DateFormatter(item.fields.date)),
+                      }}
+                    />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: marked(item.fields.band),
+                      }}
+                    />
+                  </div>
+                  <div className="column">
+                    <div
+                      className={styles.column}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(item.fields.location),
+                      }}
+                    />
+                    <div
+                      className={styles.column}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(item.fields.city),
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="column">
-                  <div
-                    className={styles.column}
-                    dangerouslySetInnerHTML={{
-                      __html: marked(item.fields.location),
-                    }}
-                  />
-                  <div
-                    className={styles.column}
-                    dangerouslySetInnerHTML={{
-                      __html: marked(item.fields.city),
-                    }}
-                  />
-                </div>
-              </div>
-            ))
-          : null}
+              ))
+            : null}
+        </div>
       </div>
     </div>
   );
