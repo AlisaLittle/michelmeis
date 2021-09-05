@@ -4,7 +4,7 @@
   width: 100vw;
   background-color: #130215;
 
-  /*     background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
+  /*   background-image: linear-gradient(180deg, #130215, #000000);
  */
 }
 .quartet {
@@ -25,6 +25,10 @@
   font-size: 3vw;
   display: flex;
   align-items: center;
+}
+.iconLeft {
+  transform: scaleX(-1);
+  color: rosybrown;
 }
 .imageContainer {
   width: 100vw;
@@ -49,6 +53,7 @@
   right: 0;
   opacity: 0;
   transition: 2s ease;
+  object-position: top;
   object-fit: cover;
   z-index: 4;
   -webkit-transition: 2s ease;
@@ -57,13 +62,14 @@
   -o-transition: 2s ease;
 }
 .imageQuartet {
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
   position: absolute;
   left: 0;
   opacity: 0;
   transition: 2s ease;
   object-fit: cover;
+  object-position: top;
   z-index: 4;
   -webkit-transition: 2s ease;
   -moz-transition: 2s ease;
@@ -91,7 +97,7 @@
   /*   opacity: 1; */
 }
 .photoSidebarQuartet {
-  width: 30vw;
+  width: 50vw;
   height: 100vh;
   position: absolute;
   right: 0;
@@ -104,10 +110,11 @@
   font-size: 6vw;
   font-weight: 900;
   z-index: 5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.mainWidth {
-  max-width: 25vw;
-}
+
 .boxTop {
   position: absolute;
   cursor: pointer;
@@ -128,6 +135,12 @@
   animation-iteration-count: infinite;
   animation-duration: 2s;
 }
+.animationBoxTop {
+  animation-name: boxTop;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
 @keyframes boxBottom {
   0% {
     right: 0px;
@@ -143,6 +156,24 @@
   }
   80% {
     right: 0px;
+  }
+}
+
+@keyframes boxTop {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 100px;
+  }
+  70% {
+    left: 0px;
+  }
+  75% {
+    left: 5px;
+  }
+  80% {
+    left: 0px;
   }
 }
 .first {

@@ -15,7 +15,6 @@
 .videoContainer {
   display: flex;
   aspect-ratio: 16/9;
-
   padding-bottom: 3vh;
   align-items: center;
   justify-content: start;
@@ -29,14 +28,12 @@
 .section {
   scroll-snap-align: start;
   display: grid;
-  grid-template-rows: auto 1fr auto;
   grid-gap: 2vh;
   grid-template-columns: 1fr;
   overflow: hidden;
   align-items: center;
-  width: var(--contentWidth);
+  width: 50vw;
   min-height: 88vh;
-  padding-top: 4vh;
   box-sizing: border-box;
 }
 .container {
@@ -44,18 +41,25 @@
   overflow-y: scroll;
   box-sizing: border-box;
   height: 88vh;
-  width: var(--contentWidth);
+  width: 50vw;
 }
 .contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin: auto;
-  color: snow;
   z-index: 0;
   text-align: start;
   line-height: 1.6;
   letter-spacing: 0.1em;
   overflow: hidden;
+}
+.container4tet {
+  position: absolute;
+  top: 12vh;
+  left: 0px;
+  height: 88vh;
+  width: 50vw;
+  overflow: scroll;
+  color: black;
 }

@@ -1,8 +1,17 @@
 .App {
   text-align: center;
   font-family: "Roboto", sans-serif;
-  font-weight: 200;
+  font-weight: 200 !important;
   font-size: 1.2vw;
+}
+h1 {
+  font-weight: 200;
+}
+a {
+  color: rgb(160, 109, 109);
+}
+p {
+  margin: 0px;
 }
 :root {
   /*   --black: rgb(16, 18, 17); */
@@ -10,6 +19,7 @@
   /*   --black: rgb(34, 36, 35); */
   --black: rgb(56, 48, 48);
   --lila: #17041b;
+  --contentWidth: 30vw;
   /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
 .row {
@@ -23,32 +33,103 @@
 
 .container {
   position: absolute;
-  top: 0px;
+  bottom: 12vh;
   right: 0px;
+  top: 0px;
   height: 70vh;
-  padding-top: 12vh;
   padding-bottom: 5vh;
   width: 50vw;
+  color: snow;
+}
+.container4tet {
+  position: absolute;
+  top: 12vh;
+  left: 0px;
+  height: 88vh;
+  width: 50vw;
+  overflow: scroll;
+  color: black;
 }
 .contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45vw;
+  width: var(--contentWidth);
   /*   padding: 0 5vw;
  */
-  height: 73vh;
+  height: 88vh;
   margin: auto;
-  color: snow;
   z-index: 0;
   text-align: start;
-  font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
   line-height: 1.6;
-  font-weight: 300;
   overflow: scroll;
 }
+.buttonDark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 25px;
+  width: 140px;
+  font-size: 2vw;
+  animation: fadeIn 2s;
+  padding: 20px 40px;
+  color: rosybrown;
+  background-color: transparent;
+  font-size: 1.2rem;
+  border: 1px solid rosybrown;
+  -webkit-animation: fadeIn 2s;
+}
+.buttonDark:hover {
+  cursor: pointer;
+  height: 25px;
+  padding-right: 40px;
+  color: var(--black);
+  background-color: rgba(188, 143, 143, 0.664);
+  font-size: 1.2rem;
+  border: 1px solid black;
+  opacity: 50%;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 25px;
+  width: 140px;
+  font-size: 2vw;
+  animation: fadeIn 2s;
+  padding: 20px 40px;
+  color: var(--white);
+  background-color: transparent;
+  font-size: 1.2rem;
+  border: 1px solid var(--white);
+  -webkit-animation: fadeIn 2s;
+}
+.button:hover {
+  cursor: pointer;
+  height: 25px;
+  padding-right: 40px;
+  color: var(--black);
+  background-color: var(--white);
+  font-size: 1.2rem;
+  border: 1px solid var(--white);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .image-gallery {
   width: auto;
   max-height: 55vh;
@@ -98,31 +179,25 @@
 }
 
 .rowSpacing {
-  margin-bottom: 3vh;
+  margin-bottom: 4vh;
 }
 .fadeIn {
-  width: 40vw;
-  height: 100%;
-  animation: fadeIn 2s linear 0s;
-  -webkit-animation: fadeIn 2s linear 0s;
+  width: var(--contentWidth);
+  animation: fadeIn 3s linear 0s;
+  -webkit-animation: fadeIn 3s linear 0s;
 }
 @keyframes fadeIn {
   from {
     opacity: 0%;
   }
-  70% {
+  50% {
     opacity: 0%;
   }
   to {
     opacity: 100%;
   }
 }
-a {
-  color: snow;
-}
-p {
-  margin: 0px;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -187,6 +262,7 @@ p {
     padding-top: 20vh;
     padding-bottom: 5vh;
     width: 100vw;
+    color: snow;
     z-index: 5;
   }
   .contentContainer {
@@ -196,10 +272,9 @@ p {
     justify-content: center;
     width: 100vw;
     padding: 0;
-    height: 73vh;
+    height: 88vh;
     padding: 0 5vw;
     box-sizing: border-box;
-    color: snow;
     z-index: 5;
     text-align: start;
     font-family: "Roboto", sans-serif;
@@ -213,8 +288,8 @@ p {
   }
   .fadeIn {
     width: 90vw;
-    animation: fadeIn 1s linear 0s;
-    -webkit-animation: fadeIn 1s linear 0s;
+    animation: fadeIn 4s linear 0s;
+    -webkit-animation: fadeIn 4s linear 0s;
   }
   a {
     color: snow;

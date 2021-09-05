@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding-bottom: 1vh;
   margin-bottom: 3vh;
-  border-bottom: 1px solid snow;
+  border-bottom: 1px solid black;
 }
 .column {
   display: flex;

@@ -7,7 +7,11 @@ import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.j
 function Live() {
   useEffect(() => {
     client
-      .getEntries({ content_type: "live", order: "fields.date" })
+      .getEntries({
+        content_type: "live",
+        order: "fields.date",
+        "fields.tet": true,
+      })
       .then((res) => {
         console.log("API", res.items);
         console.log("DAte", new Date());
@@ -25,7 +29,7 @@ function Live() {
     }, 500);
   };
   return (
-    <div className="container">
+    <div className="container4tet">
       <div className="contentContainer">
         <div className="fadeIn">
           {items

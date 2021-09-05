@@ -15,7 +15,6 @@
 .videoContainer {
   display: flex;
   aspect-ratio: 16/9;
-
   padding-bottom: 3vh;
   align-items: center;
   justify-content: start;
@@ -36,7 +35,6 @@
   align-items: center;
   width: var(--contentWidth);
   min-height: 88vh;
-  padding-top: 4vh;
   box-sizing: border-box;
 }
 .container {
@@ -50,9 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin: auto;
-  color: snow;
   z-index: 0;
   text-align: start;
   line-height: 1.6;

@@ -19,24 +19,15 @@ function Projects(props) {
             thumbnail: item.fields.image.fields.file.url,
           }))
         );
-        handleDelay();
         console.log("API", filteredItems);
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
-  const [delay, setDelay] = useState(false);
   const [picture, setPicture] = useState(null);
-  const [loading, setLoading] = useState(false);
 
-  const handleDelay = () => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 500);
-  };
   const handleClick = (title) => {
-    console.log(title);
     setPicture(title);
   };
   /*   const filterFunction = items.map((item) => ({
@@ -48,8 +39,6 @@ function Projects(props) {
     <div className={`${picture ? styles.background : null}`}>
       {items ? (
         <>
-          {/*             <div className={styles.titleContainer}>
-           */}
           <div className={styles.titleContainer}>
             {items.map((entry, i) => (
               <>
@@ -71,10 +60,10 @@ function Projects(props) {
                 >
                   {picture === entry.fields.title ? (
                     <div className={`row ${styles.marginTop}`}>
-                      <button className={`${styles.button} ${styles.margin}`}>
+                      <button className={`button ${styles.margin}`}>
                         Infos
                       </button>
-                      <button className={styles.button}>Videos</button>
+                      <button className="button">Videos</button>
                     </div>
                   ) : null}
                 </div>
