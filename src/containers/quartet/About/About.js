@@ -10,22 +10,15 @@ function About() {
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items);
-        handleDelay();
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
-  const [delay, setDelay] = useState(false);
 
-  const handleDelay = () => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 500);
-  };
   return (
     <div className="container4tet">
       <div className="contentContainer">
-        {items && delay ? (
+        {items ? (
           <div className="fadeIn">
             <div className={styles.align}>
               {items.map((entry, i) => (

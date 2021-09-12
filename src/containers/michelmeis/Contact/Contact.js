@@ -11,18 +11,10 @@ function About() {
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items.reverse());
-        handleDelay();
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
-  const [delay, setDelay] = useState(false);
-
-  const handleDelay = () => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 500);
-  };
 
   return (
     <div className="container">
@@ -30,7 +22,7 @@ function About() {
         <div className="fadeIn">
           <div className={styles.align}>
             <div>
-              {items && delay ? (
+              {items ? (
                 <>
                   {items.map((entry, i) => (
                     <div

@@ -16,18 +16,11 @@ function Live() {
         console.log("API", res.items);
         console.log("DAte", new Date());
         setItems(res.items);
-        handleDelay();
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
-  const [delay, setDelay] = useState(false);
 
-  const handleDelay = () => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 500);
-  };
   return (
     <div className="container4tet">
       <div className="contentContainer">

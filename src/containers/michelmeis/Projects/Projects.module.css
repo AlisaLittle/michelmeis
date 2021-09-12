@@ -71,8 +71,8 @@
   font-size: 4vw;
   font-weight: 800;
   cursor: pointer;
-
-  -webkit-animation: flyIn 3s ease-in-out 0s;
+  animation: flyIn 3s ease-in-out;
+  -webkit-animation: flyIn 3s ease-in-out;
 }
 @keyframes flyIn {
   from {
@@ -107,11 +107,15 @@
   color: var(--white);
 }
 .genre {
-  color: transparent;
-  -webkit-text-stroke: 0.8px var(--white);
+  color: snow;
   font-size: 21px;
   font-weight: 900;
-  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 3vh;
+}
+.genre p {
+  width: fit-content;
 }
 .margin {
   margin-right: 40px;
@@ -121,12 +125,12 @@
 }
 .marginTop {
   display: flex;
-  height: inherit;
+  height: 100px;
   align-items: center;
-  margin-right: 60px;
+  justify-content: flex-end;
 }
 .active {
-  opacity: 100%;
+  opacity: 100;
 }
 
 .buttonContainer {
@@ -139,6 +143,9 @@
   -o-transition: height 1s ease-in-out;
 }
 .buttonContainerTransition {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
   height: 200px;
 }
 @media only screen and (max-width: 600px) {

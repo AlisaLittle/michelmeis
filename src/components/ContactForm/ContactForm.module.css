@@ -2,12 +2,15 @@ form div {
   margin: 20px 0;
 }
 
-input {
+input,
+textarea {
   height: 25px;
   width: 100%;
   padding-right: 40px;
   background-color: var(--white);
   font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200 !important;
   border-color: var(--white);
   border-style: none;
   color: black;

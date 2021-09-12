@@ -15,28 +15,120 @@ import Contact4tet from "../quartet/Contact/Contact";
 
 function Container() {
   const [picture, setPicture] = useState("Home");
-  console.log(picture);
+  const [showContent, setShowContent] = useState(true);
+
   return (
     <div className="App">
-      <NavBarMM picture={picture} setPicture={setPicture} />
+      <NavBarMM
+        picture={picture}
+        setPicture={setPicture}
+        showContent={showContent}
+        setShowContent={setShowContent}
+      />
       <Switch>
-        <Route path="/news" exact component={News} />
-        <Route path="/about" exact component={About} />
-        <Route path="/contact" exact component={Contact} />
+        <Route
+          path="/news"
+          exact
+          component={() => (
+            <News showContent={showContent} setShowContent={setShowContent} />
+          )}
+        />
+        <Route
+          path="/about"
+          exact
+          component={() => (
+            <About showContent={showContent} setShowContent={setShowContent} />
+          )}
+        />
+        <Route
+          path="/contact"
+          exact
+          component={() => (
+            <Contact
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
         <Route
           path="/projects"
           exact
           component={() => (
-            <Projects picture={picture} setPicture={setPicture} />
+            <Projects
+              picture={picture}
+              setPicture={setPicture}
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
           )}
         />
-        <Route path="/live" exact component={Live} />
-        <Route path="/4tet/news" exact component={News4tet} />
-        <Route path="/4tet/about" exact component={About4tet} />
-        <Route path="/4tet/video" exact component={Video4tet} />
-        <Route path="/4tet/music" exact component={Music4tet} />
-        <Route path="/4tet/live" exact component={Live4tet} />
-        <Route path="/4tet/contact" exact component={Contact4tet} />
+        <Route
+          path="/live"
+          exact
+          component={() => (
+            <Live showContent={showContent} setShowContent={setShowContent} />
+          )}
+        />
+        <Route
+          path="/4tet/news"
+          exact
+          component={() => (
+            <News4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
+        <Route
+          path="/4tet/about"
+          exact
+          component={() => (
+            <About4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
+        <Route
+          path="/4tet/video"
+          exact
+          component={() => (
+            <Video4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
+        <Route
+          path="/4tet/music"
+          exact
+          component={() => (
+            <Music4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
+        <Route
+          path="/4tet/live"
+          exact
+          component={() => (
+            <Live4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
+        <Route
+          path="/4tet/contact"
+          exact
+          component={() => (
+            <Contact4tet
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          )}
+        />
       </Switch>
     </div>
   );

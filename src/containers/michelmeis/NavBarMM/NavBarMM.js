@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Home from "../../../pictures/Home.jpg";
 import styles from "./NavBarMM.module.css";
-import { Link, Redirect, useLocation } from "react-router-dom";
-import ScrollMenu from "react-horizontal-scrolling-menu";
-import { Parallax } from "react-scroll-parallax";
-import HorizontalScroll from "react-scroll-horizontal";
+import { Redirect, useLocation } from "react-router-dom";
 import SocialMedia from "../../../components/SocialMedia/SocialMedia";
 import News from "../../../pictures/Meis/News.jpg";
 import About from "../../../pictures/Meis/About.jpg";
@@ -12,43 +9,32 @@ import Projects from "../../../pictures/Meis/Projects.jpg";
 import Video from "../../../pictures/Meis/Video.jpg";
 import Live from "../../../pictures/Meis/Live.jpg";
 import Contact from "../../../pictures/Meis/Contact.jpg";
-import HomeQuartet from "../../../pictures/Quartet/Home.jpg";
+import ContactQuartet from "../../../pictures/Quartet/Home.jpg";
 import AboutQuartet from "../../../pictures/Quartet/About.jpg";
-import ContactQuartet from "../../../pictures/Quartet/Contact.jpg";
+import HomeQuartet from "../../../pictures/Quartet/Contact.jpg";
 import LiveQuartet from "../../../pictures/Quartet/Live.jpg";
 import MusicQuartet from "../../../pictures/Quartet/Music.jpg";
 import NewsQuartet from "../../../pictures/Quartet/News.jpg";
 import VideoQuartet from "../../../pictures/Quartet/Video.jpg";
 
 function NavBar(props) {
-  /*   const [picture, setPicture] = useState("Home");
-   */ const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
   const [transition, setTransition] = useState(false);
   const [secondTransition, setSecondTransition] = useState(false);
   const [photoSidebar, setPhotoSidebar] = useState(false);
   const [photoSidebarQuartet, setPhotoSidebarQuartet] = useState(false);
   const [redirect, setRedirect] = useState(null);
-  const [header, setHeader] = useState(null);
-  const [headerQuartet, setHeaderQuartet] = useState(null);
-
+  const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
   const [toQuartet, setToQuartet] = useState(false);
   const [toMichelMeis, setToMichelMeis] = useState(false);
   const [delayHandler, setDelayHandler] = useState(null);
   const [doItOnce, setDoItOnce] = useState(true);
   const path = useLocation().pathname;
-  /*   useEffect(() => {
-    if (path == "/4tet") {
-      setPhotoSidebar(false);
-      setToQuartet(true);
-    }
-  }, []); */
 
   const routes = [
     { name: "News", picture: News },
     { name: "About", picture: About },
     { name: "Projects", picture: Projects },
-    /*     { name: "Video", picture: Video },
-     */ { name: "Live", picture: Live },
+    { name: "Live", picture: Live },
     { name: "Contact", picture: Contact },
   ];
   const routesQuartet = [
@@ -64,15 +50,11 @@ function NavBar(props) {
     if (name === "Projects") {
       handleHome(name);
     } else {
-      console.log("alisa", name);
       setTransition(true);
       if (!photoSidebar) {
-        console.log("alisa if");
         setSecondTransition(true);
         setRedirect(name);
-        setTimeout(() => {
-          setHeader(name);
-        }, 600);
+        setTimeout(() => {}, 600);
         setTimeout(() => {
           setPhotoSidebar(true);
           setTransition(false);
@@ -81,9 +63,7 @@ function NavBar(props) {
           setSecondTransition(false);
         }, 2000);
       } else {
-        setHeader(name);
         setRedirect(name);
-
         setTimeout(() => {
           setTransition(false);
         }, 900);
@@ -93,8 +73,8 @@ function NavBar(props) {
       }
     }
   };
+
   const handleClickQuartet = (name) => {
-    /*    goToQuartet(); */
     setTransition(true);
     if (!photoSidebarQuartet) {
       setSecondTransition(true);
@@ -145,7 +125,6 @@ function NavBar(props) {
   };
 
   const handleHome = (title) => {
-    setHeader(null);
     props.setPicture(title);
     setTransition(true);
     if (title === "Home") {
@@ -159,7 +138,6 @@ function NavBar(props) {
     }, 1000);
   };
   const handleHomeQuartet = (title) => {
-    setHeaderQuartet(null);
     setPictureQuartet(title);
     setTransition(true);
     setRedirect("/4tet");
@@ -199,7 +177,6 @@ function NavBar(props) {
     setPhotoSidebar(true);
     props.setPicture(name);
     setDoItOnce(false);
-    setHeader(name);
   }
   if (quartetRoute === "/4tet" && path !== "/4tet" && doItOnce) {
     const name = path.substring(6);
@@ -218,15 +195,6 @@ function NavBar(props) {
       >
         <div className={styles.container}>
           {redirect ? <Redirect to={`${redirect}`} /> : null}
-          {header ? (
-            <div
-              className={`${styles.header} ${styles.main} ${
-                photoSidebar ? styles.headerSidebar : null
-              }`}
-            >
-              {/*    {header.toUpperCase()} */}
-            </div>
-          ) : null}
           <div className="row">
             <div className={styles.boxTop}>
               <div
@@ -383,6 +351,7 @@ function NavBar(props) {
             )}
           </div>
           <div className={styles.boxBottom}>
+            <SocialMedia quartet={true} />
             <div
               className={`${styles.firstDark} ${styles.main}`}
               onClick={() => handleHomeQuartet("HomeQuartet")}
@@ -411,16 +380,6 @@ function NavBar(props) {
               );
             })}
           </nav>
-          {/*        className={`${styles.image}  ${
-                transition ? styles.transition : ""
-              } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/About" ? styles.about : null
-              } ${
-                picture === "About" ||
-                (path === "/About" && picture === "About")
-                  ? styles.active
-                  : ""
-              }`} */}
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""

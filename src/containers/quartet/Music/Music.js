@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./Music.module.css";
 import { client } from "../../../client";
 import marked from "marked";
-import ReactPlayer from "react-player";
 
 function Music() {
   useEffect(() => {
@@ -18,6 +17,7 @@ function Music() {
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
+
   const openInNewTab = (url) => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null;
@@ -44,6 +44,7 @@ function Music() {
                 {entry.fields.albumCover ? (
                   <div className={styles.imageContainer}>
                     <img
+                      alt="cover"
                       src={entry.fields.albumCover.fields.file.url}
                       className={styles.image}
                     />

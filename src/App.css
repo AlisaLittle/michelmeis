@@ -9,6 +9,7 @@ h1 {
 }
 a {
   color: rgb(160, 109, 109);
+  font-weight: 400 !important;
 }
 p {
   margin: 0px;
@@ -36,7 +37,7 @@ p {
   bottom: 12vh;
   right: 0px;
   top: 0px;
-  height: 70vh;
+  height: 88vh;
   padding-bottom: 5vh;
   width: 50vw;
   color: snow;
@@ -258,7 +259,7 @@ p {
     display: flex;
     top: 0px;
     right: 0px;
-    height: 70vh;
+    height: 88vh;
     padding-top: 20vh;
     padding-bottom: 5vh;
     width: 100vw;

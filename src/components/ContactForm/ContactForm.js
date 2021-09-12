@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { init } from "emailjs-com";
 init("user_ngbkW6jO4keASIpIbaRbl");
 
-const ContactForm = () => {
+const ContactForm = (props) => {
   const { register, errors, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
@@ -106,7 +106,10 @@ const ContactForm = () => {
           <span className="errorMessage">Please enter a message</span>
         )}
       </div>
-      <button type="submit" className={styles.submitButton}>
+      <button
+        type="submit"
+        className={props.buttonDark ? "buttonDark" : "button"}
+      >
         Submit
       </button>
     </form>
