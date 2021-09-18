@@ -4,7 +4,7 @@ import { client } from "../../../client";
 import marked from "marked";
 import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
 
-function Live() {
+function Live(props) {
   useEffect(() => {
     client
       .getEntries({ content_type: "live", order: "fields.date" })
@@ -21,7 +21,7 @@ function Live() {
     <div className="container">
       <div className="contentContainer">
         <div className="fadeIn">
-          {items
+          {items && props.showContent
             ? items.map((item, i) => (
                 <div key={"live" + i} className={styles.row}>
                   <div className="column">

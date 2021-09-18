@@ -20,38 +20,95 @@
   justify-content: start;
   width: 100%;
 }
-
+@supports not (aspect-ratio: 16/9) {
+  .videoContainer {
+    display: flex;
+    padding-bottom: 3vh;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 50%;
+  }
+}
 .text {
+  position: relative;
   margin-bottom: 5vh;
 }
-
+.text p {
+  position: absolute;
+  top: 0;
+  margin-bottom: 10px;
+  visibility: hidden;
+  height: max-content;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 40s;
+}
+.text p:nth-child(1) {
+  animation-delay: 0s;
+}
+.text p:nth-child(2) {
+  animation-delay: 5s;
+}
+.text p:nth-child(3) {
+  animation-delay: 10s;
+}
+.text p:nth-child(4) {
+  animation-delay: 15s;
+}
+.text p:nth-child(5) {
+  animation-delay: 20s;
+}
+.text p:nth-child(6) {
+  animation-delay: 25s;
+}
+.text p:nth-child(7) {
+  animation-delay: 30s;
+}
+.text p:nth-child(8) {
+  animation-delay: 35s;
+}
+@keyframes fadeIn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  2% {
+    visibility: visible;
+    opacity: 1;
+  }
+  11% {
+    opacity: 1;
+  }
+  12% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
 .section {
   scroll-snap-align: start;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 2vh;
-  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content auto max-content;
+  row-gap: 2vh;
   overflow: hidden;
-  align-items: center;
   width: var(--contentWidth);
-  min-height: 88vh;
+  min-height: 80vh;
   box-sizing: border-box;
 }
 .container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   box-sizing: border-box;
-  height: 88vh;
+  height: 80vh;
   width: var(--contentWidth);
 }
-.contentContainer {
+.titleRow {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  z-index: 0;
-  text-align: start;
-  line-height: 1.6;
-  letter-spacing: 0.1em;
-  overflow: hidden;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.spaceBetween {
+  justify-content: space-between;
 }

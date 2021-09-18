@@ -3,8 +3,9 @@ import styles from "./About.module.css";
 import { client } from "../../../client";
 import marked from "marked";
 
-function About() {
+function About(props) {
   useEffect(() => {
+    console.log("jojo");
     client
       .getEntries({ content_type: "about", order: "fields.index" })
       .then((res) => {
@@ -18,7 +19,7 @@ function About() {
   return (
     <div className="container">
       <div className="contentContainer">
-        {items ? (
+        {items && props.showContent ? (
           <div className="fadeIn">
             <div className={styles.align}>
               {items.map((entry, i) => (

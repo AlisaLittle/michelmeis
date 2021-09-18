@@ -5,7 +5,7 @@ import About from "../michelmeis/About/About";
 import Contact from "../michelmeis/Contact/Contact";
 import Projects from "../michelmeis/Projects/Projects";
 import Live from "../michelmeis/Live/Live";
-import NavBarMM from "../michelmeis/NavBarMM/NavBarMM";
+import NavBarMM from "../NavBarMM/NavBarMM";
 import News4tet from "../quartet/News/News";
 import About4tet from "../quartet/About/About";
 import Music4tet from "../quartet/Music/Music";
@@ -14,16 +14,17 @@ import Video4tet from "../quartet/Video/Video";
 import Contact4tet from "../quartet/Contact/Contact";
 
 function Container() {
-  const [picture, setPicture] = useState("Home");
   const [showContent, setShowContent] = useState(true);
-
+  const [toQuartet, setToQuartet] = useState(false);
+  console.log("showContent", showContent);
+  console.log("toQuartet", toQuartet);
   return (
     <div className="App">
       <NavBarMM
-        picture={picture}
-        setPicture={setPicture}
         showContent={showContent}
         setShowContent={setShowContent}
+        toQuartet={toQuartet}
+        setToQuartet={setToQuartet}
       />
       <Switch>
         <Route
@@ -55,10 +56,9 @@ function Container() {
           exact
           component={() => (
             <Projects
-              picture={picture}
-              setPicture={setPicture}
               showContent={showContent}
               setShowContent={setShowContent}
+              setToQuartet={setToQuartet}
             />
           )}
         />

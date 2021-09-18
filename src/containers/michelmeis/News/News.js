@@ -3,11 +3,12 @@ import styles from "./News.module.css";
 import { client } from "../../../client";
 import marked from "marked";
 import ReactPlayer from "react-player";
+import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
 
-function News() {
+function News(props) {
   useEffect(() => {
     client
-      .getEntries({ content_type: "news", order: "fields.index" })
+      .getEntries({ content_type: "news", order: "fields.date" })
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items.reverse());
@@ -19,18 +20,25 @@ function News() {
   return (
     <div className="container">
       <div className={styles.contentContainer}>
-        {items ? (
+        {items && props.showContent ? (
           <div className={styles.container}>
             <div className="fadeIn">
               {items.map((entry, i) => (
                 <div key={"news" + i} className={styles.section}>
-                  <h1
-                    className={styles.title}
-                    dangerouslySetInnerHTML={{
-                      __html: marked(entry.fields.title),
-                    }}
-                  />
+                  <div className={styles.row}>
+                    <h1
+                      className={styles.title}
+                      dangerouslySetInnerHTML={{
+                        __html: marked(entry.fields.title.toUpperCase()),
+                      }}
+                    />
 
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: marked(DateFormatter(entry.fields.date)),
+                      }}
+                    />
+                  </div>
                   {entry.fields.video ? (
                     <div className={styles.videoContainer}>
                       <ReactPlayer

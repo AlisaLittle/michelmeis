@@ -3,7 +3,7 @@ import styles from "./About.module.css";
 import { client } from "../../../client";
 import marked from "marked";
 
-function About() {
+function About(props) {
   useEffect(() => {
     client
       .getEntries({ content_type: "about4tet", order: "fields.index" })
@@ -18,7 +18,7 @@ function About() {
   return (
     <div className="container4tet">
       <div className="contentContainer">
-        {items ? (
+        {items && props.showContent ? (
           <div className="fadeIn">
             <div className={styles.align}>
               {items.map((entry, i) => (

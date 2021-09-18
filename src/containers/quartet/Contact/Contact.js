@@ -3,8 +3,9 @@ import styles from "./Contact.module.css";
 import { client } from "../../../client";
 import marked from "marked";
 import ContactForm from "../../../components/ContactForm/ContactForm";
+import { openInNewTab } from "../../../components/OpenInNewTab";
 
-function About() {
+function About(props) {
   useEffect(() => {
     client
       .getEntries({ content_type: "contact" })
@@ -22,7 +23,7 @@ function About() {
         <div className="fadeIn">
           <div className={styles.align}>
             <div>
-              {items ? (
+              {items && props.showContent ? (
                 <>
                   {items.map((entry, i) => (
                     <div
@@ -35,6 +36,13 @@ function About() {
                       }}
                     />
                   ))}
+                  <button
+                    className="buttonFullLength"
+                    onClick={() => openInNewTab("http://eepurl.com/hH-Ba9")}
+                  >
+                    Click here to subscribe for the newsletter
+                  </button>
+                  <em>Fill out the form to contact me directly</em>
                   <ContactForm buttonDark={true} />
                 </>
               ) : null}

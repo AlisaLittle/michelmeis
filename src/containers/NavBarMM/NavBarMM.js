@@ -1,35 +1,36 @@
 import React, { useState } from "react";
-import Home from "../../../pictures/Home.jpg";
+import Home from "../../pictures/Home.jpg";
 import styles from "./NavBarMM.module.css";
 import { Redirect, useLocation } from "react-router-dom";
-import SocialMedia from "../../../components/SocialMedia/SocialMedia";
-import News from "../../../pictures/Meis/News.jpg";
-import About from "../../../pictures/Meis/About.jpg";
-import Projects from "../../../pictures/Meis/Projects.jpg";
-import Video from "../../../pictures/Meis/Video.jpg";
-import Live from "../../../pictures/Meis/Live.jpg";
-import Contact from "../../../pictures/Meis/Contact.jpg";
-import ContactQuartet from "../../../pictures/Quartet/Home.jpg";
-import AboutQuartet from "../../../pictures/Quartet/About.jpg";
-import HomeQuartet from "../../../pictures/Quartet/Contact.jpg";
-import LiveQuartet from "../../../pictures/Quartet/Live.jpg";
-import MusicQuartet from "../../../pictures/Quartet/Music.jpg";
-import NewsQuartet from "../../../pictures/Quartet/News.jpg";
-import VideoQuartet from "../../../pictures/Quartet/Video.jpg";
+import SocialMedia from "../../components/SocialMedia/SocialMedia";
+import News from "../../pictures/Meis/News.jpg";
+import About from "../../pictures/Meis/About.jpg";
+import Projects from "../../pictures/Meis/Projects.jpg";
+import Video from "../../pictures/Meis/Video.jpg";
+import Live from "../../pictures/Meis/Live.jpg";
+import Contact from "../../pictures/Meis/Contact.jpg";
+import ContactQuartet from "../../pictures/Quartet/Home.jpg";
+import AboutQuartet from "../../pictures/Quartet/About.jpg";
+import HomeQuartet from "../../pictures/Quartet/Contact.jpg";
+import LiveQuartet from "../../pictures/Quartet/Live.jpg";
+import MusicQuartet from "../../pictures/Quartet/Music.jpg";
+import NewsQuartet from "../../pictures/Quartet/News.jpg";
+import VideoQuartet from "../../pictures/Quartet/Video.jpg";
 
 function NavBar(props) {
-  const [transition, setTransition] = useState(false);
   const [secondTransition, setSecondTransition] = useState(false);
-  const [photoSidebar, setPhotoSidebar] = useState(false);
-  const [photoSidebarQuartet, setPhotoSidebarQuartet] = useState(false);
-  const [redirect, setRedirect] = useState(null);
+  const [picture, setPicture] = useState("Home");
   const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
+  const [transition, setTransition] = useState(false);
+  const [photoSidebarQuartet, setPhotoSidebarQuartet] = useState(false);
+  const [photoSidebar, setPhotoSidebar] = useState(false);
+  const [redirect, setRedirect] = useState(null);
   const [toQuartet, setToQuartet] = useState(false);
   const [toMichelMeis, setToMichelMeis] = useState(false);
   const [delayHandler, setDelayHandler] = useState(null);
   const [doItOnce, setDoItOnce] = useState(true);
-  const path = useLocation().pathname;
 
+  const path = useLocation().pathname;
   const routes = [
     { name: "News", picture: News },
     { name: "About", picture: About },
@@ -47,70 +48,91 @@ function NavBar(props) {
   ];
 
   const handleClick = (name) => {
+    props.setShowContent(false);
+    setTimeout(() => props.setShowContent(true), 1500);
     if (name === "Projects") {
       handleHome(name);
     } else {
-      setTransition(true);
-      if (!photoSidebar) {
-        setSecondTransition(true);
+      setTimeout(() => {
+        setTransition(true);
         setRedirect(name);
-        setTimeout(() => {}, 600);
+      }, 0);
+      if (!photoSidebar) {
+        setPicture(name);
+        setTimeout(() => {
+          setSecondTransition(true);
+        }, 300);
         setTimeout(() => {
           setPhotoSidebar(true);
           setTransition(false);
-        }, 100);
+        }, 400);
         setTimeout(() => {
           setSecondTransition(false);
         }, 2000);
       } else {
-        setRedirect(name);
+        setTimeout(() => {
+          setPicture(name);
+        }, 1000);
         setTimeout(() => {
           setTransition(false);
-        }, 900);
+          setSecondTransition(true);
+        }, 1500);
         setTimeout(() => {
           setSecondTransition(false);
-        }, 2000);
+        }, 2500);
       }
     }
   };
 
   const handleClickQuartet = (name) => {
-    setTransition(true);
+    props.setShowContent(false);
+    setTimeout(() => props.setShowContent(true), 1500);
+    setTimeout(() => {
+      setTransition(true);
+      setRedirect(name);
+    }, 0);
     if (!photoSidebarQuartet) {
-      setSecondTransition(true);
-      setTimeout(() => {}, 600);
+      console.log("1");
+
+      setPictureQuartet(name);
+      setTimeout(() => {
+        setSecondTransition(true);
+      }, 300);
       setTimeout(() => {
         setPhotoSidebarQuartet(true);
         setTransition(false);
-      }, 1000);
+      }, 400);
       setTimeout(() => {
         setSecondTransition(false);
-        setRedirect(name);
       }, 2000);
     } else {
+      console.log("2");
+      setTimeout(() => {
+        setPictureQuartet(name);
+      }, 1000);
       setTimeout(() => {
         setTransition(false);
-        setRedirect(name);
-      }, 900);
+        setSecondTransition(true);
+      }, 1500);
       setTimeout(() => {
         setSecondTransition(false);
-      }, 2000);
+      }, 2500);
     }
   };
-
+  console.log(pictureQuartet);
   const handleHover = (name) => {
-    if (!transition && !secondTransition) {
+    /*     if (!transition && !secondTransition) {
       setDelayHandler(
         setTimeout(() => {
-          props.setPicture(name);
+          setPicture(name);
         }, 500)
       );
     } else {
       return null;
-    }
+    } */
   };
   const handleHoverQuartet = (name) => {
-    if (!transition && !secondTransition) {
+    /*     if (!transition && !secondTransition) {
       setDelayHandler(
         setTimeout(() => {
           setPictureQuartet(name);
@@ -118,14 +140,16 @@ function NavBar(props) {
       );
     } else {
       return null;
-    }
+    } */
   };
   const handleMouseLeave = () => {
-    clearTimeout(delayHandler);
+    /*     clearTimeout(delayHandler); */
   };
 
   const handleHome = (title) => {
-    props.setPicture(title);
+    setTimeout(() => {
+      setPicture(title);
+    }, 1000);
     setTransition(true);
     if (title === "Home") {
       setRedirect("/");
@@ -138,7 +162,9 @@ function NavBar(props) {
     }, 1000);
   };
   const handleHomeQuartet = (title) => {
-    setPictureQuartet(title);
+    setTimeout(() => {
+      setPictureQuartet(title);
+    }, 1000);
     setTransition(true);
     setRedirect("/4tet");
     setTimeout(() => {
@@ -157,14 +183,26 @@ function NavBar(props) {
     if (quartetRoute !== "/4tet") {
       setTimeout(() => setRedirect("/4tet"), 1000);
     }
+    props.setShowContent(false);
+    setTimeout(() => props.setShowContent(true), 1000);
   };
+
+  const [oneTime, setOneTime] = useState(true);
+  if (props.toQuartet && oneTime) {
+    props.setToQuartet(false);
+    setOneTime(false);
+    goToQuartet();
+    setTimeout(() => setOneTime(true), 2000);
+  }
   const goToMichelMeis = () => {
     setToQuartet(false);
     setToMichelMeis(true);
     setPhotoSidebar(false);
-    props.setPicture("Home");
+    setPicture("Home");
     setTimeout(() => setRedirect("/"), 1000);
     setTimeout(() => setToMichelMeis(false), 1000);
+    props.setShowContent(false);
+    setTimeout(() => props.setShowContent(true), 1000);
   };
 
   if (
@@ -175,7 +213,7 @@ function NavBar(props) {
   ) {
     const name = path.substring(1);
     setPhotoSidebar(true);
-    props.setPicture(name);
+    setPicture(name);
     setDoItOnce(false);
   }
   if (quartetRoute === "/4tet" && path !== "/4tet" && doItOnce) {
@@ -219,7 +257,21 @@ function NavBar(props) {
                 }}
               >
                 4TET
-                <div className={styles.icon}>▷</div>
+                <div className={styles.icon}>
+                  <svg
+                    id="triangle"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 31 50"
+                  >
+                    <defs></defs>
+                    <title>Triangle</title>
+                    <polygon points="0.5 1.04 30.2 25 0.5 48.95 0.5 1.04" />
+                    <path
+                      d="M3,2.09,31.41,25,3,47.91V2.09M2,0V50L33,25,2,0Z"
+                      transform="translate(-2 0)"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
             <div
@@ -237,8 +289,7 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/" ? styles.home : null
               } ${
-                props.picture === "Home" ||
-                (path === "/Home" && props.picture === "Home")
+                picture === "Home" || (path === "/Home" && picture === "Home")
                   ? styles.active
                   : ""
               }`}
@@ -251,8 +302,7 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/News" ? styles.news : null
               } ${
-                props.picture === "News" ||
-                (path === "/News" && props.picture === "News")
+                picture === "News" || (path === "/News" && picture === "News")
                   ? styles.active
                   : ""
               }`}
@@ -265,8 +315,8 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/About" ? styles.about : null
               } ${
-                props.picture === "About" ||
-                (path === "/About" && props.picture === "About")
+                picture === "About" ||
+                (path === "/About" && picture === "About")
                   ? styles.active
                   : ""
               }`}
@@ -279,8 +329,8 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Projects" ? styles.projects : null
               } ${
-                props.picture === "Projects" ||
-                (path === "/Projects" && props.picture === "Projects")
+                picture === "Projects" ||
+                (path === "/Projects" && picture === "Projects")
                   ? styles.active
                   : ""
               }`}
@@ -293,8 +343,7 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Live" ? styles.live : null
               } ${
-                props.picture === "Live" ||
-                (path === "/Live" && props.picture === "Live")
+                picture === "Live" || (path === "/Live" && picture === "Live")
                   ? styles.active
                   : ""
               }`}
@@ -307,8 +356,8 @@ function NavBar(props) {
               } ${photoSidebar ? styles.photoSidebar : null} ${
                 photoSidebar || path === "/Contact" ? styles.contact : null
               } ${
-                props.picture === "Contact" ||
-                (path === "/Contact" && props.picture === "Contact")
+                picture === "Contact" ||
+                (path === "/Contact" && picture === "Contact")
                   ? styles.active
                   : ""
               }`}
@@ -345,7 +394,22 @@ function NavBar(props) {
           >
             {path.startsWith("/4tet") && (
               <div className={`${styles.secondDark} ${styles.main}`}>
-                <div className={`${styles.icon} ${styles.iconLeft}`}>▷</div>
+                <div className={`${styles.icon} ${styles.iconLeft}`}>
+                  {" "}
+                  <svg
+                    id="triangle"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 31 50"
+                  >
+                    <defs></defs>
+                    <title>Triangle</title>
+                    <polygon points="0.5 1.04 30.2 25 0.5 48.95 0.5 1.04" />
+                    <path
+                      d="M3,2.09,31.41,25,3,47.91V2.09M2,0V50L33,25,2,0Z"
+                      transform="translate(-2 0)"
+                    />
+                  </svg>
+                </div>
                 MM
               </div>
             )}
@@ -368,9 +432,9 @@ function NavBar(props) {
                   key={"routesQuartet" + i}
                   className={`${styles.navPointQuartet} ${
                     path === "/4tet/" + route.name
-                      ? styles.navPointActive
+                      ? styles.navPointActiveQuartet
                       : null
-                  }`}
+                  } `}
                   onMouseOver={() => handleHoverQuartet(route.name + "Quartet")}
                   onMouseLeave={() => handleMouseLeave()}
                   onClick={() => handleClickQuartet("/4tet/" + route.name)}
@@ -383,13 +447,25 @@ function NavBar(props) {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
+              pictureQuartet === "/4tet/News" ||
+              (path === "/4tet/News" && pictureQuartet === "/4tet/News")
+                ? styles.active
+                : ""
+            }`}
+            src={NewsQuartet}
+            alt="NewsQuartet"
+          />
+          <img
+            className={`${styles.imageQuartet}   ${
+              photoSidebarQuartet ? styles.photoSidebarQuartet : null
+            } ${
               photoSidebarQuartet || path === "/4tet"
                 ? styles.homeQuartet
                 : null
             } ${
-              pictureQuartet === "HomeQuartet" ||
-              (path === "/4tet" && pictureQuartet === "Home")
+              path === "/4tet" ||
+              (path === "/4tet" && pictureQuartet === "/4tet")
                 ? styles.active
                 : ""
             }`}
@@ -400,24 +476,12 @@ function NavBar(props) {
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
-              pictureQuartet === "NewsQuartet" ||
-              (path === "/4tet/News" && pictureQuartet === "NewsQuartet")
-                ? styles.active
-                : ""
-            }`}
-            src={NewsQuartet}
-            alt="NewsQuartet"
-          />
-          <img
-            className={`${styles.imageQuartet}  ${
-              transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} } ${
               photoSidebarQuartet || path === "/4tet/About"
                 ? styles.aboutQuartet
                 : null
             } ${
-              pictureQuartet === "AboutQuartet" ||
-              (path === "/4tet/About" && pictureQuartet === "AboutQuartet")
+              pictureQuartet === "/4tet/About" ||
+              (path === "/4tet/About" && pictureQuartet === "/4tet/About")
                 ? styles.active
                 : ""
             }`}
@@ -432,8 +496,8 @@ function NavBar(props) {
                 ? styles.contactQuartet
                 : null
             } ${
-              pictureQuartet === "ContactQuartet" ||
-              (path === "/4tet/Contact" && pictureQuartet === "ContactQuartet")
+              pictureQuartet === "/4tet/Contact" ||
+              (path === "/4tet/Contact" && pictureQuartet === "/4tet/Contact")
                 ? styles.active
                 : ""
             }`}
@@ -448,8 +512,8 @@ function NavBar(props) {
                 ? styles.liveQuartet
                 : null
             } ${
-              pictureQuartet === "LiveQuartet" ||
-              (path === "/4tet/Live" && pictureQuartet === "LiveQuartet")
+              pictureQuartet === "/4tet/Live" ||
+              (path === "/4tet/Live" && pictureQuartet === "/4tet/Live")
                 ? styles.active
                 : ""
             }`}
@@ -464,8 +528,8 @@ function NavBar(props) {
                 ? styles.musicQuartet
                 : null
             } ${
-              pictureQuartet === "MusicQuartet" ||
-              (path === "/4tet/Music" && pictureQuartet === "MusicQuartet")
+              pictureQuartet === "/4tet/Music" ||
+              (path === "/4tet/Music" && pictureQuartet === "/4tet/Music")
                 ? styles.active
                 : ""
             }`}
@@ -480,8 +544,8 @@ function NavBar(props) {
                 ? styles.videoQuartet
                 : null
             } ${
-              pictureQuartet === "VideoQuartet" ||
-              (path === "/4tet/Video" && pictureQuartet === "VideoQuartet")
+              pictureQuartet === "/4tet/Video" ||
+              (path === "/4tet/Video" && pictureQuartet === "/4tet/Video")
                 ? styles.active
                 : ""
             }`}

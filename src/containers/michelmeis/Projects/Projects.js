@@ -29,7 +29,7 @@ function Projects(props) {
 
   return (
     <div className={`${picture ? styles.background : null}`}>
-      {items ? (
+      {items && props.showContent ? (
         <>
           <div className={styles.titleContainer}>
             {items.map((entry, i) => (
@@ -58,20 +58,32 @@ function Projects(props) {
                           __html: marked(entry.fields.genre),
                         }}
                       ></div>
-                      <div className={`row ${styles.marginTop}`}>
+                      {entry.fields.title === "Michel Meis 4tet" ? (
                         <button
-                          className={`button ${styles.margin}`}
+                          className={`button `}
+                          onClick={() => {
+                            props.setToQuartet(true);
+                            props.setShowContent(false);
+                            setTimeout(() => props.setShowContent(true), 1500);
+                          }}
+                        >
+                          Infos
+                        </button>
+                      ) : (
+                        <button
+                          className={`button `}
                           onClick={() => openInNewTab(entry.fields.linkInfo)}
                         >
                           Infos
                         </button>
-                        <button
-                          className="button"
-                          onClick={() => openInNewTab(entry.fields.linkVideo)}
-                        >
-                          Videos
-                        </button>
-                      </div>
+                      )}
+
+                      <div
+                        className={`${styles.marginTop} ${styles.text}`}
+                        dangerouslySetInnerHTML={{
+                          __html: marked(entry.fields.text),
+                        }}
+                      ></div>
                     </>
                   ) : null}
                 </div>

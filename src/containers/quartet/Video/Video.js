@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Video.module.css";
 import { client } from "../../../client";
-import marked from "marked";
 import ReactPlayer from "react-player";
 
-function Video() {
+function Video(props) {
   useEffect(() => {
     client
       .getEntries({
@@ -22,7 +21,7 @@ function Video() {
   return (
     <div className={styles.container4tet}>
       <div className={styles.contentContainer}>
-        {items ? (
+        {items && props.showContent ? (
           <div className={styles.container}>
             {items.map((entry, i) => (
               <div key={"news" + i} className={styles.section}>
