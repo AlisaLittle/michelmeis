@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/michelmeis/static/css/main.0c11e5d3.chunk.css",
-    "main.js": "/michelmeis/static/js/main.2ce0228c.chunk.js",
-    "main.js.map": "/michelmeis/static/js/main.2ce0228c.chunk.js.map",
-    "runtime-main.js": "/michelmeis/static/js/runtime-main.2b2b3d25.js",
-    "runtime-main.js.map": "/michelmeis/static/js/runtime-main.2b2b3d25.js.map",
+    "main.css": "/michelmeis/static/css/main.54a2f814.chunk.css",
+    "main.js": "/michelmeis/static/js/main.327c940c.chunk.js",
+    "main.js.map": "/michelmeis/static/js/main.327c940c.chunk.js.map",
+    "runtime-main.js": "/michelmeis/static/js/runtime-main.a498e49e.js",
+    "runtime-main.js.map": "/michelmeis/static/js/runtime-main.a498e49e.js.map",
     "static/css/2.6c5a077b.chunk.css": "/michelmeis/static/css/2.6c5a077b.chunk.css",
-    "static/js/2.d0c61a1c.chunk.js": "/michelmeis/static/js/2.d0c61a1c.chunk.js",
-    "static/js/2.d0c61a1c.chunk.js.map": "/michelmeis/static/js/2.d0c61a1c.chunk.js.map",
-    "static/js/3.5c9ee85d.chunk.js": "/michelmeis/static/js/3.5c9ee85d.chunk.js",
-    "static/js/3.5c9ee85d.chunk.js.map": "/michelmeis/static/js/3.5c9ee85d.chunk.js.map",
+    "static/js/2.fa6befb7.chunk.js": "/michelmeis/static/js/2.fa6befb7.chunk.js",
+    "static/js/2.fa6befb7.chunk.js.map": "/michelmeis/static/js/2.fa6befb7.chunk.js.map",
+    "static/js/3.c9503603.chunk.js": "/michelmeis/static/js/3.c9503603.chunk.js",
+    "static/js/3.c9503603.chunk.js.map": "/michelmeis/static/js/3.c9503603.chunk.js.map",
     "index.html": "/michelmeis/index.html",
     "static/css/2.6c5a077b.chunk.css.map": "/michelmeis/static/css/2.6c5a077b.chunk.css.map",
-    "static/css/main.0c11e5d3.chunk.css.map": "/michelmeis/static/css/main.0c11e5d3.chunk.css.map",
-    "static/js/2.d0c61a1c.chunk.js.LICENSE.txt": "/michelmeis/static/js/2.d0c61a1c.chunk.js.LICENSE.txt",
+    "static/css/main.54a2f814.chunk.css.map": "/michelmeis/static/css/main.54a2f814.chunk.css.map",
+    "static/js/2.fa6befb7.chunk.js.LICENSE.txt": "/michelmeis/static/js/2.fa6befb7.chunk.js.LICENSE.txt",
     "static/media/About.1a470cf8.jpg": "/michelmeis/static/media/About.1a470cf8.jpg",
     "static/media/About.7512f151.jpg": "/michelmeis/static/media/About.7512f151.jpg",
     "static/media/Contact.2a224677.jpg": "/michelmeis/static/media/Contact.2a224677.jpg",
@@ -30,10 +30,10 @@
     "static/media/Video.48ae3f49.jpg": "/michelmeis/static/media/Video.48ae3f49.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2b2b3d25.js",
+    "static/js/runtime-main.a498e49e.js",
     "static/css/2.6c5a077b.chunk.css",
-    "static/js/2.d0c61a1c.chunk.js",
-    "static/css/main.0c11e5d3.chunk.css",
-    "static/js/main.2ce0228c.chunk.js"
+    "static/js/2.fa6befb7.chunk.js",
+    "static/css/main.54a2f814.chunk.css",
+    "static/js/main.327c940c.chunk.js"
   ]
 }
