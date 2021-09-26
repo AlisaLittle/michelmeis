@@ -3,6 +3,7 @@ import styles from "./Projects.module.css";
 import { client } from "../../../client";
 import "react-image-gallery/styles/css/image-gallery.css";
 import marked from "marked";
+import { openInNewTab } from "../../../components/OpenInNewTab";
 
 function Projects(props) {
   useEffect(() => {
@@ -20,11 +21,6 @@ function Projects(props) {
 
   const handleClick = (title) => {
     setPicture(title);
-  };
-
-  const openInNewTab = (url) => {
-    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
-    if (newWindow) newWindow.opener = null;
   };
 
   return (
@@ -72,7 +68,12 @@ function Projects(props) {
                       ) : (
                         <button
                           className={`button `}
-                          onClick={() => openInNewTab(entry.fields.linkInfo)}
+                          onClick={() =>
+                            openInNewTab(
+                              entry.fields.linkInfo,
+                              entry.fields.title
+                            )
+                          }
                         >
                           Infos
                         </button>

@@ -18,7 +18,6 @@ import NewsQuartet from "../../pictures/Quartet/News.jpg";
 import VideoQuartet from "../../pictures/Quartet/Video.jpg";
 
 function NavBar(props) {
-  const [secondTransition, setSecondTransition] = useState(false);
   const [picture, setPicture] = useState("Home");
   const [pictureQuartet, setPictureQuartet] = useState("HomeQuartet");
   const [transition, setTransition] = useState(false);
@@ -27,7 +26,6 @@ function NavBar(props) {
   const [redirect, setRedirect] = useState(null);
   const [toQuartet, setToQuartet] = useState(false);
   const [toMichelMeis, setToMichelMeis] = useState(false);
-  const [delayHandler, setDelayHandler] = useState(null);
   const [doItOnce, setDoItOnce] = useState(true);
 
   const path = useLocation().pathname;
@@ -60,26 +58,16 @@ function NavBar(props) {
       if (!photoSidebar) {
         setPicture(name);
         setTimeout(() => {
-          setSecondTransition(true);
-        }, 300);
-        setTimeout(() => {
           setPhotoSidebar(true);
           setTransition(false);
-        }, 400);
-        setTimeout(() => {
-          setSecondTransition(false);
-        }, 2000);
+        }, 700);
       } else {
         setTimeout(() => {
           setPicture(name);
         }, 1000);
         setTimeout(() => {
           setTransition(false);
-          setSecondTransition(true);
-        }, 1500);
-        setTimeout(() => {
-          setSecondTransition(false);
-        }, 2500);
+        }, 1700);
       }
     }
   };
@@ -92,58 +80,19 @@ function NavBar(props) {
       setRedirect(name);
     }, 0);
     if (!photoSidebarQuartet) {
-      console.log("1");
-
       setPictureQuartet(name);
-      setTimeout(() => {
-        setSecondTransition(true);
-      }, 300);
       setTimeout(() => {
         setPhotoSidebarQuartet(true);
         setTransition(false);
-      }, 400);
-      setTimeout(() => {
-        setSecondTransition(false);
-      }, 2000);
+      }, 700);
     } else {
-      console.log("2");
       setTimeout(() => {
         setPictureQuartet(name);
       }, 1000);
       setTimeout(() => {
         setTransition(false);
-        setSecondTransition(true);
-      }, 1500);
-      setTimeout(() => {
-        setSecondTransition(false);
-      }, 2500);
+      }, 1700);
     }
-  };
-  console.log(pictureQuartet);
-  const handleHover = (name) => {
-    /*     if (!transition && !secondTransition) {
-      setDelayHandler(
-        setTimeout(() => {
-          setPicture(name);
-        }, 500)
-      );
-    } else {
-      return null;
-    } */
-  };
-  const handleHoverQuartet = (name) => {
-    /*     if (!transition && !secondTransition) {
-      setDelayHandler(
-        setTimeout(() => {
-          setPictureQuartet(name);
-        }, 500)
-      );
-    } else {
-      return null;
-    } */
-  };
-  const handleMouseLeave = () => {
-    /*     clearTimeout(delayHandler); */
   };
 
   const handleHome = (title) => {
@@ -179,7 +128,7 @@ function NavBar(props) {
     setToQuartet(true);
     setToMichelMeis(false);
     setPhotoSidebarQuartet(false);
-    setPictureQuartet("HomeQuartet");
+    setPictureQuartet("/4tet");
     if (quartetRoute !== "/4tet") {
       setTimeout(() => setRedirect("/4tet"), 1000);
     }
@@ -238,8 +187,6 @@ function NavBar(props) {
               <div
                 className={`${styles.first} ${styles.main} ${styles.mainWidth} `}
                 onClick={() => handleHome("Home")}
-                onMouseOver={() => handleHover("Home")}
-                onMouseLeave={() => handleMouseLeave()}
               >
                 MM
               </div>
@@ -286,9 +233,7 @@ function NavBar(props) {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/" ? styles.home : null
-              } ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${styles.home} ${
                 picture === "Home" || (path === "/Home" && picture === "Home")
                   ? styles.active
                   : ""
@@ -299,9 +244,7 @@ function NavBar(props) {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/News" ? styles.news : null
-              } ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${styles.news} ${
                 picture === "News" || (path === "/News" && picture === "News")
                   ? styles.active
                   : ""
@@ -312,9 +255,7 @@ function NavBar(props) {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/About" ? styles.about : null
-              } ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${styles.about} ${
                 picture === "About" ||
                 (path === "/About" && picture === "About")
                   ? styles.active
@@ -327,7 +268,7 @@ function NavBar(props) {
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
               } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/Projects" ? styles.projects : null
+                styles.projects
               } ${
                 picture === "Projects" ||
                 (path === "/Projects" && picture === "Projects")
@@ -340,9 +281,7 @@ function NavBar(props) {
             <img
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
-              } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/Live" ? styles.live : null
-              } ${
+              } ${photoSidebar ? styles.photoSidebar : null} ${styles.live} ${
                 picture === "Live" || (path === "/Live" && picture === "Live")
                   ? styles.active
                   : ""
@@ -354,7 +293,7 @@ function NavBar(props) {
               className={`${styles.image}  ${
                 transition ? styles.transition : ""
               } ${photoSidebar ? styles.photoSidebar : null} ${
-                photoSidebar || path === "/Contact" ? styles.contact : null
+                styles.contact
               } ${
                 picture === "Contact" ||
                 (path === "/Contact" && picture === "Contact")
@@ -372,8 +311,6 @@ function NavBar(props) {
                     className={`${styles.navPoint} ${
                       path === "/" + route.name ? styles.navPointActive : null
                     }`}
-                    onMouseOver={() => handleHover(route.name)}
-                    onMouseLeave={() => handleMouseLeave()}
                     onClick={() => handleClick(route.name)}
                   >
                     {route.name.toUpperCase()}
@@ -414,13 +351,11 @@ function NavBar(props) {
               </div>
             )}
           </div>
-          <div className={styles.boxBottom}>
+          <div className={styles.boxBottomQuartet}>
             <SocialMedia quartet={true} />
             <div
               className={`${styles.firstDark} ${styles.main}`}
-              onClick={() => handleHomeQuartet("HomeQuartet")}
-              onMouseOver={() => handleHoverQuartet("HomeQuartet")}
-              onMouseLeave={() => handleMouseLeave()}
+              onClick={() => handleHomeQuartet("/4tet")}
             >
               4TET
             </div>
@@ -435,8 +370,6 @@ function NavBar(props) {
                       ? styles.navPointActiveQuartet
                       : null
                   } `}
-                  onMouseOver={() => handleHoverQuartet(route.name + "Quartet")}
-                  onMouseLeave={() => handleMouseLeave()}
                   onClick={() => handleClickQuartet("/4tet/" + route.name)}
                 >
                   {route.name.toUpperCase()}
@@ -445,26 +378,16 @@ function NavBar(props) {
             })}
           </nav>
           <img
-            className={`${styles.imageQuartet}  ${
+            className={`${styles.imageQuartet} ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
-              pictureQuartet === "/4tet/News" ||
-              (path === "/4tet/News" && pictureQuartet === "/4tet/News")
-                ? styles.active
-                : ""
-            }`}
-            src={NewsQuartet}
-            alt="NewsQuartet"
-          />
-          <img
-            className={`${styles.imageQuartet}   ${
-              photoSidebarQuartet ? styles.photoSidebarQuartet : null
+            }  ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              styles.homeQuartet
             } ${
               photoSidebarQuartet || path === "/4tet"
                 ? styles.homeQuartet
                 : null
             } ${
-              path === "/4tet" ||
+              pictureQuartet === "/4tet" ||
               (path === "/4tet" && pictureQuartet === "/4tet")
                 ? styles.active
                 : ""
@@ -475,7 +398,23 @@ function NavBar(props) {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              styles.newsQuartet
+            } ${
+              pictureQuartet === "/4tet/News" ||
+              (path === "/4tet/News" && pictureQuartet === "/4tet/News")
+                ? styles.active
+                : ""
+            }`}
+            src={NewsQuartet}
+            alt="NewsQuartet"
+          />
+          <img
+            className={`${styles.imageQuartet}  ${
+              transition ? styles.transition : ""
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              styles.aboutQuartet
+            } ${
               photoSidebarQuartet || path === "/4tet/About"
                 ? styles.aboutQuartet
                 : null
@@ -491,7 +430,9 @@ function NavBar(props) {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
+              styles.contactQuartet
+            } ${
               photoSidebarQuartet || path === "/4tet/Contact"
                 ? styles.contactQuartet
                 : null
@@ -507,7 +448,9 @@ function NavBar(props) {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
+              styles.liveQuartet
+            } ${
               photoSidebarQuartet || path === "/4tet/Live"
                 ? styles.liveQuartet
                 : null
@@ -524,6 +467,8 @@ function NavBar(props) {
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              styles.musicQuartet
+            } ${
               photoSidebarQuartet || path === "/4tet/Music"
                 ? styles.musicQuartet
                 : null
@@ -539,7 +484,9 @@ function NavBar(props) {
           <img
             className={`${styles.imageQuartet}  ${
               transition ? styles.transition : ""
-            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
+            } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
+              styles.videoQuartet
+            } ${
               photoSidebarQuartet || path === "/4tet/Video"
                 ? styles.videoQuartet
                 : null

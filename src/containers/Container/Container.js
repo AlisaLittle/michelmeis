@@ -1,5 +1,5 @@
-import { Route, Switch } from "react-router-dom";
-import React, { useState } from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import News from "../michelmeis/News/News";
 import About from "../michelmeis/About/About";
 import Contact from "../michelmeis/Contact/Contact";
@@ -12,8 +12,12 @@ import Music4tet from "../quartet/Music/Music";
 import Live4tet from "../quartet/Live/Live";
 import Video4tet from "../quartet/Video/Video";
 import Contact4tet from "../quartet/Contact/Contact";
+import ReactGA from "react-ga";
 
 function Container() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
   const [showContent, setShowContent] = useState(true);
   const [toQuartet, setToQuartet] = useState(false);
   console.log("showContent", showContent);
@@ -134,4 +138,4 @@ function Container() {
   );
 }
 
-export default Container;
+export default withRouter(Container);

@@ -125,7 +125,8 @@ svg {
   z-index: 5;
   text-decoration: none;
 }
-.boxBottom {
+.boxBottom,
+.boxBottomQuartet {
   position: absolute;
   bottom: 0px;
   z-index: 5;
@@ -265,36 +266,6 @@ svg {
   margin-top: 70vh;
 }
 
-.news {
-  object-position: 70% 50%;
-}
-.about {
-  object-position: 72% 50%;
-}
-/* .projects {
-  object-position: 68% 50%;
-} */
-.video {
-  object-position: 30% 50%;
-}
-.contact {
-  object-position: 17% 50%;
-}
-.newsQuartet {
-  object-position: 42% 50%;
-}
-.aboutQuartet {
-  object-position: 45% 50%;
-}
-.videoQuartet {
-  object-position: 40% 50%;
-}
-.contactQuartet {
-  object-position: 70% 50%;
-}
-.cat {
-  object-position: 100% 10%;
-}
 .screen {
   width: 100vw;
   height: 100vh;
@@ -348,12 +319,21 @@ svg {
     filter: brightness(40%);
     object-fit: cover;
     z-index: 4;
-
     -webkit-filter: brightness(40%);
   }
-
-  .transition {
+  .imageQuartet {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    filter: brightness(110%);
+    left: 0;
+    opacity: 0;
+    object-fit: cover;
+    object-position: top;
+    z-index: 4;
+    -webkit-filter: brightness(110%);
   }
+
   .active {
     opacity: 1;
     transition: 1s ease;
@@ -378,15 +358,30 @@ svg {
     text-decoration: none;
   }
   .boxBottom {
+    width: 100vw;
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    cursor: pointer;
     bottom: 0px;
     right: 0px;
     z-index: 5;
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+    text-decoration: none;
   }
 
+  .boxBottomQuartet {
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    text-decoration: none;
+  }
   .nav {
     display: flex;
     flex-direction: row;
@@ -394,6 +389,18 @@ svg {
     width: 100vw;
     padding-bottom: 1vh;
     border-bottom: 1px solid snow;
+    height: fit-content;
+    justify-content: space-between;
+    top: 10vh;
+    z-index: 6;
+  }
+  .navQuartet {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100vw;
+    padding-bottom: 1vh;
+    border-bottom: 1px solid rosybrown;
     height: fit-content;
     justify-content: space-between;
     top: 10vh;
@@ -411,7 +418,15 @@ svg {
     font-weight: 800;
     cursor: pointer;
   }
-
+  .navPointQuartet {
+    color: transparent;
+    -webkit-text-stroke: 1px rosybrown;
+    text-align: end;
+    font-family: "Helvetica";
+    font-size: 4vw;
+    font-weight: 800;
+    cursor: pointer;
+  }
   .container {
     overflow: hidden;
   }
@@ -467,4 +482,34 @@ svg {
       left: 0px;
     }
   }
+  .news {
+    object-position: 70% 50%;
+  }
+  .about {
+    object-position: 72% 50%;
+  }
+  .projects {
+    object-position: 68% 50%;
+  }
+  .video {
+    object-position: 30% 50%;
+  }
+  .contact {
+    object-position: 25% 50%;
+  }
+  .homeQuartet {
+    object-position: 54% 50%;
+  }
+  .newsQuartet {
+    object-position: 45% 50%;
+  }
+  .cat {
+    object-position: 100% 10%;
+  }
+}
+.about {
+  object-position: 72% 50%;
+}
+.news {
+  object-position: 70% 50%;
 }

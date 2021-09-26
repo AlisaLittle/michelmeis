@@ -44,6 +44,9 @@ function News(props) {
                       <ReactPlayer
                         width="100%"
                         height="100%"
+                        playing={true}
+                        muted={true}
+                        controls={true}
                         url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
                       />
                     </div>

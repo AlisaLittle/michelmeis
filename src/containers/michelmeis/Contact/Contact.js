@@ -38,7 +38,9 @@ function Contact(props) {
                   ))}
                   <button
                     className="buttonFullLength"
-                    onClick={() => openInNewTab("http://eepurl.com/hH-Ba9")}
+                    onClick={() =>
+                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
+                    }
                   >
                     Click here to subscribe for the newsletter
                   </button>

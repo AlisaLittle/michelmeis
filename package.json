@@ -2,7 +2,7 @@
   "name": "michel-meis",
   "version": "0.1.0",
   "private": true,
-  "homepage": " https://alisalittle.github.io/michelmeis/",
+  "homepage": "https://alisalittle.github.io/michelmeis/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -12,6 +12,7 @@
     "marked": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
     "react-hook-form": "6.15.1",
     "react-horizontal-scrolling-menu": "^0.7.10",
     "react-icons": "^4.2.0",

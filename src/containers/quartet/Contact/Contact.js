@@ -8,7 +8,7 @@ import { openInNewTab } from "../../../components/OpenInNewTab";
 function About(props) {
   useEffect(() => {
     client
-      .getEntries({ content_type: "contact" })
+      .getEntries({ content_type: "contact4tet" })
       .then((res) => {
         console.log("API", res.items);
         setItems(res.items.reverse());
@@ -37,8 +37,10 @@ function About(props) {
                     />
                   ))}
                   <button
-                    className="buttonFullLength"
-                    onClick={() => openInNewTab("http://eepurl.com/hH-Ba9")}
+                    className="buttonFullLengthDark"
+                    onClick={() =>
+                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
+                    }
                   >
                     Click here to subscribe for the newsletter
                   </button>
