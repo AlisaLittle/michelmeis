@@ -120,8 +120,8 @@ ul {
   height: 80vh;
   z-index: 0;
   text-align: start;
-  letter-spacing: 3px;
-  line-height: 1.6;
+  letter-spacing: 1px;
+  line-height: 1.7;
   overflow: scroll;
 }
 
@@ -150,7 +150,6 @@ ul {
   background-color: snow;
   font-size: var(--fontSize);
   border: 1px solid black;
-  opacity: 70%;
 }
 .button {
   display: flex;
@@ -160,12 +159,12 @@ ul {
   height: 25px;
   width: 140px;
   font-size: var(--fontSize);
-  animation: fadeIn 2s;
+  animation: fadeIn 1.5s;
   padding: 20px 40px;
   color: var(--white);
   background-color: transparent;
   border: 1px solid var(--white);
-  -webkit-animation: fadeIn 2s;
+  -webkit-animation: fadeIn 1.5s;
 }
 .buttonFullLength {
   display: flex;
@@ -173,15 +172,15 @@ ul {
   justify-content: center;
   cursor: pointer;
   height: 25px;
-  margin: 40px auto;
+  margin: 30px auto;
   width: 100%;
-  animation: fadeIn 2s;
+  animation: fadeIn 1.5s;
   padding: 20px 40px;
   color: var(--white);
   background-color: transparent;
   font-size: var(--fontSize);
   border: 1px solid var(--white);
-  -webkit-animation: fadeIn 2s;
+  -webkit-animation: fadeIn 1.5s;
 }
 .buttonFullLengthDark {
   display: flex;
@@ -189,15 +188,15 @@ ul {
   justify-content: center;
   cursor: pointer;
   height: 25px;
-  margin: 40px auto;
+  margin: 30px auto;
   width: 100%;
-  animation: fadeIn 2s;
+  animation: fadeIn 1.5s;
   padding: 20px 40px;
   color: rosybrown;
   background-color: transparent;
   font-size: var(--fontSize);
   border: 1px solid rosybrown;
-  -webkit-animation: fadeIn 2s;
+  -webkit-animation: fadeIn 1.5s;
 }
 .button:hover,
 .buttonFullLength:hover {
@@ -228,10 +227,8 @@ ul {
 .fadeIn {
   width: var(--contentWidth);
   margin: auto;
-  animation: fadeIn 2s linear 0s;
-  -webkit-animation: fadeIn 2s linear 0s;
-  /*height: -webkit-fill-available;
-  */
+  animation: fadeIn 2s linear;
+  -webkit-animation: fadeIn 2s linear;
 }
 
 @keyframes fadeIn {
@@ -301,7 +298,7 @@ ul {
     display: flex;
     top: 0px;
     right: 0px;
-    height: 78vh;
+    height: 70vh;
     margin-top: 15vh;
     width: var(--contentWidth);
     color: snow;
@@ -312,7 +309,7 @@ ul {
     display: flex;
     top: 0px;
     right: 0px;
-    height: 78vh;
+    height: 70vh;
     margin-top: 15vh;
     width: var(--contentWidth);
     color: black;
@@ -331,8 +328,8 @@ ul {
     z-index: 5;
     text-align: start;
     font-family: "Roboto", sans-serif;
-    line-height: 1.6;
-    font-weight: 200;
+    letter-spacing: 1px;
+    line-height: 1.7;
     letter-spacing: 0.1em;
     overflow: overlay;
   }

@@ -26,12 +26,17 @@ function News(props) {
               {items.map((entry, i) => (
                 <div key={"news" + i} className={styles.section}>
                   <div className={styles.row}>
-                    <h1
-                      className={styles.title}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(entry.fields.title.toUpperCase()),
-                      }}
-                    />
+                    {entry.fields.tag ? (
+                      <>
+                        <div
+                          className={styles.tag}
+                          dangerouslySetInnerHTML={{
+                            __html: marked(entry.fields.tag),
+                          }}
+                        />{" "}
+                        <div className={styles.devider}> | </div>
+                      </>
+                    ) : null}
 
                     <div
                       dangerouslySetInnerHTML={{
@@ -39,6 +44,13 @@ function News(props) {
                       }}
                     />
                   </div>
+                  <h2
+                    className={styles.title}
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.title.toUpperCase()),
+                    }}
+                  />
+
                   {entry.fields.video ? (
                     <div className={styles.videoContainer}>
                       <ReactPlayer
@@ -55,6 +67,7 @@ function News(props) {
                   {entry.fields.image ? (
                     <div className={styles.imageContainer}>
                       <img
+                        alt="img"
                         src={entry.fields.image.fields.file.url}
                         className={styles.image}
                       />

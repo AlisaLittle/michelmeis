@@ -1,7 +1,7 @@
 .container {
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  /*   height: 100vh;
+  width: 100vw; */
   background-color: #130215;
 
   /*   background-image: linear-gradient(180deg, #130215, #000000);
@@ -321,17 +321,21 @@ svg {
     z-index: 4;
     -webkit-filter: brightness(40%);
   }
+  .home {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
+  }
   .imageQuartet {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    filter: brightness(110%);
+    filter: brightness(100%);
     left: 0;
     opacity: 0;
     object-fit: cover;
     object-position: top;
     z-index: 4;
-    -webkit-filter: brightness(110%);
+    -webkit-filter: brightness(100%);
   }
 
   .active {

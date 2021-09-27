@@ -31,7 +31,9 @@ function Projects(props) {
             {items.map((entry, i) => (
               <>
                 <div
-                  className={styles.title}
+                  className={`${styles.title} ${
+                    picture == entry.fields.title ? styles.active : null
+                  }`}
                   dangerouslySetInnerHTML={{
                     __html: marked(entry.fields.title),
                   }}
@@ -63,7 +65,7 @@ function Projects(props) {
                             setTimeout(() => props.setShowContent(true), 1500);
                           }}
                         >
-                          Infos
+                          Info
                         </button>
                       ) : (
                         <button
@@ -75,7 +77,7 @@ function Projects(props) {
                             )
                           }
                         >
-                          Infos
+                          Info
                         </button>
                       )}
 

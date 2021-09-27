@@ -25,6 +25,17 @@ function About(props) {
             <div>
               {items && props.showContent ? (
                 <>
+                  <button
+                    className="buttonFullLengthDark"
+                    onClick={() =>
+                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
+                    }
+                  >
+                    Click here to subscribe for the newsletter
+                  </button>
+                  <em>Fill out the form to contact me directly</em>
+                  <ContactForm buttonDark={true} />
+                  <div className={styles.space}></div>
                   {items.map((entry, i) => (
                     <div
                       className="rowSpacing"
@@ -36,16 +47,6 @@ function About(props) {
                       }}
                     />
                   ))}
-                  <button
-                    className="buttonFullLengthDark"
-                    onClick={() =>
-                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
-                    }
-                  >
-                    Click here to subscribe for the newsletter
-                  </button>
-                  <em>Fill out the form to contact me directly</em>
-                  <ContactForm buttonDark={true} />
                 </>
               ) : null}
             </div>

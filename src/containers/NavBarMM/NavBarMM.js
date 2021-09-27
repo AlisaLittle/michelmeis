@@ -28,6 +28,16 @@ function NavBar(props) {
   const [toMichelMeis, setToMichelMeis] = useState(false);
   const [doItOnce, setDoItOnce] = useState(true);
 
+  const w =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+  const h =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+
   const path = useLocation().pathname;
   const routes = [
     { name: "News", picture: News },
@@ -121,7 +131,7 @@ function NavBar(props) {
       setPhotoSidebarQuartet(false);
     }, 1000);
   };
-
+  console.log("ALLLLISA", path, pictureQuartet);
   const quartetRoute = path.substring(0, 5);
 
   const goToQuartet = () => {
@@ -166,13 +176,24 @@ function NavBar(props) {
     setDoItOnce(false);
   }
   if (quartetRoute === "/4tet" && path !== "/4tet" && doItOnce) {
-    const name = path.substring(6);
     setPhotoSidebarQuartet(true);
-    setDoItOnce(false);
-    goToQuartet();
+    const name = path.substring(6);
+    setToQuartet(true);
+    setToMichelMeis(false);
+    setPictureQuartet("/4tet");
+    if (quartetRoute !== "/4tet") {
+      setTimeout(() => setRedirect("/4tet"), 1000);
+    }
+    props.setShowContent(false);
+    setTimeout(() => props.setShowContent(true), 1000);
     setPictureQuartet(name);
+    setDoItOnce(false);
   }
-
+  if (path === "/4tet" && doItOnce) {
+    goToQuartet();
+    setDoItOnce(false);
+  }
+  console.log("sidebbar", photoSidebarQuartet);
   return (
     <div className={styles.screen}>
       <div
@@ -180,7 +201,7 @@ function NavBar(props) {
           toQuartet || path === "/4tet" ? styles.rowToRight : null
         } ${toMichelMeis ? styles.rowToLeft : null}`}
       >
-        <div className={styles.container}>
+        <div className={styles.container} style={{ width: w, height: h }}>
           {redirect ? <Redirect to={`${redirect}`} /> : null}
           <div className="row">
             <div className={styles.boxTop}>
@@ -383,10 +404,6 @@ function NavBar(props) {
             }  ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
               styles.homeQuartet
             } ${
-              photoSidebarQuartet || path === "/4tet"
-                ? styles.homeQuartet
-                : null
-            } ${
               pictureQuartet === "/4tet" ||
               (path === "/4tet" && pictureQuartet === "/4tet")
                 ? styles.active
@@ -402,7 +419,7 @@ function NavBar(props) {
               styles.newsQuartet
             } ${
               pictureQuartet === "/4tet/News" ||
-              (path === "/4tet/News" && pictureQuartet === "/4tet/News")
+              (path === "/4tet/News" && pictureQuartet === "News")
                 ? styles.active
                 : ""
             }`}
@@ -414,13 +431,9 @@ function NavBar(props) {
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
               styles.aboutQuartet
-            } ${
-              photoSidebarQuartet || path === "/4tet/About"
-                ? styles.aboutQuartet
-                : null
-            } ${
+            }  ${
               pictureQuartet === "/4tet/About" ||
-              (path === "/4tet/About" && pictureQuartet === "/4tet/About")
+              (path === "/4tet/About" && pictureQuartet === "About")
                 ? styles.active
                 : ""
             }`}
@@ -433,12 +446,8 @@ function NavBar(props) {
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
               styles.contactQuartet
             } ${
-              photoSidebarQuartet || path === "/4tet/Contact"
-                ? styles.contactQuartet
-                : null
-            } ${
               pictureQuartet === "/4tet/Contact" ||
-              (path === "/4tet/Contact" && pictureQuartet === "/4tet/Contact")
+              (path === "/4tet/Contact" && pictureQuartet === "Contact")
                 ? styles.active
                 : ""
             }`}
@@ -450,13 +459,9 @@ function NavBar(props) {
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null}  ${
               styles.liveQuartet
-            } ${
-              photoSidebarQuartet || path === "/4tet/Live"
-                ? styles.liveQuartet
-                : null
-            } ${
+            }  ${
               pictureQuartet === "/4tet/Live" ||
-              (path === "/4tet/Live" && pictureQuartet === "/4tet/Live")
+              (path === "/4tet/Live" && pictureQuartet === "Live")
                 ? styles.active
                 : ""
             }`}
@@ -468,13 +473,9 @@ function NavBar(props) {
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
               styles.musicQuartet
-            } ${
-              photoSidebarQuartet || path === "/4tet/Music"
-                ? styles.musicQuartet
-                : null
-            } ${
+            }  ${
               pictureQuartet === "/4tet/Music" ||
-              (path === "/4tet/Music" && pictureQuartet === "/4tet/Music")
+              (path === "/4tet/Music" && pictureQuartet === "Music")
                 ? styles.active
                 : ""
             }`}
@@ -486,13 +487,9 @@ function NavBar(props) {
               transition ? styles.transition : ""
             } ${photoSidebarQuartet ? styles.photoSidebarQuartet : null} ${
               styles.videoQuartet
-            } ${
-              photoSidebarQuartet || path === "/4tet/Video"
-                ? styles.videoQuartet
-                : null
-            } ${
+            }  ${
               pictureQuartet === "/4tet/Video" ||
-              (path === "/4tet/Video" && pictureQuartet === "/4tet/Video")
+              (path === "/4tet/Video" && pictureQuartet === "Video")
                 ? styles.active
                 : ""
             }`}

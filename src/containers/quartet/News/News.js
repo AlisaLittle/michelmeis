@@ -34,7 +34,7 @@ function News(props) {
               {items.map((entry, i) => (
                 <div key={"news" + i} className={styles.section}>
                   <div className={styles.row}>
-                    <h1
+                    <h2
                       className={styles.title}
                       dangerouslySetInnerHTML={{
                         __html: marked(entry.fields.title.toUpperCase()),
