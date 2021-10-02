@@ -35,6 +35,7 @@ ul {
   --black: rgb(56, 48, 48);
   --lila: #17041b;
   --contentWidth: 30vw;
+  --mobileHeightContent: 70vh;
   --fontSize: 14px;
   /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
@@ -147,7 +148,6 @@ ul {
   height: 25px;
   padding-right: 40px;
   color: black;
-  background-color: snow;
   font-size: var(--fontSize);
   border: 1px solid black;
 }
@@ -260,7 +260,11 @@ ul {
   background-color: snow;
   outline: 1px solid snow;
 }
-
+/* hide scrollbar in firefox
+ */
+* {
+  scrollbar-width: none; /* Firefox implementation */
+}
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--black);
@@ -298,7 +302,7 @@ ul {
     display: flex;
     top: 0px;
     right: 0px;
-    height: 70vh;
+    height: var(--mobileHeightContent);
     margin-top: 15vh;
     width: var(--contentWidth);
     color: snow;
@@ -309,7 +313,7 @@ ul {
     display: flex;
     top: 0px;
     right: 0px;
-    height: 70vh;
+    height: var(--mobileHeightContent);
     margin-top: 15vh;
     width: var(--contentWidth);
     color: black;
@@ -322,7 +326,7 @@ ul {
     justify-content: center;
     width: 100vw;
     padding: 0;
-    height: 70vh;
+    height: var(--mobileHeightContent);
     padding: 0 5vw;
     box-sizing: border-box;
     z-index: 5;
@@ -341,9 +345,7 @@ ul {
     animation: fadeIn 1s linear 0s;
     -webkit-animation: fadeIn 1s linear 0s;
   }
-  a {
-    color: snow;
-  }
+
   p {
     margin: 0px;
   }

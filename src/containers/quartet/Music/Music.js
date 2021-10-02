@@ -117,7 +117,7 @@ function Music(props) {
                     <div
                       ref={pressRef}
                       key={"news" + i}
-                      className={styles.section}
+                      className={styles.sectionText}
                     >
                       <div
                         dangerouslySetInnerHTML={{

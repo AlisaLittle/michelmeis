@@ -1,16 +1,15 @@
 .container {
   position: relative;
-  /*   height: 100vh;
-  width: 100vw; */
+
   background-color: #130215;
+  /*   overflow: hidden; */
 
   /*   background-image: linear-gradient(180deg, #130215, #000000);
  */
 }
 .quartet {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+
   /*   background-image: linear-gradient(
     180deg,
     rgb(255, 255, 255),
@@ -257,13 +256,11 @@ svg {
 .navPointQuartet:hover {
   color: rosybrown;
 }
-.container {
-  overflow: hidden;
-}
+
 .row {
   display: flex;
   flex-direction: row;
-  margin-top: 70vh;
+  height: var(--mobileHeightContent);
 }
 
 .screen {
@@ -431,13 +428,11 @@ svg {
     font-weight: 800;
     cursor: pointer;
   }
-  .container {
-    overflow: hidden;
-  }
+
   .row {
     display: flex;
     flex-direction: row;
-    margin-top: 70vh;
+    height: var(--mobileHeightContent);
   }
   .boxTop {
     width: 100vw;

@@ -7,6 +7,7 @@ import marked from "marked";
 import ReactPlayer from "react-player";
 import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
 import NewsQuartet from "../../../pictures/Quartet/News.jpg";
+import useWindowDimensions from "../../../components/windowDimensions";
 
 function News(props) {
   useEffect(() => {
@@ -33,34 +34,40 @@ function News(props) {
             <div className="fadeIn">
               {items.map((entry, i) => (
                 <div key={"news" + i} className={styles.section}>
-                  <div className={styles.row}>
-                    <h2
-                      className={styles.title}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(entry.fields.title.toUpperCase()),
-                      }}
-                    />
-
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: marked(DateFormatter(entry.fields.date)),
-                      }}
-                    />
-                  </div>
-
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: marked(DateFormatter(entry.fields.date)),
+                    }}
+                  />{" "}
+                  <h2
+                    className={styles.title}
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.title.toUpperCase()),
+                    }}
+                  />
                   {entry.fields.video ? (
                     <div className={styles.videoContainer}>
-                      <ReactPlayer
-                        width="100%"
-                        height="100%"
-                        playing={true}
-                        controls={true}
-                        muted={true}
-                        url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
-                      />
+                      {useWindowDimensions > 1100 ? (
+                        <ReactPlayer
+                          width="100%"
+                          height="100%"
+                          style={{ position: "absolute", top: 0, left: 0 }}
+                          playing={true}
+                          muted={true}
+                          controls={true}
+                          url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                        />
+                      ) : (
+                        <ReactPlayer
+                          width="100%"
+                          height="100%"
+                          style={{ position: "absolute", top: 0, left: 0 }}
+                          controls={true}
+                          url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                        />
+                      )}
                     </div>
                   ) : null}
-
                   {entry.fields.image ? (
                     <div className={styles.imageContainer}>
                       <img

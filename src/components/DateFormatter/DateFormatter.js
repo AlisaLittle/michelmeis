@@ -4,7 +4,7 @@ export const DateFormatter = (date) => {
   const year = date.substring(0, 4);
   const nameOfMonth = (m) => {
     switch (m) {
-      case "O1":
+      case "01":
         return "Jan";
       case "02":
         return "Feb";

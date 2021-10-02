@@ -11,35 +11,23 @@
   display: block;
   object-fit: cover;
   max-width: 100%;
-  height: 100%;
+  max-height: 100%;
 }
 .title {
   margin: unset;
 }
 .videoContainer {
-  display: flex;
-  aspect-ratio: 16/9;
-  padding-bottom: 3vh;
-  align-items: center;
-  justify-content: start;
-  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
 }
-@supports not (aspect-ratio: 16/9) {
-  .videoContainer {
-    display: flex;
-    padding-bottom: 3vh;
-    align-items: center;
-    justify-content: start;
-    width: 100%;
-    height: 50%;
-  }
-}
+
 .active {
   cursor: pointer;
   height: 25px;
   padding-right: 40px;
   color: black;
-  background-color: snow;
   font-size: var(--fontSize);
   border: 1px solid black;
   opacity: 70%;
@@ -108,15 +96,21 @@
   display: grid;
   grid-template-rows: auto 1fr 100px auto;
   row-gap: 2vh;
-  overflow: hidden;
   grid-template-columns: 1fr;
   width: var(--contentWidth);
   height: 80vh;
-  padding: 10px 0;
+  padding: 5vh 0;
+  box-sizing: border-box;
+}
+.sectionText {
+  scroll-snap-align: start;
+  width: var(--contentWidth);
+  min-height: 80vh;
+  padding: 5vh 0;
   box-sizing: border-box;
 }
 .container {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   overflow-y: scroll;
   box-sizing: border-box;
   height: 80vh;
@@ -135,6 +129,7 @@
 @media only screen and (max-width: 600px) {
   .section {
     scroll-snap-align: start;
+
     display: grid;
     grid-template-rows: auto 1fr 100px auto;
     row-gap: 1vh;
@@ -142,7 +137,22 @@
     padding: 1vh 0px 2vh 0px;
     grid-template-columns: 1fr;
     width: 90vw;
-    height: 70vh;
+    height: var(--mobileHeightContent);
+    box-sizing: border-box;
+  }
+  .container {
+    scroll-snap-type: y proximity;
+
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: var(--mobileHeightContent);
+    width: var(--contentWidth);
+  }
+  .sectionText {
+    scroll-snap-align: start;
+    width: 90vw;
+    min-height: var(--mobileHeightContent);
+    padding: 2vh 0;
     box-sizing: border-box;
   }
 }

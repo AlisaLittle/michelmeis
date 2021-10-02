@@ -193,7 +193,7 @@ function NavBar(props) {
     goToQuartet();
     setDoItOnce(false);
   }
-  console.log("sidebbar", photoSidebarQuartet);
+
   return (
     <div className={styles.screen}>
       <div
@@ -343,7 +343,7 @@ function NavBar(props) {
         </div>
         {/*             <---------------------------------------- QUARTET --------------------------------->
          */}
-        <div className={styles.quartet}>
+        <div className={styles.quartet} style={{ width: w, height: h }}>
           <div
             className={`${styles.boxTop} ${
               path.startsWith("/4tet") ? styles.animationBoxTop : null
