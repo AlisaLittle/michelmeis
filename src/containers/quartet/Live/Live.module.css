@@ -3,9 +3,11 @@
   flex-direction: "row";
   width: var(--contentWidth);
   justify-content: space-between;
-  padding-bottom: 1vh;
-  margin-bottom: 3vh;
+  padding: 2vh 0;
   border-bottom: 1px solid black;
+}
+.row:last-child {
+  border-bottom: unset;
 }
 .column {
   display: flex;

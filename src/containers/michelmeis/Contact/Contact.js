@@ -10,7 +10,6 @@ function Contact(props) {
     client
       .getEntries({ content_type: "contact" })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items.reverse());
       })
       .catch(console.error);

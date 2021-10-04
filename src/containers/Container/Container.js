@@ -20,8 +20,7 @@ function Container() {
   });
   const [showContent, setShowContent] = useState(true);
   const [toQuartet, setToQuartet] = useState(false);
-  console.log("showContent", showContent);
-  console.log("toQuartet", toQuartet);
+
   return (
     <div className="App">
       <NavBarMM

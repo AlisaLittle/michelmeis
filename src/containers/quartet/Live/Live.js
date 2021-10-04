@@ -16,8 +16,6 @@ function Live(props) {
         "fields.date[gte]": yesterday,
       })
       .then((res) => {
-        console.log("API", res.items);
-        console.log("DAte", new Date());
         setItems(res.items);
       })
       .catch(console.error);

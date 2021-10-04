@@ -8,7 +8,6 @@ function About(props) {
     client
       .getEntries({ content_type: "about4tet", order: "fields.index" })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items);
       })
       .catch(console.error);

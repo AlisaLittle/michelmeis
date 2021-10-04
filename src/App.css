@@ -34,10 +34,9 @@ ul {
   --black: rgb(56, 48, 48);
   --lila: #17041b;
   --contentWidth: 30vw;
-  --contentWidth: calc(var(--vh, 1vh) * 30);
   --mobileHeightContent: 70vh;
   --mobileHeightContent: calc(var(--vh, 1vh) * 70);
-  --fontSize: 14px;
+  --fontSize: 15px;
   /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
 
@@ -50,7 +49,7 @@ ul {
     --black: rgb(56, 48, 48);
     --lila: #17041b;
     --contentWidth: 40vw;
-    --fontSize: 13px;
+    --fontSize: 14px;
     /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
   }
 }

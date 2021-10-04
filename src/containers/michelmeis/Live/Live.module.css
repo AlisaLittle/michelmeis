@@ -3,14 +3,18 @@
   flex-direction: row;
   width: var(--contentWidth);
   justify-content: space-between;
-  padding-bottom: 1vh;
-  margin-bottom: 3vh;
+  /*   padding-bottom: 1vh;
+  margin-bottom: 3vh; */
+  padding: 2vh 0;
   border-bottom: 1px solid snow;
 }
 .column {
   display: flex;
   justify-content: flex-end;
   text-align: end;
+}
+.row:last-child {
+  border-bottom: unset;
 }
 
 @media only screen and (max-width: 600px) {

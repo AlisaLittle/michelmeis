@@ -12,12 +12,12 @@ function Video(props) {
         order: "fields.index",
       })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items.reverse());
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
+  const windowDesktop = useWindowDimensions().width > 1100 ? true : false;
 
   return (
     <div className={styles.container4tet}>
@@ -28,7 +28,7 @@ function Video(props) {
               <div key={"news" + i} className={styles.section}>
                 {entry.fields.video ? (
                   <div className={styles.videoContainer}>
-                    {useWindowDimensions > 1100 ? (
+                    {windowDesktop ? (
                       <ReactPlayer
                         width="100%"
                         height="100%"

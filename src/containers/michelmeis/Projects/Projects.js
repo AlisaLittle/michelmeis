@@ -10,7 +10,6 @@ function Projects(props) {
     client
       .getEntries({ content_type: "projects", order: "fields.index" })
       .then((res) => {
-        console.log("API", res.items);
         const response = res.items.reverse();
         setItems(response);
       })
@@ -29,7 +28,7 @@ function Projects(props) {
         <>
           <div className={styles.titleContainer}>
             {items.map((entry, i) => (
-              <>
+              <React.Fragment key={i}>
                 <div
                   className={`${styles.title} ${
                     picture == entry.fields.title ? styles.active : null
@@ -90,7 +89,7 @@ function Projects(props) {
                     </>
                   ) : null}
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
           {items.map((entry, i) => (

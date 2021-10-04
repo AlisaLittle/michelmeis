@@ -1,21 +1,48 @@
 import React, { useState } from "react";
-import Home from "../../pictures/Home.jpg";
 import styles from "./NavBarMM.module.css";
 import { Redirect, useLocation } from "react-router-dom";
 import SocialMedia from "../../components/SocialMedia/SocialMedia";
+
+import Home from "../../pictures/Home.jpg";
+import HomeMobile from "../../pictures/HomeMobile.jpg";
+
 import News from "../../pictures/Meis/News.jpg";
+import NewsMobile from "../../pictures/Meis/NewsMobile.jpg";
+
 import About from "../../pictures/Meis/About.jpg";
+import AboutMobile from "../../pictures/Meis/AboutMobile.jpg";
+
 import Projects from "../../pictures/Meis/Projects.jpg";
-import Video from "../../pictures/Meis/Video.jpg";
+import ProjectsMobile from "../../pictures/Meis/ProjectsMobile.jpg";
+
 import Live from "../../pictures/Meis/Live.jpg";
+import LiveMobile from "../../pictures/Meis/LiveMobile.jpg";
+
 import Contact from "../../pictures/Meis/Contact.jpg";
-import ContactQuartet from "../../pictures/Quartet/Home.jpg";
+import ContactMobile from "../../pictures/Meis/ContactMobile.jpg";
+
+import HomeQuartet from "../../pictures/Quartet/Home.jpg";
+import HomeQuartetMobile from "../../pictures/Quartet/HomeMobile.jpg";
+
 import AboutQuartet from "../../pictures/Quartet/About.jpg";
-import HomeQuartet from "../../pictures/Quartet/Contact.jpg";
+import AboutQuartetMobile from "../../pictures/Quartet/AboutMobile.jpg";
+
+import ContactQuartet from "../../pictures/Quartet/Contact.jpg";
+import ContactQuartetMobile from "../../pictures/Quartet/ContactMobile.jpg";
+
 import LiveQuartet from "../../pictures/Quartet/Live.jpg";
+import LiveQuartetMobile from "../../pictures/Quartet/LiveMobile.jpg";
+
 import MusicQuartet from "../../pictures/Quartet/Music.jpg";
+import MusicQuartetMobile from "../../pictures/Quartet/MusicMobile.jpg";
+
 import NewsQuartet from "../../pictures/Quartet/News.jpg";
+import NewsQuartetMobile from "../../pictures/Quartet/NewsMobile.jpg";
+
 import VideoQuartet from "../../pictures/Quartet/Video.jpg";
+import VideoQuartetMobile from "../../pictures/Quartet/VideoMobile.jpg";
+
+import useWindowDimensions from "../../components/windowDimensions";
 
 function NavBar(props) {
   const [picture, setPicture] = useState("Home");
@@ -28,31 +55,21 @@ function NavBar(props) {
   const [toMichelMeis, setToMichelMeis] = useState(false);
   const [doItOnce, setDoItOnce] = useState(true);
 
-  const w =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-
-  const h =
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight;
-
   const path = useLocation().pathname;
   const routes = [
-    { name: "News", picture: News },
-    { name: "About", picture: About },
-    { name: "Projects", picture: Projects },
-    { name: "Live", picture: Live },
-    { name: "Contact", picture: Contact },
+    { name: "News" },
+    { name: "About" },
+    { name: "Projects" },
+    { name: "Live" },
+    { name: "Contact" },
   ];
   const routesQuartet = [
-    { name: "News", picture: News },
-    { name: "About", picture: About },
-    { name: "Music", picture: Projects },
-    { name: "Video", picture: Video },
-    { name: "Live", picture: Live },
-    { name: "Contact", picture: Contact },
+    { name: "News" },
+    { name: "About" },
+    { name: "Music" },
+    { name: "Video" },
+    { name: "Live" },
+    { name: "Contact" },
   ];
 
   const handleClick = (name) => {
@@ -85,7 +102,6 @@ function NavBar(props) {
   const handleClickQuartet = (name) => {
     props.setShowContent(false);
     setTimeout(() => props.setShowContent(true), 1500);
-
     setTimeout(() => {
       setTransition(true);
       setRedirect(name);
@@ -132,7 +148,6 @@ function NavBar(props) {
       setPhotoSidebarQuartet(false);
     }, 1000);
   };
-  console.log("ALLLLISA", path, pictureQuartet);
   const quartetRoute = path.substring(0, 5);
 
   const goToQuartet = () => {
@@ -194,7 +209,7 @@ function NavBar(props) {
     goToQuartet();
     setDoItOnce(false);
   }
-
+  const windowSize = 1100;
   return (
     <div className={styles.screen}>
       <div
@@ -260,7 +275,7 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={Home}
+              src={useWindowDimensions().width > windowSize ? Home : HomeMobile}
               alt="Home"
             />
             <img
@@ -271,7 +286,7 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={News}
+              src={useWindowDimensions().width > windowSize ? News : NewsMobile}
               alt="News"
             />
             <img
@@ -283,7 +298,9 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={About}
+              src={
+                useWindowDimensions().width > windowSize ? About : AboutMobile
+              }
               alt="About"
             />
             <img
@@ -297,7 +314,11 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={Projects}
+              src={
+                useWindowDimensions().width > windowSize
+                  ? Projects
+                  : ProjectsMobile
+              }
               alt="Projects"
             />
             <img
@@ -308,7 +329,7 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={Live}
+              src={useWindowDimensions().width > windowSize ? Live : LiveMobile}
               alt="Live"
             />{" "}
             <img
@@ -322,7 +343,11 @@ function NavBar(props) {
                   ? styles.active
                   : ""
               }`}
-              src={Contact}
+              src={
+                useWindowDimensions().width > windowSize
+                  ? Contact
+                  : ContactMobile
+              }
               alt="Contact"
             />
             <nav className={styles.nav}>
@@ -344,7 +369,7 @@ function NavBar(props) {
         </div>
         {/*             <---------------------------------------- QUARTET --------------------------------->
          */}
-        <div className={styles.quartet} style={{ width: w, height: h }}>
+        <div className={styles.quartet}>
           <div
             className={`${styles.boxTop} ${
               path.startsWith("/4tet") ? styles.animationBoxTop : null
@@ -410,7 +435,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={HomeQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? HomeQuartet
+                : HomeQuartetMobile
+            }
             alt="HomeQuartet"
           />
           <img
@@ -424,7 +453,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={NewsQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? NewsQuartet
+                : NewsQuartetMobile
+            }
             alt="NewsQuartet"
           />
           <img
@@ -438,7 +471,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={AboutQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? AboutQuartet
+                : AboutQuartetMobile
+            }
             alt="AboutQuartet"
           />
           <img
@@ -452,7 +489,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={ContactQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? ContactQuartet
+                : ContactQuartetMobile
+            }
             alt="ContactQuartet"
           />
           <img
@@ -466,7 +507,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={LiveQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? LiveQuartet
+                : LiveQuartetMobile
+            }
             alt="LiveQuartet"
           />
           <img
@@ -480,7 +525,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={MusicQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? MusicQuartet
+                : MusicQuartetMobile
+            }
             alt="MusicQuartet"
           />{" "}
           <img
@@ -494,7 +543,11 @@ function NavBar(props) {
                 ? styles.active
                 : ""
             }`}
-            src={VideoQuartet}
+            src={
+              useWindowDimensions().width > windowSize
+                ? VideoQuartet
+                : VideoQuartetMobile
+            }
             alt="VideoQuartet"
           />
         </div>

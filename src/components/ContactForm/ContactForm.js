@@ -25,9 +25,7 @@ const ContactForm = (props) => {
         process.env.REACT_APP_USER_ID
       );
       reset();
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   return (
@@ -35,7 +33,9 @@ const ContactForm = (props) => {
       {/* Row 1 of form */}
       <div className={styles.row}>
         <input
-          className={`${styles.inputName} ${styles.inputQuartet}`}
+          className={`${styles.inputName} ${
+            props.buttonDark ? styles.inputQuartet : null
+          }`}
           type="text"
           name="name"
           ref={register({
@@ -55,7 +55,7 @@ const ContactForm = (props) => {
         )}
 
         <input
-          className={styles.inputQuartet}
+          className={`${props.buttonDark ? styles.inputQuartet : null}`}
           type="email"
           name="email"
           ref={register({
@@ -74,7 +74,7 @@ const ContactForm = (props) => {
       {/* Row 2 of form */}
       <div className="row">
         <input
-          className={styles.inputQuartet}
+          className={`${props.buttonDark ? styles.inputQuartet : null}`}
           type="text"
           name="subject"
           ref={register({
@@ -96,7 +96,9 @@ const ContactForm = (props) => {
       {/* Row 3 of form */}
       <div className="row">
         <textarea
-          className={`${styles.textArea} ${styles.inputQuartet}`}
+          className={`${styles.textArea} ${
+            props.buttonDark ? styles.inputQuartet : null
+          }`}
           rows={5}
           name="message"
           ref={register({

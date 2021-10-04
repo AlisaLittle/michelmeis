@@ -5,11 +5,9 @@ import marked from "marked";
 
 function About(props) {
   useEffect(() => {
-    console.log("jojo");
     client
       .getEntries({ content_type: "about", order: "fields.index" })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items);
       })
       .catch(console.error);

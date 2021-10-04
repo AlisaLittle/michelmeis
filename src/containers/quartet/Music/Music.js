@@ -12,7 +12,6 @@ function Music(props) {
         order: "fields.index",
       })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items.reverse());
       })
       .catch(console.error);

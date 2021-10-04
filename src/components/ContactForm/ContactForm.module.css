@@ -19,6 +19,7 @@ textarea {
 .inputQuartet {
   border-style: unset;
   border: 1px solid gray;
+  background-color: unset;
 }
 .submitButton {
   /* font-family: "Helvetica"; */

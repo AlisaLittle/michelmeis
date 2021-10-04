@@ -40,6 +40,8 @@
   box-sizing: border-box;
   height: 88vh;
   width: 50vw;
+  animation: fadeIn 2s linear;
+  -webkit-animation: fadeIn 2s linear;
 }
 .contentContainer {
   display: flex;
@@ -61,7 +63,17 @@
   overflow: scroll;
   color: black;
 }
-
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media only screen and (max-width: 600px) {
   .container {
     scroll-snap-type: y mandatory;
@@ -69,6 +81,8 @@
     box-sizing: border-box;
     height: var(--mobileHeightContent);
     width: 90vw;
+    animation: fadeIn 2s linear;
+    -webkit-animation: fadeIn 2s linear;
   }
   .contentContainer {
     display: flex;

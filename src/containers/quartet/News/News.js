@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./News.module.css";
-import stylesNav from "../../NavBarMM/NavBarMM.module.css";
 import { client } from "../../../client";
 import marked from "marked";
 import ReactPlayer from "react-player";
 import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
-import NewsQuartet from "../../../pictures/Quartet/News.jpg";
 import useWindowDimensions from "../../../components/windowDimensions";
 
 function News(props) {
@@ -18,13 +16,12 @@ function News(props) {
         "fields.tet": true,
       })
       .then((res) => {
-        console.log("API", res.items);
         setItems(res.items.reverse());
       })
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
-  const path = useLocation().pathname;
+  const windowDesktop = useWindowDimensions().width > 1100 ? true : false;
 
   return (
     <div className="container4tet">
@@ -45,7 +42,7 @@ function News(props) {
               />
               {entry.fields.video ? (
                 <div className={styles.videoContainer}>
-                  {useWindowDimensions > 1100 ? (
+                  {windowDesktop ? (
                     <ReactPlayer
                       width="100%"
                       height="100%"
