@@ -18,25 +18,21 @@ function About(props) {
 
   return (
     <div className="container">
-      <div className="contentContainer">
-        {items && props.showContent ? (
-          <div className="fadeIn">
-            <div className={styles.align}>
-              {items.map((entry, i) => (
-                <div className={styles.row}>
-                  <div
-                    className={styles.text}
-                    key={"about" + i}
-                    dangerouslySetInnerHTML={{
-                      __html: marked(entry.fields.aboutText),
-                    }}
-                  />
-                </div>
-              ))}
+      {items && props.showContent ? (
+        <div>
+          {items.map((entry, i) => (
+            <div className={styles.row}>
+              <div
+                className={styles.text}
+                key={"about" + i}
+                dangerouslySetInnerHTML={{
+                  __html: marked(entry.fields.aboutText),
+                }}
+              />
             </div>
-          </div>
-        ) : null}
-      </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

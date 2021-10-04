@@ -19,39 +19,31 @@ function About(props) {
 
   return (
     <div className="container4tet">
-      <div className="contentContainer">
-        <div className="fadeIn">
-          <div className={styles.align}>
-            <div>
-              {items && props.showContent ? (
-                <>
-                  <button
-                    className="buttonFullLengthDark"
-                    onClick={() =>
-                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
-                    }
-                  >
-                    Click here to subscribe for the newsletter
-                  </button>
-                  <em>Fill out the form to contact me directly</em>
-                  <ContactForm buttonDark={true} />
-                  <div className={styles.space}></div>
-                  {items.map((entry, i) => (
-                    <div
-                      className="rowSpacing"
-                      key={"about" + i}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(
-                          entry.fields.text.replace(/\n/g, `</br>`)
-                        ),
-                      }}
-                    />
-                  ))}
-                </>
-              ) : null}
-            </div>
-          </div>
-        </div>
+      <div>
+        {items && props.showContent ? (
+          <>
+            <button
+              className="buttonFullLengthDark"
+              onClick={() =>
+                openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
+              }
+            >
+              Click here to subscribe for the newsletter
+            </button>
+            <em>Fill out the form to contact me directly</em>
+            <ContactForm buttonDark={true} />
+            <div className={styles.space}></div>
+            {items.map((entry, i) => (
+              <div
+                className="rowSpacing"
+                key={"about" + i}
+                dangerouslySetInnerHTML={{
+                  __html: marked(entry.fields.text.replace(/\n/g, `</br>`)),
+                }}
+              />
+            ))}
+          </>
+        ) : null}
       </div>
     </div>
   );

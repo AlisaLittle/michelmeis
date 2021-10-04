@@ -1,6 +1,6 @@
 .row {
   display: flex;
-  flex-direction: "row";
+  flex-direction: row;
   width: var(--contentWidth);
   justify-content: space-between;
   padding-bottom: 1vh;

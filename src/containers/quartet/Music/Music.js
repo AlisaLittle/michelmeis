@@ -20,7 +20,6 @@ function Music(props) {
   const [items, setItems] = useState(null);
   const [press, setPress] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [transition, setTransition] = useState(false);
 
   const pressRef = useRef();
   const creditRef = useRef();
@@ -52,99 +51,95 @@ function Music(props) {
   };
   return (
     <div className="container4tet">
-      <div className="contentContainer">
-        <div className="fadeIn">
-          {items && props.showContent ? (
-            <div className={`${styles.container} `}>
-              {items.map((entry, i) => (
-                <>
-                  <div key={"news" + i} className={`${styles.section} `}>
-                    <div className={styles.titleRow}>
-                      <h1
-                        className={styles.title}
-                        dangerouslySetInnerHTML={{
-                          __html: marked(entry.fields.id),
-                        }}
-                      />{" "}
-                      <button
-                        className="buttonDark"
-                        onClick={() =>
-                          openInNewTab(entry.fields.linkListen, "Link-Listen")
-                        }
-                      >
-                        LISTEN
-                      </button>
-                    </div>
-                    {entry.fields.albumCover ? (
-                      <div className={styles.imageContainer}>
-                        <img
-                          alt="cover"
-                          src={entry.fields.albumCover.fields.file.url}
-                          className={styles.image}
-                        />
-                      </div>
-                    ) : null}
-                    <div
-                      className={styles.text}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(entry.fields.press),
-                      }}
+      {items && props.showContent ? (
+        <>
+          {items.map((entry, i) => (
+            <>
+              <div key={"news" + i} className={`${styles.section} `}>
+                <div className={styles.titleRow}>
+                  <h1
+                    className={styles.title}
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.id),
+                    }}
+                  />{" "}
+                  <button
+                    className="buttonDark"
+                    onClick={() =>
+                      openInNewTab(entry.fields.linkListen, "Link-Listen")
+                    }
+                  >
+                    LISTEN
+                  </button>
+                </div>
+                {entry.fields.albumCover ? (
+                  <div className={styles.imageContainer}>
+                    <img
+                      alt="cover"
+                      src={entry.fields.albumCover.fields.file.url}
+                      className={styles.image}
                     />
-                    <div className={`row ${styles.spaceBetween}`}>
-                      {entry.fields.popUp ? (
-                        <button
-                          className={`buttonDark ${
-                            press === entry.fields.id ? styles.active : null
-                          }`}
-                          onClick={() => clickPress(entry.fields.id)}
-                        >
-                          PRESS
-                        </button>
-                      ) : null}
-                      {entry.fields.credits ? (
-                        <button
-                          className={`buttonDark ${
-                            credits === entry.fields.id ? styles.active : null
-                          } `}
-                          onClick={() => clickCredits(entry.fields.id)}
-                        >
-                          CREDITS
-                        </button>
-                      ) : null}
-                    </div>
                   </div>
-                  {press == entry.fields.id ? (
-                    <div
-                      ref={pressRef}
-                      key={"news" + i}
-                      className={styles.sectionText}
+                ) : null}
+                <div
+                  className={styles.text}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(entry.fields.press),
+                  }}
+                />
+                <div className={`row ${styles.spaceBetween}`}>
+                  {entry.fields.popUp ? (
+                    <button
+                      className={`buttonDark ${
+                        press === entry.fields.id ? styles.active : null
+                      }`}
+                      onClick={() => clickPress(entry.fields.id)}
                     >
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: marked(entry.fields.popUp),
-                        }}
-                      />
-                    </div>
+                      PRESS
+                    </button>
                   ) : null}
-                  {credits == entry.fields.id ? (
-                    <div
-                      ref={creditRef}
-                      key={"news" + i}
-                      className={styles.section}
+                  {entry.fields.credits ? (
+                    <button
+                      className={`buttonDark ${
+                        credits === entry.fields.id ? styles.active : null
+                      } `}
+                      onClick={() => clickCredits(entry.fields.id)}
                     >
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: marked(entry.fields.credits),
-                        }}
-                      />
-                    </div>
+                      CREDITS
+                    </button>
                   ) : null}
-                </>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </div>
+                </div>
+              </div>
+              {press == entry.fields.id ? (
+                <div
+                  ref={pressRef}
+                  key={"news" + i}
+                  className={styles.sectionText}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.popUp),
+                    }}
+                  />
+                </div>
+              ) : null}
+              {credits == entry.fields.id ? (
+                <div
+                  ref={creditRef}
+                  key={"news" + i}
+                  className={styles.section}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: marked(entry.fields.credits),
+                    }}
+                  />
+                </div>
+              ) : null}
+            </>
+          ))}
+        </>
+      ) : null}
     </div>
   );
 }

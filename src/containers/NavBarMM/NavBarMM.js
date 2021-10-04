@@ -201,7 +201,7 @@ function NavBar(props) {
           toQuartet || path === "/4tet" ? styles.rowToRight : null
         } ${toMichelMeis ? styles.rowToLeft : null}`}
       >
-        <div className={styles.container} style={{ width: w, height: h }}>
+        <div className={styles.container} /* style={{ width: w, height: h }} */>
           {redirect ? <Redirect to={`${redirect}`} /> : null}
           <div className="row">
             <div className={styles.boxTop}>

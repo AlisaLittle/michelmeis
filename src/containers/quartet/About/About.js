@@ -17,25 +17,21 @@ function About(props) {
 
   return (
     <div className="container4tet">
-      <div className="contentContainer">
-        {items && props.showContent ? (
-          <div className="fadeIn">
-            <div className={styles.align}>
-              {items.map((entry, i) => (
-                <div className={styles.row}>
-                  <div
-                    className={styles.text}
-                    key={"about" + i}
-                    dangerouslySetInnerHTML={{
-                      __html: marked(entry.fields.text),
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : null}
-      </div>
+      {items && props.showContent ? (
+        <>
+          {items.map((entry, i) => (
+            <>
+              <div
+                className={styles.text}
+                key={"about" + i}
+                dangerouslySetInnerHTML={{
+                  __html: marked(entry.fields.text),
+                }}
+              />
+            </>
+          ))}
+        </>
+      ) : null}
     </div>
   );
 }

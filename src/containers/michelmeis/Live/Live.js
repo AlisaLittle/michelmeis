@@ -5,12 +5,17 @@ import marked from "marked";
 import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
 
 function Live(props) {
+  const yesterday = new Date(Date.now() - 86400000);
+
   useEffect(() => {
     client
-      .getEntries({ content_type: "live", order: "fields.date" })
+      .getEntries({
+        content_type: "live",
+        order: "fields.date",
+        "fields.date[gte]": yesterday,
+      })
       .then((res) => {
         console.log("API", res.items);
-        console.log("DAte", new Date());
         setItems(res.items);
       })
       .catch(console.error);
@@ -19,42 +24,38 @@ function Live(props) {
 
   return (
     <div className="container">
-      <div className="contentContainer">
-        <div className="fadeIn">
-          {items && props.showContent
-            ? items.map((item, i) => (
-                <div key={"live" + i} className={styles.row}>
-                  <div className="column">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: marked(DateFormatter(item.fields.date)),
-                      }}
-                    />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: marked(item.fields.band),
-                      }}
-                    />
-                  </div>
-                  <div className="column">
-                    <div
-                      className={styles.column}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(item.fields.location),
-                      }}
-                    />
-                    <div
-                      className={styles.column}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(item.fields.city),
-                      }}
-                    />
-                  </div>
-                </div>
-              ))
-            : null}
-        </div>
-      </div>
+      {items && props.showContent
+        ? items.map((item, i) => (
+            <div key={"live" + i} className={styles.row}>
+              <div className="column">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: marked(DateFormatter(item.fields.date)),
+                  }}
+                />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: marked(item.fields.band),
+                  }}
+                />
+              </div>
+              <div className="column">
+                <div
+                  className={styles.column}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(item.fields.location),
+                  }}
+                />
+                <div
+                  className={styles.column}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(item.fields.city),
+                  }}
+                />
+              </div>
+            </div>
+          ))
+        : null}
     </div>
   );
 }

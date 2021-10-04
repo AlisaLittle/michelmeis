@@ -3,7 +3,6 @@
   font-family: "Roboto", sans-serif;
   font-weight: 200 !important;
   font-size: var(--fontSize);
-  box-sizing: border-box;
 }
 h1 {
   font-weight: 200;
@@ -91,29 +90,60 @@ ul {
 
 .container {
   position: absolute;
+  scroll-snap-type: y proximity;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   right: 0px;
   top: 10vh;
   height: 80vh;
   width: 50vw;
   color: snow;
+  padding: 0px 5vw;
+  z-index: 0;
+  text-align: start;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  overflow: scroll;
+  animation: fadeIn 2s linear;
+  -webkit-animation: fadeIn 2s linear;
 }
+.container > div,
+.container4tet > div {
+  position: relative;
+  margin: auto;
+}
+
 .container4tet {
   position: absolute;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 10vh;
-  left: 0px;
   height: 80vh;
   width: 50vw;
-  overflow: scroll;
   color: black;
   z-index: 0;
+  scroll-snap-type: y proximity;
+  flex-direction: column;
+  top: 10vh;
+  left: 0px;
+  padding: 0px 5vw;
+  text-align: start;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  overflow: scroll;
+  animation: fadeIn 2s linear;
+  -webkit-animation: fadeIn 2s linear;
 }
-.contentContainer {
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* .contentContainer {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -124,7 +154,7 @@ ul {
   letter-spacing: 1px;
   line-height: 1.7;
   overflow: scroll;
-}
+} */
 
 .buttonDark {
   display: flex;
@@ -209,47 +239,18 @@ ul {
   border: 1px solid var(--white);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .rowSpacing {
   margin-bottom: 4vh;
 }
-.fadeIn {
+/* .fadeIn {
   width: var(--contentWidth);
   margin: auto;
   animation: fadeIn 2s linear;
   -webkit-animation: fadeIn 2s linear;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0%;
-  }
-  50% {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+} */
+* {
+  scrollbar-width: none;
+  box-sizing: border-box; /* Firefox implementation */
 }
 *::-webkit-scrollbar {
   /*   width: 0.5em;
@@ -262,9 +263,7 @@ ul {
 }
 /* hide scrollbar in firefox
  */
-* {
-  scrollbar-width: none; /* Firefox implementation */
-}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--black);
@@ -280,6 +279,7 @@ ul {
   /* Microsoft Edge */
   color: var(--black);
 }
+
 @media only screen and (max-width: 600px) {
   .App {
     text-align: center;

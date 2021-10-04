@@ -19,39 +19,29 @@ function Contact(props) {
 
   return (
     <div className="container">
-      <div className="contentContainer">
-        <div className="fadeIn">
-          <div className={styles.align}>
-            <div>
-              {items && props.showContent ? (
-                <>
-                  {items.map((entry, i) => (
-                    <div
-                      className="rowSpacing"
-                      key={"about" + i}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(
-                          entry.fields.text.replace(/\n/g, `</br>`)
-                        ),
-                      }}
-                    />
-                  ))}
-                  <button
-                    className="buttonFullLength"
-                    onClick={() =>
-                      openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
-                    }
-                  >
-                    Click here to subscribe for the newsletter
-                  </button>
-                  <em>Fill out the form to contact me directly</em>
-                  <ContactForm />
-                </>
-              ) : null}
-            </div>
-          </div>
+      {items && props.showContent ? (
+        <div>
+          {items.map((entry, i) => (
+            <div
+              className="rowSpacing"
+              key={"about" + i}
+              dangerouslySetInnerHTML={{
+                __html: marked(entry.fields.text.replace(/\n/g, `</br>`)),
+              }}
+            />
+          ))}
+          <button
+            className="buttonFullLength"
+            onClick={() =>
+              openInNewTab("http://eepurl.com/hH-Ba9", "Newsletter")
+            }
+          >
+            Click here to subscribe for the newsletter
+          </button>
+          <em>Fill out the form to contact me directly</em>
+          <ContactForm />
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }
