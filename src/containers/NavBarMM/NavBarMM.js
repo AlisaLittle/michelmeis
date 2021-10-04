@@ -85,6 +85,7 @@ function NavBar(props) {
   const handleClickQuartet = (name) => {
     props.setShowContent(false);
     setTimeout(() => props.setShowContent(true), 1500);
+
     setTimeout(() => {
       setTransition(true);
       setRedirect(name);

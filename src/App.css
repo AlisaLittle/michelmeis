@@ -34,7 +34,9 @@ ul {
   --black: rgb(56, 48, 48);
   --lila: #17041b;
   --contentWidth: 30vw;
+  --contentWidth: calc(var(--vh, 1vh) * 30);
   --mobileHeightContent: 70vh;
+  --mobileHeightContent: calc(var(--vh, 1vh) * 70);
   --fontSize: 14px;
   /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
 }
@@ -51,12 +53,6 @@ ul {
     --fontSize: 13px;
     /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
   }
-  .App {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 200 !important;
-    font-size: var(--fontSize);
-  }
 }
 
 /* MOBILE */
@@ -71,12 +67,6 @@ ul {
     --fontSize: 13px;
 
     /*   --gradient: linear-gradient(180deg, rgb(56, 48, 48) ;, rgb(34, 36, 35)); */
-  }
-  .App {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 800 !important;
-    font-size: var(--fontSize);
   }
 }
 .row {
@@ -95,7 +85,9 @@ ul {
   flex-direction: column;
   right: 0px;
   top: 10vh;
+  top: calc(var(--vh, 1vh) * 10);
   height: 80vh;
+  height: calc(var(--vh, 1vh) * 80);
   width: 50vw;
   color: snow;
   padding: 0px 5vw;
@@ -117,12 +109,14 @@ ul {
   position: absolute;
   display: flex;
   height: 80vh;
+  height: calc(var(--vh, 1vh) * 80);
   width: 50vw;
   color: black;
   z-index: 0;
   scroll-snap-type: y proximity;
   flex-direction: column;
   top: 10vh;
+  top: calc(var(--vh, 1vh) * 10);
   left: 0px;
   padding: 0px 5vw;
   text-align: start;
@@ -303,7 +297,8 @@ ul {
     top: 0px;
     right: 0px;
     height: var(--mobileHeightContent);
-    margin-top: 15vh;
+    margin-top: 17vh;
+    margin-top: calc(var(--vh, 1vh) * 17);
     width: var(--contentWidth);
     color: snow;
     z-index: 5;
@@ -314,7 +309,8 @@ ul {
     top: 0px;
     right: 0px;
     height: var(--mobileHeightContent);
-    margin-top: 15vh;
+    margin-top: 17vh;
+    margin-top: calc(var(--vh, 1vh) * 17);
     width: var(--contentWidth);
     color: black;
     z-index: 5;

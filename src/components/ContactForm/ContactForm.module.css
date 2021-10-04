@@ -4,6 +4,7 @@ form div {
 
 input,
 textarea {
+  resize: none;
   height: 25px;
   width: 100%;
   padding-right: 40px;
@@ -15,7 +16,10 @@ textarea {
   border-style: none;
   color: black;
 }
-
+.inputQuartet {
+  border-style: unset;
+  border: 1px solid gray;
+}
 .submitButton {
   /* font-family: "Helvetica"; */
   display: flex;

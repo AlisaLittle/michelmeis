@@ -35,7 +35,7 @@ const ContactForm = (props) => {
       {/* Row 1 of form */}
       <div className={styles.row}>
         <input
-          className={styles.inputName}
+          className={`${styles.inputName} ${styles.inputQuartet}`}
           type="text"
           name="name"
           ref={register({
@@ -55,6 +55,7 @@ const ContactForm = (props) => {
         )}
 
         <input
+          className={styles.inputQuartet}
           type="email"
           name="email"
           ref={register({
@@ -73,6 +74,7 @@ const ContactForm = (props) => {
       {/* Row 2 of form */}
       <div className="row">
         <input
+          className={styles.inputQuartet}
           type="text"
           name="subject"
           ref={register({
@@ -94,7 +96,7 @@ const ContactForm = (props) => {
       {/* Row 3 of form */}
       <div className="row">
         <textarea
-          className={styles.textArea}
+          className={`${styles.textArea} ${styles.inputQuartet}`}
           rows={5}
           name="message"
           ref={register({

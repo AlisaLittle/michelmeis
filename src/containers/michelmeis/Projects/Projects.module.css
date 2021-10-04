@@ -1,6 +1,7 @@
 .background {
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   position: absolute;
   left: 0px;
   top: 0px;
@@ -14,6 +15,7 @@
   top: 0px;
   left: 0px;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   object-fit: cover;
   object-position: top;
@@ -36,7 +38,8 @@
   z-index: 5;
   top: 0px;
   display: flex;
-  height: 88vh;
+  height: 70vh;
+  height: calc(var(--vh, 1vh) * 70);
   align-items: flex-end;
   flex-direction: column;
   padding-right: 4px;
@@ -146,6 +149,7 @@
     z-index: 5;
     overflow: hidden;
     top: 15vh;
+    top: calc(var(--vh, 1vh) * 15);
     height: var(--mobileHeightContent);
     display: flex;
     width: 100vw;
