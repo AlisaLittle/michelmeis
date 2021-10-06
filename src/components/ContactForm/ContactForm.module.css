@@ -15,11 +15,16 @@ textarea {
   border-color: var(--white);
   border-style: none;
   color: black;
+  border-radius: 0%;
+  box-shadow: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 .inputQuartet {
   border-style: unset;
   border: 1px solid gray;
-  background-color: unset;
+  background-color: rgba(255, 255, 255, 0.55);
 }
 .submitButton {
   /* font-family: "Helvetica"; */

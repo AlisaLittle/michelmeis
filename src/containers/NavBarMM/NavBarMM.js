@@ -71,10 +71,16 @@ function NavBar(props) {
     { name: "Live" },
     { name: "Contact" },
   ];
+  const windowSize = 600;
+
+  const showContentTime = useWindowDimensions().width > windowSize ? 1500 : 500;
+  const sidebarTime = useWindowDimensions().width > windowSize ? 700 : 0;
+  const setPictureTime = useWindowDimensions().width > windowSize ? 1000 : 0;
+  const transitionTime = useWindowDimensions().width > windowSize ? 1700 : 0;
 
   const handleClick = (name) => {
     props.setShowContent(false);
-    setTimeout(() => props.setShowContent(true), 1500);
+    setTimeout(() => props.setShowContent(true), showContentTime);
     if (name === "Projects") {
       handleHome(name);
     } else {
@@ -87,21 +93,21 @@ function NavBar(props) {
         setTimeout(() => {
           setPhotoSidebar(true);
           setTransition(false);
-        }, 700);
+        }, sidebarTime);
       } else {
         setTimeout(() => {
           setPicture(name);
-        }, 1000);
+        }, setPictureTime);
         setTimeout(() => {
           setTransition(false);
-        }, 1700);
+        }, transitionTime);
       }
     }
   };
 
   const handleClickQuartet = (name) => {
     props.setShowContent(false);
-    setTimeout(() => props.setShowContent(true), 1500);
+    setTimeout(() => props.setShowContent(true), showContentTime);
     setTimeout(() => {
       setTransition(true);
       setRedirect(name);
@@ -111,21 +117,21 @@ function NavBar(props) {
       setTimeout(() => {
         setPhotoSidebarQuartet(true);
         setTransition(false);
-      }, 700);
+      }, sidebarTime);
     } else {
       setTimeout(() => {
         setPictureQuartet(name);
-      }, 1000);
+      }, setPictureTime);
       setTimeout(() => {
         setTransition(false);
-      }, 1700);
+      }, transitionTime);
     }
   };
 
   const handleHome = (title) => {
     setTimeout(() => {
       setPicture(title);
-    }, 1000);
+    }, setPictureTime);
     setTransition(true);
     if (title === "Home") {
       setRedirect("/");
@@ -135,18 +141,18 @@ function NavBar(props) {
     setTimeout(() => {
       setTransition(false);
       setPhotoSidebar(false);
-    }, 1000);
+    }, setPictureTime);
   };
   const handleHomeQuartet = (title) => {
     setTimeout(() => {
       setPictureQuartet(title);
-    }, 1000);
+    }, setPictureTime);
     setTransition(true);
     setRedirect("/4tet");
     setTimeout(() => {
       setTransition(false);
       setPhotoSidebarQuartet(false);
-    }, 1000);
+    }, setPictureTime);
   };
   const quartetRoute = path.substring(0, 5);
 
@@ -209,7 +215,6 @@ function NavBar(props) {
     goToQuartet();
     setDoItOnce(false);
   }
-  const windowSize = 1100;
   return (
     <div className={styles.screen}>
       <div

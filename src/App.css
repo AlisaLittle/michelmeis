@@ -4,6 +4,15 @@
   font-weight: 200 !important;
   font-size: var(--fontSize);
 }
+button,
+.button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: none; /* 2 */
+  cursor: pointer; /* 3 */
+  -webkit-border-fit: border !important;
+}
 h1 {
   font-weight: 200;
 }
@@ -154,11 +163,12 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 25px;
+  height: fit-content;
+
   width: 140px;
   font-size: var(--fontSize);
   animation: fadeIn 2s;
-  padding: 20px 40px;
+  padding: 12px 40px;
   color: rosybrown;
   background-color: transparent;
   font-size: var(--fontSize);
@@ -167,9 +177,6 @@ ul {
 }
 .buttonDark:hover,
 .buttonFullLengthDark:hover {
-  cursor: pointer;
-  height: 25px;
-  padding-right: 40px;
   color: black;
   font-size: var(--fontSize);
   border: 1px solid black;
@@ -179,11 +186,11 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 25px;
+  height: fit-content;
   width: 140px;
   font-size: var(--fontSize);
   animation: fadeIn 1.5s;
-  padding: 20px 40px;
+  padding: 12px 40px;
   color: var(--white);
   background-color: transparent;
   border: 1px solid var(--white);
@@ -194,11 +201,11 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 25px;
+  height: fit-content;
   margin: 30px auto;
   width: 100%;
   animation: fadeIn 1.5s;
-  padding: 20px 40px;
+  padding: 12px 40px;
   color: var(--white);
   background-color: transparent;
   font-size: var(--fontSize);
@@ -210,11 +217,11 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 25px;
+  height: fit-content;
   margin: 30px auto;
   width: 100%;
   animation: fadeIn 1.5s;
-  padding: 20px 40px;
+  padding: 12px 40px;
   color: rosybrown;
   background-color: transparent;
   font-size: var(--fontSize);
@@ -223,12 +230,8 @@ ul {
 }
 .button:hover,
 .buttonFullLength:hover {
-  cursor: pointer;
-  height: 25px;
-  padding-right: 40px;
   color: var(--black);
   background-color: var(--white);
-  font-size: var(--fontSize);
   border: 1px solid var(--white);
 }
 
@@ -301,6 +304,8 @@ ul {
     width: var(--contentWidth);
     color: snow;
     z-index: 5;
+    animation: fadeIn 0.5s linear;
+    -webkit-animation: fadeIn 0.5s linear;
   }
   .container4tet {
     position: absolute;

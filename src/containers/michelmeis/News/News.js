@@ -4,7 +4,6 @@ import { client } from "../../../client";
 import marked from "marked";
 import ReactPlayer from "react-player";
 import { DateFormatter } from "../../../components/DateFormatter/DateFormatter.js";
-import useWindowDimensions from "../../../components/windowDimensions";
 
 function News(props) {
   useEffect(() => {
@@ -16,7 +15,6 @@ function News(props) {
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
-  const windowDesktop = useWindowDimensions().width > 1100 ? true : false;
   return (
     <div className="container">
       {items && props.showContent ? (
@@ -51,25 +49,13 @@ function News(props) {
 
               {entry.fields.video ? (
                 <div className={styles.videoContainer}>
-                  {windowDesktop ? (
-                    <ReactPlayer
-                      width="100%"
-                      height="100%"
-                      style={{ position: "absolute", top: 0, left: 0 }}
-                      playing={true}
-                      muted={true}
-                      controls={true}
-                      url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
-                    />
-                  ) : (
-                    <ReactPlayer
-                      width="100%"
-                      height="100%"
-                      style={{ position: "absolute", top: 0, left: 0 }}
-                      controls={true}
-                      url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
-                    />
-                  )}
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                    controls={true}
+                    url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                  />
                 </div>
               ) : null}
 

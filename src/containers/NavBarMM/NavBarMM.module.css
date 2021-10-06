@@ -322,39 +322,118 @@ svg {
   width: 200vw;
   display: flex;
 }
+.home {
+  object-position: top;
+}
+.news {
+  object-position: 70% 50%;
+}
+.about {
+  object-position: 72% 50%;
+}
+.projects {
+  object-position: top;
+}
+.live {
+  object-position: top;
+}
+.contact {
+  object-position: 45% top;
+}
+.homeQuartet {
+  object-position: top;
+}
+.aboutQuartet {
+  object-position: 0% 20%;
+}
+.musicQuartet {
+  object-position: 50% 20%;
+}
+.videoQuartet {
+  object-position: 0% 20%;
+}
+.liveQuartet {
+  object-position: 0% 20%;
+}
 
 @media only screen and (max-width: 600px) {
+  .news {
+    object-position: 70% 50%;
+  }
+  .about {
+    object-position: 72% 50%;
+  }
+  .projects {
+    object-position: 70% 50%;
+  }
+  .live {
+    object-position: 50% 50%;
+  }
+
+  .contact {
+    object-position: 27% 50%;
+  }
+  .homeQuartet {
+    object-position: 54% 50%;
+  }
+  .newsQuartet {
+    object-position: 45% 50%;
+  }
+  .aboutQuartet {
+    object-position: 45% 50%;
+  }
+  .videoQuartet {
+    object-position: 45% 50%;
+  }
+  .liveQuartet {
+    object-position: 52% 50%;
+  }
+  .container {
+    position: relative;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100vw; /* Fallback for browsers that do not support Custom Properties */
+    background-color: transparent;
+    /*   overflow: hidden; */
+
+    /*   background-image: linear-gradient(180deg, #130215, #000000);
+   */
+  }
   .imageContainer {
     width: 100vw;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-
     opacity: 0;
-
     object-fit: cover;
     background-image: linear-gradient(180deg, rgb(56, 48, 48), rgb(36, 33, 33));
     z-index: 3;
+    /*     transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease; */
   }
   .image {
     width: 100vw;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-
     opacity: 0;
     filter: brightness(40%);
     object-fit: cover;
     z-index: 4;
+    /*     transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease; */
+
     -webkit-filter: brightness(40%);
   }
-  .home {
-    filter: brightness(100%);
-    -webkit-filter: brightness(100%);
-  }
+
   .imageQuartet {
     width: 100vw;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-
     position: absolute;
     filter: brightness(100%);
     left: 0;
@@ -362,8 +441,13 @@ svg {
     object-fit: cover;
     z-index: 4;
     -webkit-filter: brightness(100%);
+    /*     transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+  } */
   }
-
   .active {
     opacity: 1;
     transition: 1s ease;
@@ -419,7 +503,7 @@ svg {
     flex-direction: row;
     position: absolute;
     width: 100vw;
-    padding-bottom: 1vh;
+    padding-bottom: 0.5vh;
     border-bottom: 1px solid snow;
     height: fit-content;
     justify-content: space-between;
@@ -433,7 +517,7 @@ svg {
     flex-direction: row;
     position: absolute;
     width: 100vw;
-    padding-bottom: 1vh;
+    padding-bottom: 0.5vh;
     border-bottom: 1px solid rosybrown;
     height: fit-content;
     justify-content: space-between;
@@ -516,37 +600,4 @@ svg {
       left: 0px;
     }
   }
-  .news {
-    object-position: 70% 50%;
-  }
-  .about {
-    object-position: 72% 50%;
-  }
-  .projects {
-    object-position: 68% 50%;
-  }
-  .video {
-    object-position: 30% 50%;
-  }
-  .contact {
-    object-position: 25% 50%;
-  }
-  .homeQuartet {
-    object-position: 54% 50%;
-  }
-  .newsQuartet {
-    object-position: 45% 50%;
-  }
-  .cat {
-    object-position: 100% 10%;
-  }
-}
-.about {
-  object-position: 72% 50%;
-}
-.news {
-  object-position: 70% 50%;
-}
-.contact {
-  object-position: 25% 50%;
 }
