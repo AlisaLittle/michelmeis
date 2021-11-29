@@ -27,10 +27,10 @@
   grid-template-columns: 1fr;
   align-items: flex-start;
   width: var(--contentWidth);
-  /*   min-height: 80vh;
- */
+
   box-sizing: border-box;
-  padding: 8vh 0px;
+  padding: 5vh 0px;
+
   /*   border-bottom: 1px solid snow;
  */
 }

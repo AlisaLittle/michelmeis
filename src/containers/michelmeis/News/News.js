@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./News.module.css";
 import { client } from "../../../client";
 import marked from "marked";
@@ -15,12 +15,17 @@ function News(props) {
       .catch(console.error);
   }, []);
   const [items, setItems] = useState(null);
+  const section = useRef(null);
   return (
     <div className="container">
       {items && props.showContent ? (
         <>
           {items.map((entry, i) => (
-            <div key={"news" + i} className={styles.section}>
+            <div key={"news" + i} className={styles.section} ref={section}>
+              {console.log(
+                " Alisa",
+                document.getElementsByClassName("section").innerHeight
+              )}
               <div className={styles.row}>
                 {entry.fields.tag ? (
                   <>
@@ -47,14 +52,14 @@ function News(props) {
                 }}
               />
 
-              {entry.fields.video ? (
+              {entry.fields.url ? (
                 <div className={styles.videoContainer}>
                   <ReactPlayer
                     width="100%"
                     height="100%"
                     style={{ position: "absolute", top: 0, left: 0 }}
                     controls={true}
-                    url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                    url={entry.fields.url}
                   />
                 </div>
               ) : null}

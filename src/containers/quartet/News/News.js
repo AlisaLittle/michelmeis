@@ -37,14 +37,14 @@ function News(props) {
                   __html: marked(entry.fields.title.toUpperCase()),
                 }}
               />
-              {entry.fields.video ? (
+              {entry.fields.url ? (
                 <div className={styles.videoContainer}>
                   <ReactPlayer
                     width="100%"
                     height="100%"
                     style={{ position: "absolute", top: 0, left: 0 }}
                     controls={true}
-                    url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                    url={entry.fields.url}
                   />
                 </div>
               ) : null}
