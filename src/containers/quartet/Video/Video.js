@@ -24,14 +24,14 @@ function Video(props) {
           <div className={styles.container}>
             {items.map((entry, i) => (
               <div key={"news" + i} className={styles.section}>
-                {entry.fields.video ? (
+                {entry.fields.url ? (
                   <div className={styles.videoContainer}>
                     <ReactPlayer
                       width="100%"
                       height="100%"
                       style={{ position: "absolute", top: 0, left: 0 }}
                       controls={true}
-                      url={`www.youtube.com/${entry.fields.video.fields.file.fileName}`}
+                      url={entry.fields.url}
                     />
                   </div>
                 ) : null}
