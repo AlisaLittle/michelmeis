@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Projects.module.css";
 import { client } from "../../../client";
-import "react-image-gallery/styles/css/image-gallery.css";
 import marked from "marked";
 import { openInNewTab } from "../../../components/OpenInNewTab";
 
