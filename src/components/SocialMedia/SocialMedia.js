@@ -11,11 +11,11 @@ function SocialMedia(props) {
         onClick={() =>
           props.quartet
             ? openInNewTab(
-                "https://www.facebook.com/michelmeis4tet",
+                "https://www.facebook.com/michelmeismusic",
                 "Facebook 4tet"
               )
             : openInNewTab(
-                "https://www.facebook.com/michel.meis",
+                "https://www.facebook.com/michelmeismusic",
                 "Facebook Michel Meis"
               )
         }
@@ -25,7 +25,7 @@ function SocialMedia(props) {
         onClick={() =>
           props.quartet
             ? openInNewTab(
-                "https://www.instagram.com/michelmeis4tet",
+                "https://www.instagram.com/michel_meis",
                 "Instagram 4tet"
               )
             : openInNewTab(
