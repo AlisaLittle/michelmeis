@@ -9,43 +9,22 @@ function SocialMedia(props) {
       <FaFacebook
         className={props.quartet ? styles.iconQuartet : styles.icon}
         onClick={() =>
-          props.quartet
-            ? openInNewTab(
-                "https://www.facebook.com/michelmeismusic",
-                "Facebook 4tet"
-              )
-            : openInNewTab(
-                "https://www.facebook.com/michelmeismusic",
-                "Facebook Michel Meis"
-              )
+          openInNewTab("https://www.facebook.com/michelmeismusic", "Facebook")
         }
       />
       <FaInstagram
         className={props.quartet ? styles.iconQuartet : styles.icon}
         onClick={() =>
-          props.quartet
-            ? openInNewTab(
-                "https://www.instagram.com/michel_meis",
-                "Instagram 4tet"
-              )
-            : openInNewTab(
-                "https://www.instagram.com/michel_meis",
-                "Instagram Michel Meis"
-              )
+          openInNewTab("https://www.instagram.com/michel_meis", "Instagram")
         }
       />
 
-      {props.quartet ? (
-        <FaYoutube
-          className={styles.iconQuartet}
-          onClick={() =>
-            openInNewTab(
-              "https://www.youtube.com/channel/UCdjZkLmz7oE7WIM51PSDMMQ",
-              "Youtube 4tet"
-            )
-          }
-        />
-      ) : null}
+      <FaYoutube
+        className={props.quartet ? styles.iconQuartet : styles.icon}
+        onClick={() =>
+          openInNewTab("https://www.youtube.com/@MichelMeisMusic", "Youtube")
+        }
+      />
     </div>
   );
 }
