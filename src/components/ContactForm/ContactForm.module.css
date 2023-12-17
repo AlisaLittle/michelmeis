@@ -27,7 +27,6 @@ textarea {
   background-color: rgba(255, 255, 255, 0.55);
 }
 .submitButton {
-  /* font-family: "Helvetica"; */
   display: flex;
   align-items: center;
   justify-content: center;
