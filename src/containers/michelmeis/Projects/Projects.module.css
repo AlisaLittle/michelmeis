@@ -1,4 +1,5 @@
 @import '@fontsource/noto-sans';
+@import '@fontsource/roboto';
 
 .background {
   width: 100vw;
@@ -58,7 +59,7 @@
   color: transparent;
   -webkit-text-stroke: 1px var(--white);
   text-align: end;
-  font-family: "Noto Sans";
+  font-family: "Roboto";
   font-size: 5vh;
   font-weight: 800;
   cursor: pointer;
@@ -165,7 +166,7 @@
     color: transparent;
     -webkit-text-stroke: 1px var(--white);
     text-align: end;
-    font-family: "Noto Sans";
+    font-family: "Roboto";
     font-size: 5vh;
     font-weight: 800;
     cursor: pointer;
