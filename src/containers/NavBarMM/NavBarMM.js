@@ -239,7 +239,8 @@ function NavBar(props) {
                 path !== "/4tet" ? styles.animationBoxBottom : null
               }`}
             >
-              <div
+              {/* This part got removed to avoid visitors to go to the 4TET page */}
+              {/* <div
                 className={`${styles.second} ${styles.main}`}
                 onClick={() => {
                   goToQuartet();
@@ -261,7 +262,7 @@ function NavBar(props) {
                     />
                   </svg>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div
               className={`${styles.imageContainer}  ${
