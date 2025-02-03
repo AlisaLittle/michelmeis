@@ -37,8 +37,8 @@ function Contact(props) {
           >
             Click here to subscribe for the newsletter
           </button>
-          <em>Fill out the form to contact me directly</em>
-          <ContactForm />
+{/*           <em>Fill out the form to contact me directly</em>
+          <ContactForm /> */}
         </div>
       ) : null}
     </div>
