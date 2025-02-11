@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /news$
+Disallow: /news*
+Disallow: /4tet*
+Disallow: /tour*
