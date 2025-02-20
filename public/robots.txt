@@ -1,6 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /news$
-Disallow: /news*
-Disallow: /4tet*
-Disallow: /tour*
+Disallow:
