@@ -240,7 +240,7 @@ function NavBar(props) {
               }`}
             >
               {/* This part got removed to avoid visitors to go to the 4TET page */}
-              {/* <div
+               <div
                 className={`${styles.second} ${styles.main}`}
                 onClick={() => {
                   goToQuartet();
@@ -262,7 +262,7 @@ function NavBar(props) {
                     />
                   </svg>
                 </div>
-              </div> */}
+              </div> 
             </div>
             <div
               className={`${styles.imageContainer}  ${
